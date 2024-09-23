@@ -27,6 +27,13 @@ contract DAO {
     // Mapping the proposals using the struct
     mapping(uint256 => Proposal) public proposals;
 
+    event Propose(
+        uint id,
+        uint256 amount,
+        address recipient,
+        address creator
+    );
+
     constructor(Token _token, uint256 _quorum) {
         owner = msg.sender;
         token = _token;
@@ -36,6 +43,14 @@ contract DAO {
     // Allows contract to receive eth
     receive() external payable {}
 
+    modifier onlyInvestor() {
+        require(Token(token).balanceOf(msg.sender) > 0,
+        "Must be token holder"
+        );
+
+        _;
+    }
+
     // Proposal function
     // eg. Name: "Invest rewards into stablecoin lp"
     // eg. Amount: "Rewards earned"
@@ -44,7 +59,10 @@ contract DAO {
         string memory _name,
         uint256 _amount,
         address payable _recipient
-    ) external {
+    ) external onlyInvestor(){
+        // Check balance of contract
+        require(address(this).balance >= _amount);
+
         // Increment ID
         proposalCount++;
 
@@ -66,6 +84,14 @@ contract DAO {
         _amount,
         _recipient,
         0,
-        false);
+        false
+        );
+
+        emit Propose(
+            proposalCount,
+            _amount,
+            _recipient,
+            msg.sender
+        );
     }
 }

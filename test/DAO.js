@@ -8,24 +8,65 @@ return ethers.utils.parseUnits(n.toString(), 'ether')
 const ether = tokens
 
 describe('DAO', () => {
-    // save token and dao
-    let token, dao, accounts, deployer, funder
+    // save token, dao, and investors
+    let 
+        token,
+        dao,
+        accounts,
+        deployer,
+        funder,
+        investor1,
+        investor2,
+        investor3,
+        investor4,
+        investor5,
+        recipient,
+        user
 
     beforeEach(async () => {
         // Setup accounts
         accounts = await ethers.getSigners()
         deployer = accounts[0]
-        funder = accounts[1]
+
         // Proposal Creator
+        funder = accounts[1]
+
+        // Token holders
         investor1 = accounts[2]
-        recipient = accounts[3]
+        investor2 = accounts[3]
+        investor3 = accounts[4]
+        investor4 = accounts[5]
+        investor5 = accounts[6]
+        recipient = accounts[7]
+
+        // Non-dao member
+        user = accounts[8]
 
         // Deploy Tokens
         const Token = await ethers.getContractFactory('Token')
         token = await Token.deploy('Next Gen', 'NXG', '1000000')
 
+        // Send tokens to investors
+        // 200000 = 20% each investor (5 investors)
+        transaction = await token.connect(deployer).transfer(investor1.address, tokens(200000))
+        await transaction.wait()
+
+        transaction = await token.connect(deployer).transfer(investor2.address, tokens(200000))
+        await transaction.wait()
+
+        transaction = await token.connect(deployer).transfer(investor3.address, tokens(200000))
+        await transaction.wait()
+
+        transaction = await token.connect(deployer).transfer(investor4.address, tokens(200000))
+        await transaction.wait()
+
+        transaction = await token.connect(deployer).transfer(investor5.address, tokens(200000))
+        await transaction.wait()
+
         // Deploy DAO
         const Dao = await ethers.getContractFactory('DAO')
+
+        // Set quorum
         // 500000000000000000000001 - represents quorum of 51% of token supply (500000 + 1 wei)
         dao = await Dao.deploy(token.address, '500000000000000000000001')
 
@@ -60,10 +101,35 @@ describe('DAO', () => {
             it('updates proposal count', async () => {
                 expect(await dao.proposalCount()).to.eq(1)
             })
+
+            it('updates proposal mapping', async () => {
+                // retrieve specific proposal by passing proposal id
+                // returns Proposal struct
+                const proposal = await dao.proposals(1)
+
+                // expected struct args
+                expect(proposal.id).to.eq(1)
+                expect(proposal.amount).to.eq(ether(100))
+                expect(proposal.recipient).to.eq(recipient.address)
+
+                // view struct in terminal
+                // console.log(proposal)
+            })
+
+            it('emits a propose event', async () => {
+                await expect(transaction).to.emit(dao, 'Propose')
+                .withArgs(1, ether(100), recipient.address, investor1.address)
+            })
         })
 
         describe('Failure', () => {
+            it('rejects invalid amount', async () => {
+                await expect(dao.connect(investor1).createProposal('Proposal', ether(1000), recipient.address)).to.be.reverted
+            })
 
+            it('rejects a non-investor', async () => {
+                await expect(dao.connect(user).createProposal('Proposal', ether(100), recipient.address)).to.be.reverted
+            })
         })
     })
 })
