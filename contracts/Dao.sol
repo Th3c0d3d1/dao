@@ -24,6 +24,9 @@ contract DAO {
 
     uint256 public proposalCount;
 
+    // Mapping the proposals using the struct
+    mapping(uint256 => Proposal) public proposals;
+
     constructor(Token _token, uint256 _quorum) {
         owner = msg.sender;
         token = _token;
@@ -42,9 +45,27 @@ contract DAO {
         uint256 _amount,
         address payable _recipient
     ) external {
+        // Increment ID
         proposalCount++;
 
         // Proposal
-    Proposal(proposalCount, _name, _amount, _recipient, 0, false);
+    Proposal(
+        proposalCount,
+        _name,
+        _amount,
+        _recipient,
+        0,
+        false
+        );
+
+    // Create Inline struct
+    // Save proposal to mapping
+    proposals[proposalCount] = Proposal(
+        proposalCount,
+        _name,
+        _amount,
+        _recipient,
+        0,
+        false);
     }
 }
