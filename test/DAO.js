@@ -200,12 +200,21 @@ describe('DAO', () => {
                 transaction = await dao.connect(investor1).finalizeProposal(1)
                 result = await transaction.wait()
             })
+
+            it('transfers funds to recipient', async () => {
+                expect(await ethers.provider.getBalance(recipient.address)).to.eq(tokens(10100))
+            })
             // 
             it('updates the proposal to finalized', async () => {
                 // read proposal out of mapping
                 // returns a struct
                 const proposal = await dao.proposals(1)
                 expect(proposal.finalized).to.eq(true)
+            })
+
+            it('emits an event', async () => {
+                await expect(transaction).to.emit(dao, "Finalize")
+                .withArgs(1)
             })
         })
         describe('Failure', () => {
@@ -237,6 +246,13 @@ describe('DAO', () => {
 
                 // Try to finalize again
                 await expect(dao.connect(investor1).finalizeProposal(1)).to.be.reverted
+            })
+
+            it('rejects finalization from a non user', async () => {
+                transaction = await dao.connect(investor3).vote(1)
+                result = await transaction.wait()
+
+                await expect(dao.connect(user).finalizeProposal(1)).to.be.reverted
             })
         })
     })
