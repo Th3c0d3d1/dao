@@ -17,6 +17,13 @@ async function main() {
 
   await token.deployed()
   console.log(`Token deployed to: ${token.address}\n`)
+
+  // Deploy DAO
+  const Dao = await hre.ethers.getContractFactory('DAO')
+  const dao = await Dao.deploy(token.address, '500000000000000000000001')
+
+  await dao.deployed()
+  console.log(`Dao deployed to: ${dao.address}\n`)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
