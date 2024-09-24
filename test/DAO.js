@@ -8,7 +8,7 @@ return ethers.utils.parseUnits(n.toString(), 'ether')
 const ether = tokens
 
 describe('DAO', () => {
-    // save token, dao, and investors
+    // save token, dao, investors, etc
     let 
         token,
         dao,
@@ -129,6 +129,69 @@ describe('DAO', () => {
 
             it('rejects a non-investor', async () => {
                 await expect(dao.connect(user).createProposal('Proposal', ether(100), recipient.address)).to.be.reverted
+            })
+        })
+    })
+
+    describe('Voting', () => {
+        let transaction, result
+
+        beforeEach(async () => {
+            // args from createProposal() in contract
+            transaction = await dao.connect(investor1).createProposal('Proposal 1', ether(100), recipient.address)
+            result = await transaction.wait()
+        })
+
+        describe('Success', () => {
+            beforeEach(async () => {
+                // Perform vote function
+                transaction = await dao.connect(investor1).vote(1)
+                result = await transaction.wait()
+            })
+            // Check for proposal votes count iteration
+            // Checking investor1 balance
+            it('updates vote count', async () => {
+                const proposal = await dao.proposals(1)
+                expect(proposal.votes).to.eq(tokens(200000))
+            })
+
+            it('emits an event', async () => {
+                await expect(transaction).to.emit(dao, "Vote")
+                .withArgs(1, investor1.address)
+            })
+
+            // it('updates proposal mapping', async () => {
+            //     // retrieve specific proposal by passing proposal id
+            //     // returns Proposal struct
+            //     const proposal = await dao.proposals(1)
+
+            //     // expected struct args
+            //     expect(proposal.id).to.eq(1)
+            //     expect(proposal.amount).to.eq(ether(100))
+            //     expect(proposal.recipient).to.eq(recipient.address)
+
+            //     // view struct in terminal
+            //     // console.log(proposal)
+            // })
+
+            // it('emits a propose event', async () => {
+            //     await expect(transaction).to.emit(dao, 'Propose')
+            //     .withArgs(1, ether(100), recipient.address, investor1.address)
+            // })
+        })
+
+        describe('Failure', () => {
+            // Connect dao to user, submit 1 vote, revert as non-investor
+            it('rejects a non-investor', async () => {
+                await expect(dao.connect(user).vote(1)).to.be.reverted
+            })
+
+            //
+            it('rejects double voting', async () => {
+                transaction = await dao.connect(investor1).vote(1)
+                await transaction.wait()
+
+                await expect(dao.connect(investor1).vote(1)).to.be.reverted
             })
         })
     })

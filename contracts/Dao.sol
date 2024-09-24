@@ -34,6 +34,8 @@ contract DAO {
         address creator
     );
 
+    event Vote(uint id, address investor);
+
     constructor(Token _token, uint256 _quorum) {
         owner = msg.sender;
         token = _token;
@@ -44,8 +46,9 @@ contract DAO {
     receive() external payable {}
 
     modifier onlyInvestor() {
-        require(Token(token).balanceOf(msg.sender) > 0,
-        "Must be token holder"
+        require(
+            token.balanceOf(msg.sender) > 0,
+            "Must be token holder"
         );
 
         _;
@@ -93,5 +96,27 @@ contract DAO {
             _recipient,
             msg.sender
         );
+    }
+    
+    mapping(address => mapping(uint256 => bool)) votes;
+    
+    function vote(uint256 _id) external onlyInvestor() {
+        // Fetch proposal from mapping by id
+        // Give type of variable
+        // Telling solidity to read from storage (struct)
+        Proposal storage proposal = proposals[_id];
+
+        // Don't let investors vote twice
+        require(!votes[msg.sender][_id], "already voted");
+
+        // update votes by token balance
+        proposal.votes += proposal.votes + token.balanceOf(msg.sender);
+
+        // Track that user voted
+        // Check investor by id to verify vote submission
+        votes[msg.sender][_id] = true;
+
+        // Emit an event
+        emit Vote(_id, msg.sender);
     }
 }
