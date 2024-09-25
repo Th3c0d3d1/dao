@@ -9,7 +9,7 @@ const ether = tokens
 
 describe('DAO', () => {
     // save token, dao, investors, etc
-    let 
+    let
         token,
         dao,
         accounts,
