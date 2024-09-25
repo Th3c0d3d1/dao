@@ -5,6 +5,7 @@
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
 const hre = require("hardhat");
+const config = require('../src/config.json')
 
 const tokens = (n) => {
     return ethers.utils.parseUnits(n.toString(), 'ether')
@@ -25,11 +26,17 @@ async function main() {
     const investor2 = accounts[2]
     const investor3 = accounts[3]
     const recipient = accounts[4]
+
+    let transaction
+
+    // Fetch network
+    // returns chain from config file
+    const { chainId } = await ethers.provider.getNetwork()
     
     console.log(`Fetching accounts & transferring to accounts...\n`)
 
     // Fetch deployed token
-    const token = await ethers.getContractAt('Token', '0x5fbdb2315678afecb367f032d93f642f64180aa3')
+    const token = await ethers.getContractAt('Token', config[chainiId].token.address)
     console.log(`Token fetched: ${token.address}\n`)
 
     // Send tokens to investors; 20% each
@@ -45,13 +52,53 @@ async function main() {
     // Fetch DAO
     console.log(`Fetching DAO...\n`)
 
-    const dao = await hre.ethers.getContractAt('DAO', '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512')
+    const dao = await hre.ethers.getContractAt('DAO', config[chainiId].dao.address)
     console.log(`DAO fetched: ${dao.address}\n`)
 
     // Funder sends eth to DAO treasury for governance
     await funder.sendTransaction({to: dao.address, value: ether(1000)})
     await transaction.wait()
     console.log(`Sent funds to DAO treasury...\n`)
+
+    for(var i = 0; i < 3; i++){
+        // Create proposal
+        transaction = await dao.connect(investor1).createProposal(`Proposal ${i + 1}`, tokens(100), recipient.address)
+        await transaction.wait()
+
+        // Vote 1
+        transaction = await dao.connect(investor1).vote(i + 1)
+        await transaction.wait()
+
+        // Vote 2
+        transaction = await dao.connect(investor2).vote(i + 1)
+        await transaction.wait()
+
+        // Vote 3
+        transaction = await dao.connect(investor3).vote(i + 1)
+        await transaction.wait()
+
+        // Finalize
+        transaction = await dao.connect(investor1).finalizeProposal(i + 1)
+        result = await transaction.wait()
+
+        console.log(`Created & Finalized Proposal ${i + 1}\n`)
+
+        // Create another proposal
+        console.log(`Creating 1 more Proposal...\n`)
+
+        transaction = await dao.connect(investor1).createProposal(`Proposal 4`, ether(100), recipient.address)
+        await transaction.wait()
+
+        // Vote 1
+        transaction = await dao.connect(investor2).vote(4)
+        await transaction.wait()
+
+        // Vote 2
+        transaction = await dao.connect(investor3).vote(4)
+        await transaction.wait()
+
+        console.log(`Finished Operation...\n`)
+    }
 }
 
 // We recommend this pattern to be able to use async/await everywhere
