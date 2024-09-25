@@ -13,9 +13,14 @@ import DAO_ABI from '../abis/Token.json'
 import config from '../config.json';
 
 function App() {
-  const [account, setAccount] = useState(null)
+  
   const [dao, setDao] = useState(null)
+  
   const [treasuryBalance, setTreasuryBalance] = useState(0)
+
+  const [account, setAccount] = useState(null)
+
+  const [proposal, proposals] = useState(null)
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -36,6 +41,19 @@ function App() {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
     const account = ethers.utils.getAddress(accounts[0])
     setAccount(account)
+
+    // Fetch Proposals Count
+    const count = await dao.proposalCount()
+    const items = []
+
+    for(var i = 0; i < count; i++){
+
+      // Fetch Proposals
+      const proposal = await dao.proposals(i + 1)
+      items.push(proposal)
+    }
+    proposals(items)
+    console.log(items)
 
     setIsLoading(false)
   }
