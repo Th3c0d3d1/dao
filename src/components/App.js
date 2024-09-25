@@ -50,7 +50,7 @@ function App() {
     <Container>
       <Navigation account={account} />
 
-      <h1 className='my-4 text-center'>The DAO of the next generation!</h1>
+      <h1 className='my-4 text-center'>The DAO for the next generation!</h1>
 
       {isLoading ? (
         <Loading />
