@@ -5,7 +5,7 @@
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
 const hre = require("hardhat");
-const config = require('../src/config.json')
+const config = require('../src/config.json');
 
 const tokens = (n) => {
     return ethers.utils.parseUnits(n.toString(), 'ether')
@@ -36,7 +36,7 @@ async function main() {
     console.log(`Fetching accounts & transferring to accounts...\n`)
 
     // Fetch deployed token
-    const token = await ethers.getContractAt('Token', config[chainiId].token.address)
+    const token = await ethers.getContractAt('Token', config[chainId].token.address)
     console.log(`Token fetched: ${token.address}\n`)
 
     // Send tokens to investors; 20% each
@@ -52,7 +52,7 @@ async function main() {
     // Fetch DAO
     console.log(`Fetching DAO...\n`)
 
-    const dao = await hre.ethers.getContractAt('DAO', config[chainiId].dao.address)
+    const dao = await hre.ethers.getContractAt('DAO', config[chainId].dao.address)
     console.log(`DAO fetched: ${dao.address}\n`)
 
     // Funder sends eth to DAO treasury for governance
