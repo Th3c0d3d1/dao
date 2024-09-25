@@ -15,6 +15,7 @@ import config from '../config.json';
 function App() {
   const [account, setAccount] = useState(null)
   const [dao, setDao] = useState(null)
+  const [treasuryBalance, setTreasuryBalance] = useState(0)
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -25,6 +26,11 @@ function App() {
     // Initiate Contracts
     const dao = new ethers.Contract(config[31337].dao.address, DAO_ABI, provider)
     setDao(dao)
+
+    // Fetch Treasury Balance
+    let treasuryBalance = await provider.getBalance(dao.address)
+    treasuryBalance = ethers.utils.formatUnits(treasuryBalance, 18)
+    setTreasuryBalance(treasuryBalance)
 
     // Fetch accounts
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
@@ -50,6 +56,9 @@ function App() {
         <Loading />
       ) : (
         <>
+        <hr/>
+        <p className='text-center'><strong>Treasury Balance: </strong>{treasuryBalance} ETH</p>
+        <hr/>
         </>
       )}
     </Container>
