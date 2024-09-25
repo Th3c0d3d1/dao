@@ -82,23 +82,23 @@ async function main() {
         result = await transaction.wait()
 
         console.log(`Created & Finalized Proposal ${i + 1}\n`)
-
-        // Create another proposal
-        console.log(`Creating 1 more Proposal...\n`)
-
-        transaction = await dao.connect(investor1).createProposal(`Proposal 4`, ether(100), recipient.address)
-        await transaction.wait()
-
-        // Vote 1
-        transaction = await dao.connect(investor2).vote(4)
-        await transaction.wait()
-
-        // Vote 2
-        transaction = await dao.connect(investor3).vote(4)
-        await transaction.wait()
-
-        console.log(`Finished Operation...\n`)
     }
+
+    // Create another proposal
+    console.log(`Creating 1 more Proposal...\n`)
+
+    transaction = await dao.connect(investor1).createProposal(`Proposal 4`, ether(100), recipient.address)
+    await transaction.wait()
+
+    // Vote 1
+    transaction = await dao.connect(investor2).vote(4)
+    await transaction.wait()
+
+    // Vote 2
+    transaction = await dao.connect(investor3).vote(4)
+    await transaction.wait()
+
+    console.log(`Finished Operation.\n`)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
