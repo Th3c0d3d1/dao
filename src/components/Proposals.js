@@ -23,18 +23,23 @@ const Proposals = ({ provider, dao, proposals, quorum, setIsLoading }) => {
                         <td>{proposal.id.toString()}</td>
                         <td>{proposal.name}</td>
                         <td>{proposal.recipient}</td>
-                        <td>{proposal.amount.toString()}</td>
-                        <td>{proposal.finalized}</td>
+                        <td>{ethers.utils.formatUnits(proposal.amount, "ether")} ETH</td>
+                        <td>{proposal.finalized ? 'Approved' : 'In Progress'}</td>
                         <td>{proposal.votes.toString()}</td>
                         <td>
-                            <Button>
+                            {!proposal.finalized && (
+                            <Button variant="primary" style={{width: '100%'}}>
                                 Vote
                             </Button>
+                            )}
                         </td>
                         <td>
-                            <Button>
+                            {/* only show the finalize button after reaching quorum */}
+                            {!proposal.finalized && proposal.votes > quorum && (
+                            <Button variant="primary" style={{width: '100%'}}>
                                 Finalize
                             </Button>
+                            )}
                         </td>
                     </tr>
                 ))}
