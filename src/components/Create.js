@@ -7,7 +7,15 @@ import { ethers } from "ethers";
 const CreateNewProposal = ({provider, dao, setIsLoading}) => {
 
 
-    return(<p>New proposal form goes here...</p>)
+    return(
+        <Form>
+            <Form.Group style={{maxWidth: '450px', margin: '50px auto'}}>
+                <Form.Control type="text" placeholder="Enter name" className="my-2"/>
+                <Form.Control type="number" placeholder="Enter amount" className="my-2"/>
+                <Form.Control type="text" placeholder="Enter address" className="my-2"/>
+            </Form.Group>
+        </Form>
+    )
 }
 
 export default CreateNewProposal;
