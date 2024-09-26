@@ -8,11 +8,13 @@ const CreateNewProposal = ({provider, dao, setIsLoading}) => {
     const [name, setName] = useState('')
     const [amount, setAmount] = useState(0)
     const [address, setAddress] = useState('')
+    const [isWaiting, setIsWaiting] = useState(false)
 
     // pass events into onSubmit handler
     // e.preventDefault() - keeps page from refreshing after form submission
     const createHandler = async (e) => {
         e.preventDefault()
+        setIsWaiting(true)
         // Verify handler functionality
         // console.log('Creating new proposal...', name, amount, address)
 
@@ -53,15 +55,21 @@ const CreateNewProposal = ({provider, dao, setIsLoading}) => {
                     className="my-2"
                     onChange={(e) => setAddress(e.target.value)}
                 />
-            <Button
-                variant="primary"
-                type="submit"
-                style={{width: '100%'}}
-            >
-                Create New Proposal
-            </Button>
+                {isWaiting ? (
+                    <Spinner
+                        animation="border"
+                        style={{display: 'block', margin: '0 auto'}}
+                    />
+                ) : (
+                    <Button
+                        variant="primary"
+                        type="submit"
+                        style={{width: '100%'}}
+                    >
+                        Create New Proposal
+                    </Button>
+                )}
             </Form.Group>
-            
         </Form>
     )
 }
