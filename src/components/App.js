@@ -4,6 +4,7 @@ import { ethers } from 'ethers'
 
 // Components
 import Navigation from './Navigation';
+import CreateNewProposal from './Create';
 import Proposals from './Proposals';
 import Loading from './Loading';
 
@@ -76,6 +77,11 @@ function App() {
         <Loading />
       ) : (
         <>
+        <CreateNewProposal
+          provider={provider}
+          dao={dao}
+          setIsLoading={setIsLoading}
+        />
 
         <hr/>
 
