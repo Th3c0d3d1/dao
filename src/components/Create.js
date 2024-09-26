@@ -13,8 +13,25 @@ const CreateNewProposal = ({provider, dao, setIsLoading}) => {
     // e.preventDefault() - keeps page from refreshing after form submission
     const createHandler = async (e) => {
         e.preventDefault()
-        console.log('Creating new proposal...', name, amount, address)
+        // Verify handler functionality
+        // console.log('Creating new proposal...', name, amount, address)
+
+        try{
+            // Implement createHandler
+            // Call createProposal method from DAO contract
+            const signer = await provider.getSigner()
+            const formattedAmounts = ethers.utils.parseUnits(amount.toString(), 'ether')
+
+            const transaction = await dao.connect(signer).createProposal(name, formattedAmounts, address)
+            await transaction.wait()
+        } catch (error) {
+            console.error('Error creating new proposal: ', error)
+            window.alert('User rejected or transaction reverted')
+        }
+
+        setIsLoading(true)
     }
+
     return(
         <Form onSubmit={createHandler}>
             <Form.Group style={{maxWidth: '450px', margin: '50px auto'}}>
