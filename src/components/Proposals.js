@@ -4,13 +4,15 @@ import { ethers } from "ethers";
 
 const Proposals = ({ provider, dao, proposals, quorum, setIsLoading }) => {
     const voteHandler = async (id) => {
+        // console.log('Voting...', id.toString())
         try{
             // Implement voteHandler
             // Call vote method from DAO contract
             const signer = await provider.getSigner()
             const transaction = await dao.connect(signer).vote(id)
             await transaction.wait()
-        } catch{
+        } catch (error) {
+            console.error('Error voting: ', error)
             window.alert('User rejected or transaction reverted')
         }
 
@@ -22,8 +24,9 @@ const Proposals = ({ provider, dao, proposals, quorum, setIsLoading }) => {
             // Implement finalizeHandler
             // Call finalize method from DAO contract
             const signer = await provider.getSigner()
-            const transaction = await dao.connect(signer).finalize(id)
+            const transaction = await dao.connect(signer).finalizeProposal(id)
             await transaction.wait()
+
         } catch{
             window.alert('User rejected or transaction reverted')
         }
@@ -59,7 +62,7 @@ const Proposals = ({ provider, dao, proposals, quorum, setIsLoading }) => {
                             <Button
                             variant="primary"
                             style={{width: '100%'}}
-                            onClick={() => finalizeHandler(proposal.id)}
+                            onClick={() => voteHandler(proposal.id)}
                             >
                                 Vote
                             </Button>
@@ -71,7 +74,7 @@ const Proposals = ({ provider, dao, proposals, quorum, setIsLoading }) => {
                             <Button
                             variant="primary"
                             style={{width: '100%'}}
-                            onClick={() => voteHandler(proposal.id)}
+                            onClick={() => finalizeHandler(proposal.id)}
                             >
                                 Finalize
                             </Button>
