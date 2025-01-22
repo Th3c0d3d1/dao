@@ -1,12 +1,3 @@
-# Sample Hardhat Project
-
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
 # Next Gen DAO Project
 
 Welcome to the Next Gen DAO Project, a comprehensive demonstration of a Decentralized Autonomous Organization (DAO) built using Hardhat, Solidity, and React. This project showcases a complete workflow from smart contract development and deployment to frontend integration and testing.
