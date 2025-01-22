@@ -21,7 +21,8 @@ describe('DAO', () => {
         investor4,
         investor5,
         recipient,
-        user
+        user,
+        wluser
 
     beforeEach(async () => {
 
@@ -39,6 +40,9 @@ describe('DAO', () => {
         investor4 = accounts[5]
         investor5 = accounts[6]
         recipient = accounts[7]
+
+        // Whitelist user
+        wluser = accounts[9]
 
         // Non-dao member
         user = accounts[8]
@@ -73,6 +77,12 @@ describe('DAO', () => {
 
         // Funder sends eth to DAO treasury for governance
         await funder.sendTransaction({to: dao.address, value: ether(100)})
+
+        // Add deployer to the whitelist
+        await dao.add(deployer.address)
+        
+        // Add user1 to the whitelist
+        await dao.add(wluser.address)
     })
 
     describe('Deployment', () => {
@@ -142,8 +152,12 @@ describe('DAO', () => {
 
         beforeEach(async () => {
 
+            // Send tokens to wluser
+            transaction = await token.connect(deployer).transfer(wluser.address, tokens(200000))
+            await transaction.wait()
+
             // args from createProposal() in contract
-            transaction = await dao.connect(investor1).createProposal('Proposal 1', ether(100), recipient.address)
+            transaction = await dao.connect(wluser).createProposal('Proposal 1', ether(100), recipient.address)
             result = await transaction.wait()
         })
 
@@ -151,8 +165,29 @@ describe('DAO', () => {
             beforeEach(async () => {
 
                 // Perform vote function
-                transaction = await dao.connect(investor1).vote(1)
+                transaction = await dao.connect(wluser).vote(1)
                 result = await transaction.wait()
+            })
+
+            // Verify owner is on the whitelist
+            it('verifies owners whitelist status', async () => {
+                expect(await dao.isWhitelisted(deployer.address)).to.be.true
+            })
+
+            it('checks owners right to add/del user from whitelist ', async () => {
+
+                // /Owner can add wluser to whitelist
+                await dao.add(wluser.address)
+                expect(await dao.isWhitelisted(wluser.address)).to.be.true
+
+                // Owner can remove user from whitelist
+                await dao.remove(wluser.address)
+                expect(await dao.isWhitelisted(wluser.address)).to.be.false
+            })
+
+            // Verify wluser is on the whitelist
+            it('verifies wluser whitelist status', async () => {
+                expect(await dao.isWhitelisted(wluser.address)).to.be.true
             })
 
             // Check for proposal votes count iteration
@@ -169,6 +204,17 @@ describe('DAO', () => {
         })
 
         describe('Failure', () => {
+
+            it('rejects non-owner from adding/deleting whitelist users', async () => {
+
+                // expect the crowdsale contract to be reverted if a non-owner tries to add a user to the whitelist
+                await expect(dao.connect(investor1).add(investor2.address)).to.be.reverted
+                await expect(dao.connect(wluser).add(investor1.address)).to.be.reverted
+
+                // expect the crowdsale contract to be reverted if a non-owner tries to remove a user from the whitelist
+                await expect(dao.connect(investor1).remove(investor2.address)).to.be.reverted
+                await expect(dao.connect(wluser).remove(investor1.address)).to.be.reverted
+            })
 
             // Connect dao to user, submit 1 vote, revert as non-investor
             it('rejects a non-investor', async () => {

@@ -9,6 +9,8 @@ contract DAO {
     // dao creator
     address owner;
     Token public token;
+    uint256 public votingStartTime;
+    uint256 public votingEndTime;
 
     // quorum - amount of votes needed to pass proposal
     uint256 public quorum;
@@ -29,9 +31,14 @@ contract DAO {
     // Mapping the proposals using the struct
     mapping(uint256 => Proposal) public proposals;
 
-    // Mapping to track votes
-    mapping(address => mapping(uint256 => bool)) votes;
+    // Whitelist of investors
+    mapping(address => bool) public whitelist;
 
+    // Mapping to track votes by option
+    mapping(uint8 => uint256) public votes; // Options: 1 = LP Burn, 2 = LP Rewards, 3 = NFT Rewards
+
+    // Mapping to track ownership start date
+    mapping(address => uint256) public ownershipStart;
 
     event Propose(
         uint id,
@@ -40,8 +47,10 @@ contract DAO {
         address creator
     );
 
+    event addedToWhitelist(address indexed account);
+    event removeFromWhitelist(address indexed account);
     event Vote(uint id, address investor);
-
+    event VotingEndedEarly();
     event Finalize(uint256 id);
 
     constructor(Token _token, uint256 _quorum) {
@@ -58,8 +67,56 @@ contract DAO {
             token.balanceOf(msg.sender) > 0,
             "Must be token holder"
         );
-
         _;
+    }
+
+    modifier onlyOwner() {
+    require(msg.sender == owner, 'caller must be owner');
+    _;
+    }
+
+    // Add accounts to whitelist
+    function add(address _address) public onlyOwner returns (bool success)
+    {
+        whitelist[_address] = true;
+        emit addedToWhitelist(_address);
+        return true;
+    }
+
+    // Remove accounts from whitelist
+    function remove(address _address) public onlyOwner {
+        whitelist[_address] = false;
+        emit removeFromWhitelist(_address);
+    }
+
+    // Get whitelist
+    function getWhitelist() public view returns (address[] memory) {
+        uint256 count = 0;
+        address[] memory tempList = new address[](count);
+        for (uint256 i = 0; i < tempList.length; i++) {
+            if (whitelist[tempList[i]]) {
+                count++;
+            }
+        }
+        address[] memory whitelistedAddresses = new address[](count);
+        uint256 index = 0;
+        for (uint256 i = 0; i < tempList.length; i++) {
+            if (whitelist[tempList[i]]) {
+                whitelistedAddresses[index] = tempList[i];
+                index++;
+            }
+        }
+        return whitelistedAddresses;
+    }
+
+    // Check to see if address is whitelisted 
+    function isWhitelisted(address _address) public view returns(bool) {
+        return whitelist[_address];
+    }
+
+    function startVoting() external onlyOwner {
+        votingStartTime = block.timestamp + 2 days;
+        votingEndTime = votingStartTime + 5 days;
     }
 
     // Proposal function
@@ -71,6 +128,7 @@ contract DAO {
         uint256 _amount,
         address payable _recipient
     ) external onlyInvestor(){
+
         // Check balance of contract
         require(address(this).balance >= _amount);
 
@@ -107,25 +165,61 @@ contract DAO {
     }
         
     // Vote on proposal
-    function vote(uint256 _id) external onlyInvestor() {
+    function vote(uint256 _id, uint8 option, uint256 weight) external onlyInvestor() {
 
         // Fetch proposal from mapping by id
         // Give type of variable
         // Telling solidity to read from storage (struct)
         Proposal storage proposal = proposals[_id];
 
+        // Check if voting has started
+        require(block.timestamp >= votingStartTime, "Voting has not started yet");
+
+        // Check if voting has ended
+        require(block.timestamp <= votingEndTime, "Voting has ended");
+
+        // Check if proposal is finalized
+        require(option >= 1 && option <= 3, "Invalid option");
+
+        // Verify user is whitelisted
+        require(isWhitelisted(msg.sender), 'User must be whitelisted');
+
         // Don't let investors vote twice
-        require(!votes[msg.sender][_id], "already voted");
+        require(!votes[msg.sender][_id], "User has already voted");
 
         // update votes by token balance
         proposal.votes += token.balanceOf(msg.sender);
+
+        // Calculate weight of vote
+        uint256 weight = calculateWeight(msg.sender);
+        votes[option] += weight;
 
         // Track that user voted
         // Check investor by id to verify vote submission
         votes[msg.sender][_id] = true;
 
         // Emit an event
-        emit Vote(_id, msg.sender);
+        emit Vote(_id, option, msg.sender);
+    }
+
+    // Calculate weight of vote
+    function calculateWeight(address id) public view returns (uint256) {
+        uint256 balance = token.balanceOf(id);
+        uint256 ownershipDuration = block.timestamp - ownershipStart[id];
+        uint256 multiplier = 100; // Base 1.0
+
+        if (ownershipDuration >= 365 days) multiplier += 50; // +0.5
+        else if (ownershipDuration >= 182 days) multiplier += 33; // +0.33
+        else if (ownershipDuration >= 91 days) multiplier += 22; // +0.22
+        else if (ownershipDuration >= 30 days) multiplier += 11; // +0.11
+
+        return (balance * multiplier) / 100;
+    }
+
+    // End voting early
+    function endVotingEarly() external onlyOwner {
+        votingEndTime = block.timestamp;
+        emit VotingEndedEarly();
     }
 
     // Finalize proposal & transfer funds
@@ -155,7 +249,7 @@ contract DAO {
         // meta data can be sent (value)
         // gets return values (bool, bytes data)
         (bool sent, ) = proposal.recipient.call{ value: proposal.amount}("");
-        
+
         // verifies funds are sent
         require(sent);
 
