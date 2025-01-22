@@ -24,6 +24,7 @@ describe('DAO', () => {
         user
 
     beforeEach(async () => {
+
         // Setup accounts
         accounts = await ethers.getSigners()
         deployer = accounts[0]
@@ -93,16 +94,19 @@ describe('DAO', () => {
 
         describe('Success', () => {
             beforeEach(async () => {
+
                 // args from createProposal() in contract
                 transaction = await dao.connect(investor1).createProposal('Proposal 1', ether(100), recipient.address)
                 result = await transaction.wait()
             })
+
             // Check for contract ID count iteration
             it('updates proposal count', async () => {
                 expect(await dao.proposalCount()).to.eq(1)
             })
 
             it('updates proposal mapping', async () => {
+
                 // retrieve specific proposal by passing proposal id
                 // returns Proposal struct
                 const proposal = await dao.proposals(1)
@@ -137,6 +141,7 @@ describe('DAO', () => {
         let transaction, result
 
         beforeEach(async () => {
+
             // args from createProposal() in contract
             transaction = await dao.connect(investor1).createProposal('Proposal 1', ether(100), recipient.address)
             result = await transaction.wait()
@@ -144,10 +149,12 @@ describe('DAO', () => {
 
         describe('Success', () => {
             beforeEach(async () => {
+
                 // Perform vote function
                 transaction = await dao.connect(investor1).vote(1)
                 result = await transaction.wait()
             })
+
             // Check for proposal votes count iteration
             // Checking investor1 balance
             it('updates vote count', async () => {
@@ -162,6 +169,7 @@ describe('DAO', () => {
         })
 
         describe('Failure', () => {
+
             // Connect dao to user, submit 1 vote, revert as non-investor
             it('rejects a non-investor', async () => {
                 await expect(dao.connect(user).vote(1)).to.be.reverted
@@ -182,6 +190,7 @@ describe('DAO', () => {
 
         describe('Success', () => {
             beforeEach(async () => {
+
                 // Create proposal
                 transaction = await dao.connect(investor1).createProposal('Proposal 1', ether(100), recipient.address)
                 result = await transaction.wait()
@@ -206,6 +215,7 @@ describe('DAO', () => {
             })
             // 
             it('updates the proposal to finalized', async () => {
+
                 // read proposal out of mapping
                 // returns a struct
                 const proposal = await dao.proposals(1)
@@ -219,6 +229,7 @@ describe('DAO', () => {
         })
         describe('Failure', () => {
             beforeEach(async () => {
+                
                 // Create proposal
                 transaction = await dao.connect(investor1).createProposal('Proposal 1', ether(100), recipient.address)
                 result = await transaction.wait()

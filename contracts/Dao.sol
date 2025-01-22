@@ -5,9 +5,11 @@ import "hardhat/console.sol";
 import "./Token.sol";
 
 contract DAO {
+
     // dao creator
     address owner;
     Token public token;
+
     // quorum - amount of votes needed to pass proposal
     uint256 public quorum;
 
@@ -26,6 +28,8 @@ contract DAO {
 
     // Mapping the proposals using the struct
     mapping(uint256 => Proposal) public proposals;
+
+    // Mapping to track votes
     mapping(address => mapping(uint256 => bool)) votes;
 
 
@@ -104,6 +108,7 @@ contract DAO {
         
     // Vote on proposal
     function vote(uint256 _id) external onlyInvestor() {
+
         // Fetch proposal from mapping by id
         // Give type of variable
         // Telling solidity to read from storage (struct)
@@ -125,6 +130,7 @@ contract DAO {
 
     // Finalize proposal & transfer funds
     function finalizeProposal(uint256 _id) external onlyInvestor() {
+
         // Fetch the proposal
         Proposal storage proposal = proposals[_id];
 
@@ -149,6 +155,7 @@ contract DAO {
         // meta data can be sent (value)
         // gets return values (bool, bytes data)
         (bool sent, ) = proposal.recipient.call{ value: proposal.amount}("");
+        
         // verifies funds are sent
         require(sent);
 
