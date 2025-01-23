@@ -379,15 +379,6 @@ describe('DAO', () => {
         })
 
         it('finalizeProposal', async () => {
-            // beforeEach(async () => {
-            //     let transaction, result
-            //     // Add investors to whitelist
-            //     transaction = await dao.connect(deployer).add(investor2.address)
-            //     await transaction.wait()
-
-            //     transaction = await dao.connect(deployer).add(investor3.address)
-            //     await transaction.wait()
-            // })
 
             // Create proposal
             transaction = await dao.connect(wluser).createProposal('Proposal 1', ether(100), recipient.address)
@@ -395,17 +386,12 @@ describe('DAO', () => {
             // Vote on Proposal
             transaction = await dao.connect(wluser).vote(1, 1, wluser.address)
             await transaction.wait()
-            console.log("voter1")
 
             transaction = await dao.connect(investor2).vote(1, 1, investor2.address)
             await transaction.wait()
-            console.log("voter2")
 
             transaction = await dao.connect(investor3).vote(1, 2, investor3.address)
             await transaction.wait()
-            console.log("voter3")
-
-            console.log("we made it here")
 
             // Finalize proposal
             transaction = await dao.connect(wluser).finalizeProposal(1)

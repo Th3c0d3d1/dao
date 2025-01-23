@@ -187,6 +187,7 @@ contract DAO {
     // Vote on proposal
     function vote(uint256 _id, uint8 option, uint256 weight) external onlyInvestor() {
 
+        // Check if investor is whitelisted
         if (isWhitelisted(msg.sender) == true ){
 
             // Check if whitelist voting has started
@@ -194,7 +195,7 @@ contract DAO {
         } else {
 
             // Check if voting has started
-        require(block.timestamp >= votingStartTime, "Voting has not started yet");
+            require(block.timestamp >= votingStartTime, "Voting has not started yet");
         }
 
         // Fetch proposal from mapping by id
