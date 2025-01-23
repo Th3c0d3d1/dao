@@ -35,7 +35,11 @@ contract DAO {
     mapping(address => bool) public whitelist;
 
     // Mapping to track votes by option
-    mapping(uint8 => uint256) public votes; // Options: 1 = LP Burn, 2 = LP Rewards, 3 = NFT Rewards
+    // Options: 1 = LP Burn, 2 = LP Rewards
+    mapping(uint8 => uint256) public votes;
+    
+    // Mapping to track votes by investor
+    mapping(address => mapping(uint256 => bool)) public hasVoted;
 
     // Mapping to track ownership start date
     mapping(address => uint256) public ownershipStart;
@@ -49,7 +53,7 @@ contract DAO {
 
     event addedToWhitelist(address indexed account);
     event removeFromWhitelist(address indexed account);
-    event Vote(uint id, address investor);
+    event Vote(uint id, uint option, address investor);
     event VotingEndedEarly();
     event Finalize(uint256 id);
 
@@ -115,7 +119,7 @@ contract DAO {
     }
 
     function startVoting() external onlyOwner {
-        votingStartTime = block.timestamp + 2 days;
+        votingStartTime = block.timestamp;
         votingEndTime = votingStartTime + 5 days;
     }
 
@@ -163,6 +167,20 @@ contract DAO {
             msg.sender
         );
     }
+
+    // Calculate weight of vote
+    function calculateWeight(address id) public view returns (uint256) {
+        uint256 balance = token.balanceOf(id);
+        uint256 ownershipDuration = block.timestamp - ownershipStart[id];
+        uint256 multiplier = 100; // Base 1.0
+
+        if (ownershipDuration >= 365 days) multiplier += 50; // +0.5
+        else if (ownershipDuration >= 182 days) multiplier += 33; // +0.33
+        else if (ownershipDuration >= 91 days) multiplier += 22; // +0.22
+        else if (ownershipDuration >= 30 days) multiplier += 11; // +0.11
+
+        return (balance * multiplier) / 100;
+    }
         
     // Vote on proposal
     function vote(uint256 _id, uint8 option, uint256 weight) external onlyInvestor() {
@@ -178,14 +196,14 @@ contract DAO {
         // Check if voting has ended
         require(block.timestamp <= votingEndTime, "Voting has ended");
 
-        // Check if proposal is finalized
-        require(option >= 1 && option <= 3, "Invalid option");
+        // Verify selected option is valid
+        require(option >= 1 && option <= 2, "Invalid option");
 
         // Verify user is whitelisted
         require(isWhitelisted(msg.sender), 'User must be whitelisted');
 
         // Don't let investors vote twice
-        require(!votes[msg.sender][_id], "User has already voted");
+        require(!hasVoted[msg.sender][_id], "User has already voted");
 
         // update votes by token balance
         proposal.votes += token.balanceOf(msg.sender);
@@ -196,24 +214,10 @@ contract DAO {
 
         // Track that user voted
         // Check investor by id to verify vote submission
-        votes[msg.sender][_id] = true;
+        hasVoted[msg.sender][_id] = true;
 
         // Emit an event
         emit Vote(_id, option, msg.sender);
-    }
-
-    // Calculate weight of vote
-    function calculateWeight(address id) public view returns (uint256) {
-        uint256 balance = token.balanceOf(id);
-        uint256 ownershipDuration = block.timestamp - ownershipStart[id];
-        uint256 multiplier = 100; // Base 1.0
-
-        if (ownershipDuration >= 365 days) multiplier += 50; // +0.5
-        else if (ownershipDuration >= 182 days) multiplier += 33; // +0.33
-        else if (ownershipDuration >= 91 days) multiplier += 22; // +0.22
-        else if (ownershipDuration >= 30 days) multiplier += 11; // +0.11
-
-        return (balance * multiplier) / 100;
     }
 
     // End voting early
