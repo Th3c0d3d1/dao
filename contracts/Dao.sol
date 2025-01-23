@@ -9,6 +9,7 @@ contract DAO {
     // dao creator
     address owner;
     Token public token;
+    uint256 public wlVotingStartTime;
     uint256 public votingStartTime;
     uint256 public votingEndTime;
 
@@ -119,7 +120,8 @@ contract DAO {
     }
 
     function startVoting() external onlyOwner {
-        votingStartTime = block.timestamp;
+        wlVotingStartTime = block.timestamp;
+        votingStartTime = block.timestamp + 2 days;
         votingEndTime = votingStartTime + 5 days;
     }
 
@@ -185,13 +187,20 @@ contract DAO {
     // Vote on proposal
     function vote(uint256 _id, uint8 option, uint256 weight) external onlyInvestor() {
 
+        if (isWhitelisted(msg.sender) == true ){
+
+            // Check if whitelist voting has started
+            require(block.timestamp >= wlVotingStartTime, "Whitelist voting has not started yet");
+        } else {
+
+            // Check if voting has started
+        require(block.timestamp >= votingStartTime, "Voting has not started yet");
+        }
+
         // Fetch proposal from mapping by id
         // Give type of variable
         // Telling solidity to read from storage (struct)
         Proposal storage proposal = proposals[_id];
-
-        // Check if voting has started
-        require(block.timestamp >= votingStartTime, "Voting has not started yet");
 
         // Check if voting has ended
         require(block.timestamp <= votingEndTime, "Voting has ended");

@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { ethers } = require('hardhat');
 
 const tokens = (n) => {
-return ethers.utils.parseUnits(n.toString(), 'ether')
+    return ethers.utils.parseUnits(n.toString(), 'ether')
 }
 
 const ether = tokens
@@ -72,7 +72,7 @@ describe('DAO', () => {
         dao = await Dao.deploy(token.address, '500000000000000000000001')
 
         // Funder sends eth to DAO treasury for governance
-        await funder.sendTransaction({to: dao.address, value: ether(100)})
+        await funder.sendTransaction({ to: dao.address, value: ether(100) })
 
         // Add deployer and wluser to the whitelist
         await Promise.all([
@@ -134,7 +134,7 @@ describe('DAO', () => {
 
             it('emits a propose event', async () => {
                 await expect(transaction).to.emit(dao, 'Propose')
-                .withArgs(1, ether(100), recipient.address, wluser.address)
+                    .withArgs(1, ether(100), recipient.address, wluser.address)
             })
         })
 
@@ -153,9 +153,6 @@ describe('DAO', () => {
         let transaction, result
 
         beforeEach(async () => {
-
-            // Simulate ownership start timestamps
-            await dao.connect(deployer).startVoting();
 
             // args from createProposal() in contract
             transaction = await dao.connect(wluser).createProposal('Proposal 1', ether(100), recipient.address)
@@ -200,14 +197,18 @@ describe('DAO', () => {
 
             it('emits an event', async () => {
                 await expect(transaction).to.emit(dao, "Vote")
-                .withArgs(1, 2, wluser.address)
+                    .withArgs(1, 2, wluser.address)
             })
         })
 
         describe('Failure', () => {
+            describe('Vote Start', async () => {
+
+                // Simulate ownership start timestamps
+                await dao.connect(deployer).startVoting();
+            })
 
             it('rejects non-owner from adding/deleting whitelist users', async () => {
-
                 // expect the dao contract to be reverted if a non-owner tries to add a user to the whitelist
                 await expect(dao.connect(investor4).add(investor2.address)).to.be.reverted
                 await expect(dao.connect(wluser).add(investor4.address)).to.be.reverted
@@ -215,6 +216,10 @@ describe('DAO', () => {
                 // expect the dao contract to be reverted if a non-owner tries to remove a user from the whitelist
                 await expect(dao.connect(investor4).remove(investor2.address)).to.be.reverted
                 await expect(dao.connect(wluser).remove(investor4.address)).to.be.reverted
+            })
+
+            it('rejects non-wl investors from voting before time', async () => {
+                await expect(dao.connect(user).vote(1, 1, user.address)).to.be.reverted
             })
 
             // Connect dao to user, submit 1 vote, revert as non-investor
@@ -282,7 +287,7 @@ describe('DAO', () => {
 
             it('emits an event', async () => {
                 await expect(transaction).to.emit(dao, "Finalize")
-                .withArgs(1)
+                    .withArgs(1)
             })
         })
         describe('Failure', () => {
@@ -299,7 +304,7 @@ describe('DAO', () => {
                 transaction = await dao.connect(investor2).vote(1, 1, investor2.address)
                 result = await transaction.wait()
             })
-            
+
             it('rejects finalization if not enough votes', async () => {
                 await expect(dao.connect(investor5).finalizeProposal(1)).to.be.reverted
             })
@@ -328,84 +333,93 @@ describe('DAO', () => {
 
     describe('\nGas Optimizations', () => {
         let transaction, receipt
-            it('createProposal', async () => {
-                transaction = await dao.connect(wluser).createProposal('Proposal 1', ether(100), recipient.address)
-                receipt = await transaction.wait()
-                console.log('\nGas Used for createProposal:', receipt.gasUsed.toString())
-            })
+        it('createProposal', async () => {
+            transaction = await dao.connect(wluser).createProposal('Proposal 1', ether(100), recipient.address)
+            receipt = await transaction.wait()
+            console.log('\nGas Used for createProposal:', receipt.gasUsed.toString())
+        })
 
-            it('add', async () => {
-                transaction = await dao.connect(deployer).add(investor2.address)
-                receipt = await transaction.wait()
-                console.log('Gas Used for add:', receipt.gasUsed.toString())
-            })
+        it('add', async () => {
+            transaction = await dao.connect(deployer).add(investor2.address)
+            receipt = await transaction.wait()
+            console.log('Gas Used for add:', receipt.gasUsed.toString())
+        })
 
-            it('remove', async () => {
-                transaction = await dao.connect(deployer).remove(investor2.address)
-                receipt = await transaction.wait()
-                console.log('Gas Used for remove:', receipt.gasUsed.toString())
-            })
+        it('remove', async () => {
+            transaction = await dao.connect(deployer).remove(investor2.address)
+            receipt = await transaction.wait()
+            console.log('Gas Used for remove:', receipt.gasUsed.toString())
+        })
 
-            it('getWhitelist', async () => {
-                transaction = await dao.getWhitelist()
-                console.log('Gas Used for getWhitelist:', receipt.gasUsed.toString())
-            })
-            
-            it('isWhitelisted', async () => {
-                transaction = await dao.isWhitelisted(deployer.address)
-                console.log('Gas Used for isWhitelisted:', receipt.gasUsed.toString())
-            })
+        it('getWhitelist', async () => {
+            transaction = await dao.getWhitelist()
+            console.log('Gas Used for getWhitelist:', receipt.gasUsed.toString())
+        })
 
-            it('calculateWeight', async () => {
-                transaction = await dao.calculateWeight(deployer.address)
-                console.log('Gas Used for calculateWeight:', receipt.gasUsed.toString())
-            })
+        it('isWhitelisted', async () => {
+            transaction = await dao.isWhitelisted(deployer.address)
+            console.log('Gas Used for isWhitelisted:', receipt.gasUsed.toString())
+        })
 
-            it('startVoting', async () => {
-                transaction = await dao.connect(deployer).startVoting()
-                receipt = await transaction.wait()
-                console.log('Gas Used for startVoting:', receipt.gasUsed.toString())
-            })
+        it('calculateWeight', async () => {
+            transaction = await dao.calculateWeight(deployer.address)
+            console.log('Gas Used for calculateWeight:', receipt.gasUsed.toString())
+        })
 
-            it('vote', async () => {
-                transaction = await dao.connect(wluser).vote(1, 1, wluser.address)
-                receipt = await transaction.wait()
-                console.log('Gas Used for vote:', receipt.gasUsed.toString())
-            })
+        it('startVoting', async () => {
+            transaction = await dao.connect(deployer).startVoting()
+            receipt = await transaction.wait()
+            console.log('Gas Used for startVoting:', receipt.gasUsed.toString())
+        })
 
-            it('finalizeProposal', async () => {
-                // beforeEach(async () => {
-                //     let transaction, result
-                //     // Add investors to whitelist
-                //     transaction = await dao.connect(deployer).add(investor2.address)
-                //     await transaction.wait()
+        it('vote', async () => {
+            transaction = await dao.connect(wluser).vote(1, 1, wluser.address)
+            receipt = await transaction.wait()
+            console.log('Gas Used for vote:', receipt.gasUsed.toString())
+        })
 
-                //     transaction = await dao.connect(deployer).add(investor3.address)
-                //     await transaction.wait()
-                // })
+        it('finalizeProposal', async () => {
+            // beforeEach(async () => {
+            //     let transaction, result
+            //     // Add investors to whitelist
+            //     transaction = await dao.connect(deployer).add(investor2.address)
+            //     await transaction.wait()
 
-                // Create proposal
-                transaction = await dao.connect(wluser).createProposal('Proposal 1', ether(100), recipient.address)
+            //     transaction = await dao.connect(deployer).add(investor3.address)
+            //     await transaction.wait()
+            // })
 
-                // Vote on Proposal
-                transaction = await dao.connect(wluser).vote(1, 1, wluser.address)
-                await transaction.wait()
-                console.log("voter1")
+            // Create proposal
+            transaction = await dao.connect(wluser).createProposal('Proposal 1', ether(100), recipient.address)
 
-                transaction = await dao.connect(investor2).vote(1, 1, investor2.address)
-                await transaction.wait()
-                console.log("voter2")
+            // Vote on Proposal
+            transaction = await dao.connect(wluser).vote(1, 1, wluser.address)
+            await transaction.wait()
+            console.log("voter1")
 
-                transaction = await dao.connect(investor3).vote(1, 2, investor3.address)
-                await transaction.wait()
-                console.log("voter3")
-                
-                console.log("we made it here")
+            transaction = await dao.connect(investor2).vote(1, 1, investor2.address)
+            await transaction.wait()
+            console.log("voter2")
 
-                // Finalize proposal
-                transaction = await dao.connect(wluser).finalizeProposal(1)
-                receipt = await transaction.wait()
-                console.log('Gas Used for finalizeProposal:', receipt.gasUsed.toString())
-            })
+            transaction = await dao.connect(investor3).vote(1, 2, investor3.address)
+            await transaction.wait()
+            console.log("voter3")
+
+            console.log("we made it here")
+
+            // Finalize proposal
+            transaction = await dao.connect(wluser).finalizeProposal(1)
+            receipt = await transaction.wait()
+            console.log('Gas Used for finalizeProposal:', receipt.gasUsed.toString())
+        })
+    })
+
+    describe('\nSpeed Benchmarking', () => {
+
+        it("Speed Benchmark: createProposal", async function () {
+            console.time("createProposal");
+            await dao.connect(deployer).createProposal("Proposal 1", ether(100), recipient.address);
+            console.timeEnd("createProposal");
+        })
     })
 })
