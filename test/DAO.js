@@ -404,8 +404,26 @@ describe('DAO', () => {
 
         it("Speed Benchmark: createProposal", async function () {
             console.time("createProposal");
-            await dao.connect(deployer).createProposal("Proposal 1", ether(100), recipient.address);
+            await dao.connect(investor2).createProposal("Proposal Creation Speed", ether(100), recipient.address);
             console.timeEnd("createProposal");
         })
+
+        it("Speed Benchmark: vote", async function () {
+            await dao.connect(investor3).transfer(ether(100));
+            result = await transaction.wait();
+
+            console.time("vote");
+            await dao.connect(investor3).vote(0, 1, investor3.address);
+            result = await transaction.wait();
+            console.timeEnd("vote");
+        });
+
+        it("Speed Benchmark: finalizeProposal", async function () {
+            await dao.createProposal("Finalize Proposal", ether(100), investor4.address);
+
+            console.time("finalizeProposal");
+            await dao.finalizeProposal(0);
+            console.timeEnd("finalizeProposal");
+        });
     })
 })
