@@ -11,11 +11,13 @@ contract Token {
 
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
+    mapping(address => uint256) public ownershipStart;
 
     event Transfer(
         address indexed from,
         address indexed to,
         uint256 value
+
     );
 
     event Approval(
@@ -88,5 +90,11 @@ contract Token {
 
         return true;
     }
-
+    
+    function calculateOwnershipTime(address _address) public view returns(uint256) {
+        uint256 _ownershipTime;
+        
+        _ownershipTime = block.timestamp - ownershipStart[_address];
+        return _ownershipTime;
+    }
 }

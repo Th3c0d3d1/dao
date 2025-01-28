@@ -173,9 +173,9 @@ contract DAO {
     // Calculate weight of vote
     function calculateWeight(address id) public view returns (uint256) {
         uint256 balance = token.balanceOf(id);
-        uint256 ownershipDuration = block.timestamp - ownershipStart[id];
         uint256 multiplier = 100; // Base 1.0
 
+        // Bring holding duration from token
         if (ownershipDuration >= 365 days) multiplier += 50; // +0.5
         else if (ownershipDuration >= 182 days) multiplier += 33; // +0.33
         else if (ownershipDuration >= 91 days) multiplier += 22; // +0.22
