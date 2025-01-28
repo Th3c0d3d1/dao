@@ -150,7 +150,7 @@ describe('DAO', () => {
     })
 
     describe('\nVoting', () => {
-        let transaction, result
+        let transaction, result, weight
 
         beforeEach(async () => {
 
@@ -186,6 +186,14 @@ describe('DAO', () => {
             // Verify wluser is on the whitelist
             it('verifies wluser whitelist status', async () => {
                 expect(await dao.isWhitelisted(wluser.address)).to.be.true
+            })
+
+            // Verify weight calculation
+            it('correctly calculates weighted voting', async () => {
+                await token.connect(investor3).transfer(investor3.address, ether(100))
+                result = await transaction.wait()
+
+                weight = await dao.calculateWeight(investor3.address).to.eq(ether(200100))
             })
 
             // Check for proposal votes count iteration
@@ -332,7 +340,9 @@ describe('DAO', () => {
     })
 
     describe('\nGas Optimizations', () => {
+
         let transaction, receipt
+
         it('createProposal', async () => {
             transaction = await dao.connect(wluser).createProposal('Proposal 1', ether(100), recipient.address)
             receipt = await transaction.wait()
@@ -409,7 +419,7 @@ describe('DAO', () => {
         })
 
         it("Speed Benchmark: vote", async function () {
-            await dao.connect(investor3).transfer(ether(100));
+            await token.connect(investor3).transfer(investor3.address, ether(100));
             result = await transaction.wait();
 
             console.time("vote");
@@ -419,10 +429,20 @@ describe('DAO', () => {
         });
 
         it("Speed Benchmark: finalizeProposal", async function () {
-            await dao.createProposal("Finalize Proposal", ether(100), investor4.address);
+            await dao.connect(investor4).createProposal("Finalize Proposal", ether(100), recipient.address);
+            result = await transaction.wait();
+
+            await dao.connect(investor4).vote(0, 1, investor4.address);
+            result = await transaction.wait();
+
+            await dao.connect(investor2).vote(0, 1, investor2.address);
+            result = await transaction.wait();
+
+            await dao.connect(investor3).vote(0, 2, investor3.address);
+            result = await transaction.wait();
 
             console.time("finalizeProposal");
-            await dao.finalizeProposal(0);
+            await dao.connect(investor4).finalizeProposal(0);
             console.timeEnd("finalizeProposal");
         });
     })
