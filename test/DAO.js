@@ -194,103 +194,15 @@ describe('DAO', () => {
                 expect(await dao.isWhitelisted(wluser.address)).to.be.true
             })
 
-            it("correctly calculates 3 months weighted voting", async () => {
-                // --------------------------------------------
-                // Simulate 3 months of token ownership
-                // --------------------------------------------
+// --------------------------------------------
+// Verify weight calculation
+// --------------------------------------------
 
-                console.log("Here is the wluser token balance: ", await token.balanceOf(wluser.address))
-                
-                // 3 months
-                await ethers.provider.send('evm_increaseTime', [91 * 24 * 60 * 60])
-                await ethers.provider.send('evm_mine')
-
-                console.log("Just passed 3 months of ownership")
-
-                // Calculate weight
-                weight3 = await dao.calculateWeight(wluser.address)
-
-                console.log('wluser Weight:', weight3)
-
-                // 200000 tokens * 3 months = 44000
-                expect(weight3).to.equal(tokens(44000))
-            })
-
-            // Verify weight calculation
-            it('correctly calculates 1 year weighted voting', async () => {
-
-                // --------------------------------------------
-                // Simulate 1 year of token ownership
-                // --------------------------------------------
-
-                console.log("Here is the investor3 token balance: ", await token.balanceOf(investor3.address))
-
-                // ([years, days, hours, secs]) = 1 year
-                await ethers.provider.send('evm_increaseTime', [365 * 24 * 60 * 60])
-
-                // Mine a new block
-                await ethers.provider.send('evm_mine')
-
-                console.log("Just passed 1 year of ownership")
-
-                // Calculate weight
-                weight = await dao.calculateWeight(investor3.address)
-
-                console.log('Investor3 Weight:', weight)
-
-                // 200000 tokens * 1 year = 300000
-                expect(weight).to.equal(tokens(300000))
-            })
-
-            it("correctly calculates 6 months weighted voting", async () => {
-
-                // --------------------------------------------
-                // Simulate 6 months of token ownership
-                // --------------------------------------------
-
-                console.log("Here is the investor2 token balance: ", await token.balanceOf(investor2.address))
-
-                // 6 months
-                await ethers.provider.send('evm_increaseTime', [182 * 24 * 60 * 60])
-                await ethers.provider.send('evm_mine')
-
-                console.log("Just passed 6 months of ownership")
-
-                // Calculate weight
-                weight2 = await dao.calculateWeight(investor2.address)
-
-                console.log('Investor2 Weight:', weight2)
-
-                // 200000 tokens * 6 months = 150000
-                expect(weight2).to.equal(tokens(150000))
-            })
-
-            // it("correctly calculates 3 months weighted voting", async () => {
-            //     // --------------------------------------------
-            //     // Simulate 3 months of token ownership
-            //     // --------------------------------------------
-
-            //     console.log("Here is the wluser token balance: ", await token.balanceOf(wluser.address))
-                
-            //     // 3 months
-            //     await ethers.provider.send('evm_increaseTime', [91 * 24 * 60 * 60])
-            //     await ethers.provider.send('evm_mine')
-
-            //     console.log("Just passed 3 months of ownership")
-
-            //     // Calculate weight
-            //     weight3 = await dao.calculateWeight(wluser.address)
-
-            //     console.log('wluser Weight:', weight3)
-
-            //     // 200000 tokens * 3 months = 44000
-            //     expect(weight3).to.equal(tokens(44000))
-            // })
+            // --------------------------------------------
+            // Simulate 1 month of token ownership
+            // --------------------------------------------
 
             it("correctly calculates 1 month weighted voting", async () => {
-                // --------------------------------------------
-                // Simulate 1 month of token ownership
-                // --------------------------------------------
 
                 console.log("Here is the investor4 token balance: ", await token.balanceOf(investor4.address))
                 
@@ -305,8 +217,79 @@ describe('DAO', () => {
 
                 console.log('investor4 Weight:', weight4)
 
-                // 200000 tokens * 1 month = 50000
-                expect(weight4).to.equal(tokens(50000))
+                // 200000 tokens * 1 month = 222000
+                expect(weight4).to.equal(tokens(222000))
+            })
+
+            // --------------------------------------------
+            // Simulate 3 months of token ownership
+            // --------------------------------------------
+
+            it("correctly calculates 3 months weighted voting", async () => {
+
+                console.log("Here is the wluser token balance: ", await token.balanceOf(wluser.address))
+                
+                // 3 months
+                await ethers.provider.send('evm_increaseTime', [91 * 24 * 60 * 60])
+                await ethers.provider.send('evm_mine')
+
+                console.log("Just passed 3 months of ownership")
+
+                // Calculate weight
+                weight3 = await dao.calculateWeight(wluser.address)
+
+                console.log('wluser Weight:', weight3)
+
+                // 200000 tokens * 3 months = 244000
+                expect(weight3).to.equal(tokens(244000))
+            })
+
+            // --------------------------------------------
+            // Simulate 6 months of token ownership
+            // --------------------------------------------
+
+            it("correctly calculates 6 months weighted voting", async () => {
+
+                console.log("Here is the investor2 token balance: ", await token.balanceOf(investor2.address))
+
+                // 6 months
+                await ethers.provider.send('evm_increaseTime', [182 * 24 * 60 * 60])
+                await ethers.provider.send('evm_mine')
+
+                console.log("Just passed 6 months of ownership")
+
+                // Calculate weight
+                weight2 = await dao.calculateWeight(investor2.address)
+
+                console.log('Investor2 Weight:', weight2)
+
+                // 200000 tokens * 6 months = 266000
+                expect(weight2).to.equal(tokens(266000))
+            })
+
+            // --------------------------------------------
+            // Simulate 1 year of token ownership
+            // --------------------------------------------
+
+            it('correctly calculates 1 year weighted voting', async () => {
+
+                console.log("Here is the investor3 token balance: ", await token.balanceOf(investor3.address))
+
+                // 1 year
+                await ethers.provider.send('evm_increaseTime', [365 * 24 * 60 * 60])
+
+                // Mine a new block
+                await ethers.provider.send('evm_mine')
+
+                console.log("Just passed 1 year of ownership")
+
+                // Calculate weight
+                weight = await dao.calculateWeight(investor3.address)
+
+                console.log('Investor3 Weight:', weight)
+
+                // 200000 tokens * 1 year = 300000
+                expect(weight).to.equal(tokens(300000))
             })
 
             // Check for proposal votes count iteration

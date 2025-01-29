@@ -17,7 +17,6 @@ contract Token {
         address indexed from,
         address indexed to,
         uint256 value
-
     );
 
     event Approval(
@@ -57,6 +56,11 @@ contract Token {
 
         balanceOf[_from] = balanceOf[_from] - _value;
         balanceOf[_to] = balanceOf[_to] + _value;
+
+
+        if (balanceOf[msg.sender] == _value) {
+            ownershipStart[msg.sender] = block.timestamp;
+        }
 
         emit Transfer(_from, _to, _value);
     }

@@ -6,6 +6,10 @@ import "./Token.sol";
 
 contract DAO {
 
+    // ----------------------------------------
+    // Variables
+    // ----------------------------------------
+
     // dao creator
     address owner;
     Token public token;
@@ -15,6 +19,10 @@ contract DAO {
 
     // quorum - amount of votes needed to pass proposal
     uint256 public quorum;
+
+    // ----------------------------------------
+    // Structs
+    // ----------------------------------------
 
     // Define structure of the proposal
     struct Proposal {
@@ -28,6 +36,10 @@ contract DAO {
     }
 
     uint256 public proposalCount;
+
+    // ----------------------------------------
+    // Mappings
+    // ----------------------------------------
 
     // Mapping the proposals using the struct
     mapping(uint256 => Proposal) public proposals;
@@ -44,6 +56,10 @@ contract DAO {
 
     // Mapping to track ownership start date
     mapping(address => uint256) public ownershipStart;
+
+    // ----------------------------------------
+    // Events
+    // ----------------------------------------
 
     event Propose(
         uint id,
@@ -173,7 +189,8 @@ contract DAO {
     // Calculate weight of vote
     function calculateWeight(address id) public view returns (uint256) {
         uint256 balance = token.balanceOf(id);
-        uint256 multiplier = 100; // Base 1.0
+        uint256 ownershipDuration = block.timestamp - ownershipStart[id];
+        uint256 multiplier = 100;
 
         // Bring holding duration from token
         if (ownershipDuration >= 365 days) multiplier += 50; // +0.5
@@ -183,7 +200,7 @@ contract DAO {
 
         return (balance * multiplier) / 100;
     }
-        
+
     // Vote on proposal
     function vote(uint256 _id, uint8 option, uint256 weight) external onlyInvestor() {
 
@@ -219,7 +236,7 @@ contract DAO {
         proposal.votes += token.balanceOf(msg.sender);
 
         // Calculate weight of vote
-        uint256 weight = calculateWeight(msg.sender);
+        weight = calculateWeight(msg.sender);
         votes[option] += weight;
 
         // Track that user voted
