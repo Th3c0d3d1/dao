@@ -6,9 +6,9 @@ import "./Token.sol";
 
 contract DAO {
 
-    // ----------------------------------------
-    // Variables
-    // ----------------------------------------
+// ----------------------------------------
+// Variables
+// ----------------------------------------
 
     // dao creator
     address owner;
@@ -20,9 +20,9 @@ contract DAO {
     // quorum - amount of votes needed to pass proposal
     uint256 public quorum;
 
-    // ----------------------------------------
-    // Structs
-    // ----------------------------------------
+// ----------------------------------------
+// Structs
+// ----------------------------------------
 
     // Define structure of the proposal
     struct Proposal {
@@ -37,9 +37,9 @@ contract DAO {
 
     uint256 public proposalCount;
 
-    // ----------------------------------------
-    // Mappings
-    // ----------------------------------------
+// ----------------------------------------
+// Mappings
+// ----------------------------------------
 
     // Mapping the proposals using the struct
     mapping(uint256 => Proposal) public proposals;
@@ -57,9 +57,9 @@ contract DAO {
     // Mapping to track ownership start date
     mapping(address => uint256) public ownershipStart;
 
-    // ----------------------------------------
-    // Events
-    // ----------------------------------------
+// ----------------------------------------
+// Events
+// ----------------------------------------
 
     event Propose(
         uint id,
@@ -189,7 +189,8 @@ contract DAO {
     // Calculate weight of vote
     function calculateWeight(address id) public view returns (uint256) {
         uint256 balance = token.balanceOf(id);
-        uint256 ownershipDuration = block.timestamp - ownershipStart[id];
+        uint256 firstTime = token.getOwnershipTime(id);
+        uint256 ownershipDuration = block.timestamp - firstTime;
         uint256 multiplier = 100;
 
         // Bring holding duration from token

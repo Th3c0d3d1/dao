@@ -156,7 +156,8 @@ describe('DAO', () => {
             weight,
             weight2,
             weight3,
-            weight4
+            weight4,
+            ownershipTime
 
         beforeEach(async () => {
 
@@ -208,6 +209,8 @@ describe('DAO', () => {
                 
                 // ([years, days, hours, secs]) = 1 month
                 await ethers.provider.send('evm_increaseTime', [30 * 24 * 60 * 60])
+
+                // Mine block
                 await ethers.provider.send('evm_mine')
 
                 console.log("Just passed 1 month of ownership")
@@ -229,7 +232,7 @@ describe('DAO', () => {
 
                 console.log("Here is the wluser token balance: ", await token.balanceOf(wluser.address))
                 
-                // 3 months
+                // // 3 months
                 await ethers.provider.send('evm_increaseTime', [91 * 24 * 60 * 60])
                 await ethers.provider.send('evm_mine')
 
@@ -277,8 +280,6 @@ describe('DAO', () => {
 
                 // 1 year
                 await ethers.provider.send('evm_increaseTime', [365 * 24 * 60 * 60])
-
-                // Mine a new block
                 await ethers.provider.send('evm_mine')
 
                 console.log("Just passed 1 year of ownership")

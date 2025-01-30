@@ -40,7 +40,11 @@ contract Token {
         public
         returns (bool success)
     {
-        require(balanceOf[msg.sender] >= _value);
+        require (balanceOf[msg.sender] >= _value);
+
+        if (ownershipStart[_to] == 0) {
+            ownershipStart[_to] = block.timestamp;
+        }
 
         _transfer(msg.sender, _to, _value);
 
@@ -56,11 +60,6 @@ contract Token {
 
         balanceOf[_from] = balanceOf[_from] - _value;
         balanceOf[_to] = balanceOf[_to] + _value;
-
-
-        if (balanceOf[msg.sender] == _value) {
-            ownershipStart[msg.sender] = block.timestamp;
-        }
 
         emit Transfer(_from, _to, _value);
     }
@@ -95,10 +94,7 @@ contract Token {
         return true;
     }
     
-    function calculateOwnershipTime(address _address) public view returns(uint256) {
-        uint256 _ownershipTime;
-        
-        _ownershipTime = block.timestamp - ownershipStart[_address];
-        return _ownershipTime;
+    function getOwnershipTime(address _address) public view returns(uint256) {
+        return ownershipStart[_address];
     }
 }
