@@ -1,3 +1,5 @@
+Thank you for checking out the Next Gen DAO Project. We hope this project demonstrates our commitment to building robust and user-friendly blockchain applications.
+
 # Next Gen DAO Project
 
 Welcome to the Next Gen DAO Project, a comprehensive demonstration of a Decentralized Autonomous Organization (DAO) built using Hardhat, Solidity, and React. This project showcases a complete workflow from smart contract development and deployment to frontend integration and testing.
@@ -18,13 +20,19 @@ This project includes:
 ├── contracts/                # Solidity smart contracts
 │   ├── Dao.sol               # DAO contract
 │   └── Token.sol             # ERC-20 token contract
+├── hardhat.config.js         # Hardhat configuration
+├── package.json              # Project dependencies and scripts
+├── public/                   # Public assets
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
 ├── scripts/                  # Deployment and seeding scripts
 │   ├── deploy.js             # Script to deploy contracts
 │   └── seed.js               # Script to seed the blockchain with initial data
 ├── src/                      # Frontend source code
 │   ├── abis/                 # Contract ABIs
 │   │   ├── Dao.json
-│   │   └── Token.json
+│   │   └── ...
 │   ├── components/           # React components
 │   │   ├── App.js
 │   │   └── ...
@@ -34,12 +42,8 @@ This project includes:
 │   └── reportWebVitals.js    # Performance reporting
 ├── test/                     # Unit tests
 │   ├── DAO.js
+│   ├── Optimizations.js
 │   └── Token.js
-├── public/                   # Public assets
-│   ├── index.html
-│   └── ...
-├── hardhat.config.js         # Hardhat configuration
-├── package.json              # Project dependencies and scripts
 └── README.md                 # Project documentation
 ```
 
@@ -124,7 +128,7 @@ We welcome contributions from the community. Please follow these steps to contri
 
 ## License
 
-This project is unlicensed
+This project is licensed under the MIT License.
 
 ## Contact
 
