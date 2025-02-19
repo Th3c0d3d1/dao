@@ -15,6 +15,7 @@ const tokens = (n) => {
 
 async function main() {
     console.log(`Fetching accounts & networks...\n`)
+    
     // use const instead of let because const will not change; ***let may potentially be changed
     const accounts = await ethers.getSigners()
 
@@ -39,6 +40,12 @@ async function main() {
     const token = await ethers.getContractAt('Token', config[chainId].token.address)
     console.log(`Token fetched: ${token.address}\n`)
 
+    // Log balances before transfer
+    console.log(`Funder balance: ${await token.balanceOf(funder.address)}`)
+    console.log(`Investor1 balance: ${await token.balanceOf(investor1.address)}`)
+    console.log(`Investor2 balance: ${await token.balanceOf(investor2.address)}`)
+    console.log(`Investor3 balance: ${await token.balanceOf(investor3.address)}`)
+
     // Send tokens to investors; 20% each
     transaction = await token.transfer(investor1.address, tokens(200000))
     await transaction.wait()
@@ -48,6 +55,12 @@ async function main() {
 
     transaction = await token.transfer(investor3.address, tokens(200000))
     await transaction.wait()
+
+    // Log balances after transfer
+    console.log(`Funder balance: ${await token.balanceOf(funder.address)}`)
+    console.log(`Investor1 balance: ${await token.balanceOf(investor1.address)}`)
+    console.log(`Investor2 balance: ${await token.balanceOf(investor2.address)}`)
+    console.log(`Investor3 balance: ${await token.balanceOf(investor3.address)}`)
 
     // Fetch DAO
     console.log(`Fetching DAO...\n`)
@@ -61,6 +74,9 @@ async function main() {
     console.log(`Sent funds to DAO treasury...\n`)
 
     for(var i = 0; i < 3; i++){
+        // Log proposal creation arguments
+        console.log(`Creating Proposal ${i + 1} with amount ${tokens(100)} and recipient ${recipient.address}`)
+
         // Create proposal
         transaction = await dao.connect(investor1).createProposal(`Proposal ${i + 1}`, tokens(100), recipient.address)
         await transaction.wait()
