@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { motion } from 'framer-motion'
 import {
   ChartBarIcon,
-  TrendingUpIcon,
-  TrendingDownIcon,
+  ArrowTrendingUpIcon,
+  ArrowTrendingDownIcon,
   CurrencyDollarIcon,
   DocumentTextIcon,
   UserGroupIcon,
@@ -74,7 +74,7 @@ const Analytics = () => {
   }
 
   const getPercentageIcon = (value) => {
-    return value >= 0 ? TrendingUpIcon : TrendingDownIcon
+    return value >= 0 ? ArrowTrendingUpIcon : ArrowTrendingDownIcon
   }
 
   const renderTreasuryAnalytics = () => (
@@ -518,7 +518,7 @@ const Analytics = () => {
         <div className="flex space-x-2 bg-gray-100 rounded-lg p-1">
           {[
             { id: 'treasury', label: 'Treasury', icon: CurrencyDollarIcon },
-            { id: 'exchange', label: 'Exchange', icon: TrendingUpIcon },
+            { id: 'exchange', label: 'Exchange', icon: ArrowTrendingUpIcon },
             { id: 'proposals', label: 'Proposals', icon: DocumentTextIcon },
             { id: 'holders', label: 'Holders', icon: UserGroupIcon },
             { id: 'quarterly', label: 'Quarterly', icon: CalendarIcon }
