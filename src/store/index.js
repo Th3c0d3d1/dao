@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import daoReducer from './slices/daoSlice'
 import tokenReducer from './slices/tokenSlice'
 import exchangeReducer from './slices/exchangeSlice'
+import membersReducer from './slices/membersSlice'
 import uiReducer from './slices/uiSlice'
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     dao: daoReducer,
     token: tokenReducer,
     exchange: exchangeReducer,
+    members: membersReducer,
     ui: uiReducer,
   },
   middleware: (getDefaultMiddleware) =>
