@@ -14,6 +14,7 @@ import ProposalsList from './Proposals/ProposalsList'
 import TokenExchange from './Exchange/TokenExchange'
 import Members from './Members/Members'
 import Treasury from './Treasury/Treasury'
+import Analytics from './Analytics/Analytics'
 
 // ABIs and Config
 import DAO_ABI from '../abis/Dao.json'
@@ -77,7 +78,7 @@ function App() {
       case 'members':
         return <Members />
       case 'analytics':
-        return <div className="p-8 text-center text-gray-500">Analytics dashboard coming soon...</div>
+        return <Analytics />
       case 'settings':
         return <div className="p-8 text-center text-gray-500">Settings panel coming soon...</div>
       default:
