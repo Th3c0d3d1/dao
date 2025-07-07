@@ -99,7 +99,7 @@ const Members = () => {
   const dispatch = useDispatch()
   const { contract: dao } = useSelector((state) => state.dao)
   const { contract: token } = useSelector((state) => state.token)
-  const { members, loading } = useSelector((state) => state.members)
+  const { members = {}, loading } = useSelector((state) => state.members)
   
   const [activeTab, setActiveTab] = useState('corporate')
 
