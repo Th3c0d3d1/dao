@@ -13,6 +13,7 @@ import Dashboard from './Dashboard/Dashboard'
 import ProposalsList from './Proposals/ProposalsList'
 import TokenExchange from './Exchange/TokenExchange'
 import Members from './Members/Members'
+import Treasury from './Treasury/Treasury'
 
 // ABIs and Config
 import DAO_ABI from '../abis/Dao.json'
@@ -72,7 +73,7 @@ function App() {
       case 'exchange':
         return <TokenExchange />
       case 'treasury':
-        return <div className="p-8 text-center text-gray-500">Treasury management coming soon...</div>
+        return <Treasury />
       case 'members':
         return <Members />
       case 'analytics':
