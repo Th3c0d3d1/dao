@@ -5,7 +5,10 @@ const uiSlice = createSlice({
   initialState: {
     activeTab: 'dashboard',
     sidebarOpen: true,
-    theme: 'light',
+    theme: typeof window !== 'undefined' ? 
+      localStorage.getItem('theme') || 
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : 
+      'light',
     notifications: [],
     modals: {
       createProposal: false,

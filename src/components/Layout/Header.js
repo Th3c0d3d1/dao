@@ -17,26 +17,38 @@ const Header = () => {
 
   const unreadNotifications = notifications.filter(n => !n.read).length
 
+  const handleThemeToggle = () => {
+    dispatch(toggleTheme())
+    
+    // Apply theme to document root
+    if (theme === 'light') {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+    <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 px-6 py-4 transition-colors duration-200">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => dispatch(toggleSidebar())}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
           >
-            <Bars3Icon className="w-6 h-6 text-gray-600" />
+            <Bars3Icon className="w-6 h-6 text-gray-600 dark:text-gray-300" />
           </motion.button>
           
           <div className="hidden md:flex items-center space-x-6">
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-4 py-2 rounded-lg">
-              <span className="text-sm font-medium text-gray-700">Treasury: </span>
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 px-4 py-2 rounded-lg">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Treasury: </span>
               <span className="text-sm font-bold text-blue-600">{treasuryBalance} ETH</span>
             </div>
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 px-4 py-2 rounded-lg">
-              <span className="text-sm font-medium text-gray-700">Your Balance: </span>
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 px-4 py-2 rounded-lg">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Your Balance: </span>
               <span className="text-sm font-bold text-green-600">{parseFloat(balance).toFixed(2)} {symbol}</span>
             </div>
           </div>
@@ -47,13 +59,13 @@ const Header = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => dispatch(toggleTheme())}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            onClick={handleThemeToggle}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
           >
             {theme === 'light' ? (
-              <MoonIcon className="w-5 h-5 text-gray-600" />
+              <MoonIcon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
             ) : (
-              <SunIcon className="w-5 h-5 text-gray-600" />
+              <SunIcon className="w-5 h-5 text-yellow-500" />
             )}
           </motion.button>
 
@@ -61,9 +73,9 @@ const Header = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
           >
-            <BellIcon className="w-5 h-5 text-gray-600" />
+            <BellIcon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
             {unreadNotifications > 0 && (
               <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
                 {unreadNotifications}
@@ -74,8 +86,8 @@ const Header = () => {
           {/* Account */}
           <div className="flex items-center space-x-3">
             <div className="text-right">
-              <p className="text-sm font-medium text-gray-900">Connected</p>
-              <p className="text-xs text-gray-500">
+              <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Connected</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
                 {account ? `${account.slice(0, 6)}...${account.slice(-4)}` : 'Not Connected'}
               </p>
             </div>

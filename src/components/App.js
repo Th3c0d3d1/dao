@@ -23,9 +23,20 @@ import config from '../config.json'
 
 function App() {
   const dispatch = useDispatch()
-  const { activeTab, sidebarOpen } = useSelector((state) => state.ui)
+  const { activeTab, sidebarOpen, theme } = useSelector((state) => state.ui)
 
   useEffect(() => {
+    // Initialize theme from localStorage or system preference
+    const savedTheme = localStorage.getItem('theme')
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    const initialTheme = savedTheme || systemTheme
+    
+    if (initialTheme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+
     const loadBlockchainData = async () => {
       try {
         // Initialize provider
@@ -65,6 +76,16 @@ function App() {
   }
   )
 
+  // Apply theme changes
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }, [theme])
   const renderActiveComponent = () => {
     switch (activeTab) {
       case 'dashboard':
@@ -87,7 +108,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
       <Sidebar />
       
       <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-14'}`}>
