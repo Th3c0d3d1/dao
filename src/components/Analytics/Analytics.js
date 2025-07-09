@@ -85,13 +85,13 @@ const Analytics = () => {
         animate={{ opacity: 1, y: 0 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Treasury Impact Analysis</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Treasury Impact Analysis</h3>
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
             <div className="flex items-center">
               <DocumentTextIcon className="w-5 h-5 text-blue-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-gray-900">Proposal Allocations</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Proposal Allocations</p>
                 <p className="text-xs text-gray-600">Impact on treasury balance</p>
               </div>
             </div>
@@ -107,7 +107,7 @@ const Analytics = () => {
             <div className="flex items-center">
               <ArrowUpIcon className="w-5 h-5 text-green-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-gray-900">Approved Proposals</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Approved Proposals</p>
                 <p className="text-xs text-gray-600">Successful funding outcomes</p>
               </div>
             </div>
@@ -123,7 +123,7 @@ const Analytics = () => {
             <div className="flex items-center">
               <UserGroupIcon className="w-5 h-5 text-purple-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-gray-900">Token Holder Activity</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Token Holder Activity</p>
                 <p className="text-xs text-gray-600">Private transactions impact</p>
               </div>
             </div>
@@ -144,7 +144,7 @@ const Analytics = () => {
         transition={{ delay: 0.1 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Treasury Balance Trend</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Treasury Balance Trend</h3>
         <ResponsiveContainer width="100%" height={250}>
           <AreaChart data={treasuryAnalytics.balanceHistory}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -185,7 +185,7 @@ const Analytics = () => {
         animate={{ opacity: 1, y: 0 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Live Exchange Rates</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Live Exchange Rates</h3>
         <div className="space-y-4">
           {exchangeRates.map((rate, index) => {
             const Icon = getPercentageIcon(rate.change24h)
@@ -196,12 +196,12 @@ const Analytics = () => {
                     <span className="text-white text-xs font-bold">{rate.symbol}</span>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">{rate.pair}</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{rate.pair}</p>
                     <p className="text-xs text-gray-600">24h Volume: {formatCurrency(rate.volume24h)}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-gray-900">{rate.price}</p>
+                  <p className="text-lg font-bold text-gray-900 dark:text-gray-100">{rate.price}</p>
                   <div className="flex items-center">
                     <Icon className={`w-4 h-4 mr-1 ${getPercentageColor(rate.change24h)}`} />
                     <span className={`text-sm font-medium ${getPercentageColor(rate.change24h)}`}>
@@ -222,7 +222,7 @@ const Analytics = () => {
         transition={{ delay: 0.1 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Token Purchase Analytics</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Token Purchase Analytics</h3>
         <div className="space-y-4">
           <div className="text-center p-4 bg-green-50 rounded-lg">
             <p className="text-sm text-gray-600">Average Purchase Price</p>
@@ -251,7 +251,7 @@ const Analytics = () => {
         transition={{ delay: 0.2 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Price History</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Price History</h3>
         <ResponsiveContainer width="100%" height={200}>
           <LineChart data={tokenMetrics.priceHistory}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -286,7 +286,7 @@ const Analytics = () => {
         animate={{ opacity: 1, y: 0 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Proposal Analytics</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Proposal Analytics</h3>
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center p-4 bg-red-50 rounded-lg">
             <p className="text-sm text-gray-600">Average Cost</p>
@@ -321,7 +321,7 @@ const Analytics = () => {
         transition={{ delay: 0.1 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Proposal Performance</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Proposal Performance</h3>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={proposalMetrics.performanceData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -351,7 +351,7 @@ const Analytics = () => {
         animate={{ opacity: 1, y: 0 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Token Holder Distribution</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Token Holder Distribution</h3>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
@@ -397,7 +397,7 @@ const Analytics = () => {
         transition={{ delay: 0.1 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Distribution Breakdown</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Distribution Breakdown</h3>
         <div className="space-y-4">
           {holderDistribution.map((tier, index) => (
             <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
@@ -407,12 +407,12 @@ const Analytics = () => {
                   style={{ backgroundColor: tier.color }}
                 />
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{tier.name}</p>
+                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{tier.name}</p>
                   <p className="text-xs text-gray-600">{tier.holders} holders</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-sm font-bold text-gray-900">{tier.percentage}%</p>
+                <p className="text-sm font-bold text-gray-900 dark:text-gray-100">{tier.percentage}%</p>
                 <p className="text-xs text-gray-600">{formatTokens(tier.tokens)} tokens</p>
               </div>
             </div>
@@ -426,7 +426,7 @@ const Analytics = () => {
     <div className="space-y-6">
       {/* Quarter Selection */}
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-gray-900">Quarterly Analysis</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Quarterly Analysis</h3>
         <select
           value={selectedQuarter}
           onChange={(e) => setSelectedQuarter(e.target.value)}
@@ -453,7 +453,7 @@ const Analytics = () => {
                 <p className="text-sm font-medium text-gray-600 capitalize">
                   {key.replace(/([A-Z])/g, ' $1').trim()}
                 </p>
-                <p className="text-xl font-bold text-gray-900">
+                <p className="text-xl font-bold text-gray-900 dark:text-gray-100">
                   {typeof value === 'number' ? 
                     (key.includes('percentage') || key.includes('rate') ? formatPercentage(value) : 
                      key.includes('cost') || key.includes('volume') ? `${value} ETH` : 
@@ -477,7 +477,7 @@ const Analytics = () => {
         transition={{ delay: 0.4 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Quarterly Comparison</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Quarterly Comparison</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={Object.entries(quarterlyData).map(([quarter, data]) => ({
             quarter,
@@ -510,8 +510,8 @@ const Analytics = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Analytics Dashboard</h1>
-          <p className="text-gray-600 mt-1">Comprehensive insights and performance metrics</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Analytics Dashboard</h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">Comprehensive insights and performance metrics</p>
         </div>
         
         {/* Metric Navigation */}
