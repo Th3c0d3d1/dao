@@ -92,14 +92,14 @@ const Analytics = () => {
               <DocumentTextIcon className="w-5 h-5 text-blue-600 mr-3" />
               <div>
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Proposal Allocations</p>
-                <p className="text-xs text-gray-600">Impact on treasury balance</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Impact on treasury balance</p>
               </div>
             </div>
             <div className="text-right">
               <p className={`text-lg font-bold ${getPercentageColor(treasuryAnalytics.proposalImpact)}`}>
                 {formatPercentage(treasuryAnalytics.proposalImpact)}
               </p>
-              <p className="text-sm text-gray-600">{treasuryAnalytics.totalProposalAmount} ETH</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">{treasuryAnalytics.totalProposalAmount} ETH</p>
             </div>
           </div>
 
@@ -108,14 +108,14 @@ const Analytics = () => {
               <ArrowUpIcon className="w-5 h-5 text-green-600 mr-3" />
               <div>
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Approved Proposals</p>
-                <p className="text-xs text-gray-600">Successful funding outcomes</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Successful funding outcomes</p>
               </div>
             </div>
             <div className="text-right">
               <p className={`text-lg font-bold ${getPercentageColor(treasuryAnalytics.approvedImpact)}`}>
                 {formatPercentage(treasuryAnalytics.approvedImpact)}
               </p>
-              <p className="text-sm text-gray-600">{treasuryAnalytics.approvedAmount} ETH</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">{treasuryAnalytics.approvedAmount} ETH</p>
             </div>
           </div>
 
@@ -124,14 +124,14 @@ const Analytics = () => {
               <UserGroupIcon className="w-5 h-5 text-purple-600 mr-3" />
               <div>
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Token Holder Activity</p>
-                <p className="text-xs text-gray-600">Private transactions impact</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Private transactions impact</p>
               </div>
             </div>
             <div className="text-right">
               <p className={`text-lg font-bold ${getPercentageColor(treasuryAnalytics.holderImpact)}`}>
                 {formatPercentage(treasuryAnalytics.holderImpact)}
               </p>
-              <p className="text-sm text-gray-600">{treasuryAnalytics.holderVolume} ETH</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">{treasuryAnalytics.holderVolume} ETH</p>
             </div>
           </div>
         </div>
@@ -197,7 +197,7 @@ const Analytics = () => {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{rate.pair}</p>
-                    <p className="text-xs text-gray-600">24h Volume: {formatCurrency(rate.volume24h)}</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">24h Volume: {formatCurrency(rate.volume24h)}</p>
                   </div>
                 </div>
                 <div className="text-right">
@@ -225,21 +225,21 @@ const Analytics = () => {
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Token Purchase Analytics</h3>
         <div className="space-y-4">
           <div className="text-center p-4 bg-green-50 rounded-lg">
-            <p className="text-sm text-gray-600">Average Purchase Price</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Average Purchase Price</p>
             <p className="text-2xl font-bold text-green-600">{formatCurrency(tokenMetrics.avgPurchasePrice)}</p>
-            <p className="text-xs text-gray-500">Per token</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Per token</p>
           </div>
           
           <div className="text-center p-4 bg-blue-50 rounded-lg">
-            <p className="text-sm text-gray-600">Average Purchase Quantity</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Average Purchase Quantity</p>
             <p className="text-2xl font-bold text-blue-600">{formatTokens(tokenMetrics.avgPurchaseQuantity)}</p>
-            <p className="text-xs text-gray-500">Tokens per transaction</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Tokens per transaction</p>
           </div>
           
           <div className="text-center p-4 bg-purple-50 rounded-lg">
-            <p className="text-sm text-gray-600">Total Volume</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Total Volume</p>
             <p className="text-2xl font-bold text-purple-600">{formatCurrency(tokenMetrics.totalVolume)}</p>
-            <p className="text-xs text-gray-500">All time</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">All time</p>
           </div>
         </div>
       </motion.div>
@@ -289,27 +289,27 @@ const Analytics = () => {
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Proposal Analytics</h3>
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center p-4 bg-red-50 rounded-lg">
-            <p className="text-sm text-gray-600">Average Cost</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Average Cost</p>
             <p className="text-xl font-bold text-red-600">{proposalMetrics.avgCost} ETH</p>
-            <p className="text-xs text-gray-500">Per proposal</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Per proposal</p>
           </div>
           
           <div className="text-center p-4 bg-green-50 rounded-lg">
-            <p className="text-sm text-gray-600">Average Returns</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Average Returns</p>
             <p className="text-xl font-bold text-green-600">{formatPercentage(proposalMetrics.avgReturns)}</p>
-            <p className="text-xs text-gray-500">ROI estimate</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">ROI estimate</p>
           </div>
           
           <div className="text-center p-4 bg-blue-50 rounded-lg">
-            <p className="text-sm text-gray-600">Success Rate</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Success Rate</p>
             <p className="text-xl font-bold text-blue-600">{formatPercentage(proposalMetrics.successRate)}</p>
-            <p className="text-xs text-gray-500">Approval rate</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Approval rate</p>
           </div>
           
           <div className="text-center p-4 bg-yellow-50 rounded-lg">
-            <p className="text-sm text-gray-600">Total Funded</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Total Funded</p>
             <p className="text-xl font-bold text-yellow-600">{proposalMetrics.totalFunded} ETH</p>
-            <p className="text-xs text-gray-500">All time</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">All time</p>
           </div>
         </div>
       </motion.div>
@@ -408,12 +408,12 @@ const Analytics = () => {
                 />
                 <div>
                   <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{tier.name}</p>
-                  <p className="text-xs text-gray-600">{tier.holders} holders</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">{tier.holders} holders</p>
                 </div>
               </div>
               <div className="text-right">
                 <p className="text-sm font-bold text-gray-900 dark:text-gray-100">{tier.percentage}%</p>
-                <p className="text-xs text-gray-600">{formatTokens(tier.tokens)} tokens</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">{formatTokens(tier.tokens)} tokens</p>
               </div>
             </div>
           ))}
@@ -430,7 +430,7 @@ const Analytics = () => {
         <select
           value={selectedQuarter}
           onChange={(e) => setSelectedQuarter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         >
           {QUARTERS.map(quarter => (
             <option key={quarter} value={quarter}>{quarter}</option>
@@ -450,7 +450,7 @@ const Analytics = () => {
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600 capitalize">
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400 capitalize">
                   {key.replace(/([A-Z])/g, ' $1').trim()}
                 </p>
                 <p className="text-xl font-bold text-gray-900 dark:text-gray-100">
@@ -543,7 +543,7 @@ const Analytics = () => {
       {loading ? (
         <div className="text-center py-12">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="text-gray-600 mt-4">Loading analytics data...</p>
+          <p className="text-gray-600 dark:text-gray-300 mt-4">Loading analytics data...</p>
         </div>
       ) : (
         <>
