@@ -436,21 +436,21 @@ const Analytics = () => {
       </div>
 
       {/* Quarterly Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
         {quarterlyData[selectedQuarter] && Object.entries(quarterlyData[selectedQuarter]).map(([key, value], index) => (
           <motion.div
             key={key}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white rounded-lg p-4 shadow-sm border border-gray-200"
+            className="bg-white rounded-lg p-3 lg:p-4 shadow-sm border border-gray-200 min-w-0"
           >
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-500 capitalize">
+              <div className="min-w-0 flex-1">
+                <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-500 capitalize truncate">
                   {key.replace(/([A-Z])/g, ' $1').trim()}
                 </p>
-                <p className="text-xl font-bold text-gray-900 dark:text-gray-500">
+                <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-500 truncate">
                   {typeof value === 'number' ?
                     (key.includes('percentage') || key.includes('rate') ? formatPercentage(value) :
                       key.includes('cost') || key.includes('volume') ? `${value} ETH` :
@@ -459,7 +459,7 @@ const Analytics = () => {
                   }
                 </p>
               </div>
-              <div className="p-2 bg-blue-50 rounded-lg">
+              <div className="p-1.5 lg:p-2 bg-blue-50 rounded-lg flex-shrink-0">
                 <CalendarIcon className="w-5 h-5 text-blue-600" />
               </div>
             </div>
@@ -472,32 +472,34 @@ const Analytics = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+        className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Quarterly Comparison</h3>
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={Object.entries(quarterlyData).map(([quarter, data]) => ({
-            quarter,
-            treasuryGrowth: data.treasuryGrowth || 0,
-            proposalCount: data.proposalCount || 0,
-            tokenVolume: data.tokenVolume || 0
-          }))}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-            <XAxis dataKey="quarter" stroke="#6b7280" />
-            <YAxis stroke="#6b7280" />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: 'white',
-                border: '1px solid #e5e7eb',
-                borderRadius: '8px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-              }}
-            />
-            <Bar dataKey="treasuryGrowth" fill="#3b82f6" name="Treasury Growth %" />
-            <Bar dataKey="proposalCount" fill="#10b981" name="Proposals" />
-            <Bar dataKey="tokenVolume" fill="#f59e0b" name="Token Volume" />
-          </BarChart>
-        </ResponsiveContainer>
+        <div className="w-full overflow-hidden">
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={Object.entries(quarterlyData).map(([quarter, data]) => ({
+              quarter,
+              treasuryGrowth: data.treasuryGrowth || 0,
+              proposalCount: data.proposalCount || 0,
+              tokenVolume: data.tokenVolume || 0
+            }))}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+              <XAxis dataKey="quarter" stroke="#6b7280" />
+              <YAxis stroke="#6b7280" />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: 'white',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                }}
+              />
+              <Bar dataKey="treasuryGrowth" fill="#3b82f6" name="Treasury Growth %" />
+              <Bar dataKey="proposalCount" fill="#10b981" name="Proposals" />
+              <Bar dataKey="tokenVolume" fill="#f59e0b" name="Token Volume" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </motion.div>
     </div>
   )
