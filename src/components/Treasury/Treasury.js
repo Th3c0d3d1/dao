@@ -109,7 +109,7 @@ const Treasury = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Treasury Management</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">Monitor treasury balance and transaction flows</p>
+          <p className="text-gray-600 dark:text-gray-200 mt-1">Monitor treasury balance and transaction flows</p>
         </div>
         
         {/* Filters */}
@@ -117,7 +117,7 @@ const Treasury = () => {
           <select
             value={timeFilter}
             onChange={(e) => setTimeFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="all">All Time</option>
             <option value="24h">Last 24 Hours</option>
@@ -128,7 +128,7 @@ const Treasury = () => {
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="all">All Types</option>
             <option value="DEPOSIT">Deposits</option>
@@ -147,9 +147,9 @@ const Treasury = () => {
         >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Current Balance</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{balance} ETH</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Treasury Holdings</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-600">Current Balance</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-500">{balance} ETH</p>
+              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">Treasury Holdings</p>
             </div>
             <div className="p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
               <CurrencyDollarIcon className="w-6 h-6 text-blue-600" />
@@ -165,9 +165,9 @@ const Treasury = () => {
         >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Total Inflow</p>
-              <p className="text-2xl font-bold text-green-600">{totalInflow} ETH</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">All time deposits</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-600">Total Inflow</p>
+              <p className="text-2xl font-bold text-green-500">{totalInflow} ETH</p>
+              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">All time deposits</p>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
               <ArrowUpIcon className="w-6 h-6 text-green-600" />
@@ -183,9 +183,9 @@ const Treasury = () => {
         >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Total Outflow</p>
-              <p className="text-2xl font-bold text-red-600">{totalOutflow} ETH</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">All time payouts</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-600">Total Outflow</p>
+              <p className="text-2xl font-bold text-red-500">{totalOutflow} ETH</p>
+              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">All time payouts</p>
             </div>
             <div className="p-3 bg-red-50 rounded-lg">
               <ArrowDownIcon className="w-6 h-6 text-red-600" />
@@ -201,13 +201,13 @@ const Treasury = () => {
         >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Net Flow</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-600">Net Flow</p>
               <p className={`text-2xl font-bold ${
                 (parseFloat(totalInflow) - parseFloat(totalOutflow)) >= 0 ? 'text-green-600' : 'text-red-600'
               }`}>
                 {(parseFloat(totalInflow) - parseFloat(totalOutflow)).toFixed(4)} ETH
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Inflow - Outflow</p>
+              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">Inflow - Outflow</p>
             </div>
             <div className="p-3 bg-yellow-50 rounded-lg">
               <ChartBarIcon className="w-6 h-6 text-yellow-600" />
@@ -225,7 +225,7 @@ const Treasury = () => {
           transition={{ delay: 0.4 }}
           className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
         >
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Treasury Balance Over Time</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Treasury Balance Over Time</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -264,7 +264,7 @@ const Treasury = () => {
           transition={{ delay: 0.5 }}
           className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
         >
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Transaction Types</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Transaction Types</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
@@ -313,8 +313,8 @@ const Treasury = () => {
       >
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Transaction History</h3>
-            <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600">Transaction History</h3>
+            <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-500">
               <FunnelIcon className="w-4 h-4" />
               <span>{filteredTransactions.length} transactions</span>
             </div>
@@ -359,7 +359,7 @@ const Treasury = () => {
                           {getTransactionIcon(transaction.type)}
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                          <p className="text-sm font-medium text-gray-900 dark:text-gray-500">
                             {TRANSACTION_TYPES[transaction.type]?.label || 'Unknown'}
                           </p>
                           {transaction.proposalId && (
@@ -369,7 +369,7 @@ const Treasury = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm font-mono text-gray-900 dark:text-gray-100">
+                      <span className="text-sm font-mono text-gray-900 dark:text-gray-500">
                         {formatAddress(transaction.address)}
                       </span>
                     </td>
@@ -383,7 +383,7 @@ const Treasury = () => {
                         {formatAmount(transaction.amount)} ETH
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-500">
                       {formatDate(transaction.timestamp)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -400,7 +400,7 @@ const Treasury = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5" className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+                  <td colSpan="5" className="px-6 py-12 text-center text-gray-500 dark:text-gray-500">
                     No transactions found for the selected filters
                   </td>
                 </tr>
@@ -420,17 +420,17 @@ const Treasury = () => {
                 <button
                   onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
-                  className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-gray-100"
+                  className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-gray-500"
                 >
                   Previous
                 </button>
-                <span className="px-3 py-1 text-sm text-gray-600 dark:text-gray-300">
+                <span className="px-3 py-1 text-sm text-gray-600 dark:text-gray-500">
                   Page {currentPage} of {totalPages}
                 </span>
                 <button
                   onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
-                  className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-gray-100"
+                  className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-gray-500"
                 >
                   Next
                 </button>
