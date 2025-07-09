@@ -73,11 +73,11 @@ const TokenExchange = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Exchange Interface */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200"
+            className="bg-white rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
           >
             {/* Settings Button */}
             <div className="flex justify-between items-center mb-6">
@@ -121,23 +121,23 @@ const TokenExchange = () => {
 
             {/* From Token */}
             <div className="space-y-4">
-              <div className="bg-gray-50 rounded-xl p-4">
+              <div className="bg-gray-50 rounded-xl p-3 lg:p-4">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-500">From</span>
-                  <span className="text-sm text-gray-500">Balance: 1,000.00</span>
+                  <span className="text-xs lg:text-sm text-gray-500">Balance: 1,000.00</span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 lg:space-x-3">
                   <input
                     type="number"
                     value={inputAmount}
                     onChange={(e) => dispatch(setInputAmount(e.target.value))}
                     placeholder="0.0"
-                    className="flex-1 text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400"
+                    className="flex-1 text-lg lg:text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400 min-w-0"
                   />
                   <select
                     value={fromToken}
                     onChange={(e) => dispatch(setFromToken(e.target.value))}
-                    className="flex items-center space-x-2 px-3 py-2 bg-white rounded-lg border border-gray-200 text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors"
+                    className="flex items-center space-x-2 px-2 lg:px-3 py-2 bg-white rounded-lg border border-gray-200 text-xs lg:text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors flex-shrink-0"
                   >
                     {AVAILABLE_TOKENS.map((token) => (
                       <option key={token.symbol} value={token.symbol}>
@@ -161,23 +161,23 @@ const TokenExchange = () => {
               </div>
 
               {/* To Token */}
-              <div className="bg-gray-50 rounded-xl p-4">
+              <div className="bg-gray-50 rounded-xl p-3 lg:p-4">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-500">To</span>
-                  <span className="text-sm text-gray-500">Balance: 0.00</span>
+                  <span className="text-xs lg:text-sm text-gray-500">Balance: 0.00</span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 lg:space-x-3">
                   <input
                     type="text"
                     value={calculating ? 'Calculating...' : outputAmount}
                     readOnly
                     placeholder="0.0"
-                    className="flex-1 text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400"
+                    className="flex-1 text-lg lg:text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400 min-w-0"
                   />
                   <select
                     value={toToken}
                     onChange={(e) => dispatch(setToToken(e.target.value))}
-                    className="flex items-center space-x-2 px-3 py-2 bg-white rounded-lg border border-gray-200 text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors"
+                    className="flex items-center space-x-2 px-2 lg:px-3 py-2 bg-white rounded-lg border border-gray-200 text-xs lg:text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors flex-shrink-0"
                   >
                     {AVAILABLE_TOKENS.map((token) => (
                       <option key={token.symbol} value={token.symbol}>
@@ -190,12 +190,12 @@ const TokenExchange = () => {
 
               {/* Exchange Rate */}
               {rate && (
-                <div className="flex items-center justify-between text-sm text-gray-500 px-4">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs lg:text-sm text-gray-500 px-4 space-y-1 sm:space-y-0">
                   <div className="flex items-center">
                     <InformationCircleIcon className="w-4 h-4 mr-1" />
-                    <span>Rate: 1 {fromToken} = {rate} {toToken}</span>
+                    <span className="truncate">Rate: 1 {fromToken} = {rate} {toToken}</span>
                   </div>
-                  <span>Slippage: {slippage}%</span>
+                  <span className="truncate">Slippage: {slippage}%</span>
                 </div>
               )}
 
@@ -205,7 +205,7 @@ const TokenExchange = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={handleSwap}
                 disabled={!inputAmount || !outputAmount || loading}
-                className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="w-full py-3 lg:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 text-sm lg:text-base"
               >
                 {loading ? 'Swapping...' : 'Swap Tokens'}
               </motion.button>
@@ -224,7 +224,7 @@ const TokenExchange = () => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+            className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
           >
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Trades</h3>
             <div className="space-y-3">
@@ -232,14 +232,14 @@ const TokenExchange = () => {
                 recentTrades.slice(0, 5).map((trade) => (
                   <div key={trade.id} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-sm font-medium text-gray-900 truncate">
                         {trade.amount} {trade.fromToken} → {trade.toToken}
                       </p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-500 truncate">
                         {new Date(trade.timestamp).toLocaleTimeString()}
                       </p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right flex-shrink-0 ml-2">
                       <p className="text-xs text-green-600">Success</p>
                     </div>
                   </div>
@@ -255,21 +255,21 @@ const TokenExchange = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+            className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
           >
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Market Stats</h3>
             <div className="space-y-3">
               <div className="flex justify-between">
-                <span className="text-sm text-gray-600">24h Volume</span>
-                <span className="text-sm font-medium text-gray-900">$1.2M</span>
+                <span className="text-sm text-gray-600 truncate">24h Volume</span>
+                <span className="text-sm font-medium text-gray-900 flex-shrink-0 ml-2">$1.2M</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-sm text-gray-600">Total Liquidity</span>
-                <span className="text-sm font-medium text-gray-900">$5.8M</span>
+                <span className="text-sm text-gray-600 truncate">Total Liquidity</span>
+                <span className="text-sm font-medium text-gray-900 flex-shrink-0 ml-2">$5.8M</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-sm text-gray-600">Active Pairs</span>
-                <span className="text-sm font-medium text-gray-900">3</span>
+                <span className="text-sm text-gray-600 truncate">Active Pairs</span>
+                <span className="text-sm font-medium text-gray-900 flex-shrink-0 ml-2">3</span>
               </div>
             </div>
           </motion.div>

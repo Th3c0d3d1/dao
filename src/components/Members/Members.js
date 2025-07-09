@@ -117,7 +117,7 @@ const Members = () => {
                     <BuildingOfficeIcon className="w-6 h-6 mr-2 text-purple-600" />
                     Executive Leadership
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
                     {['CEO', 'CFO', 'COO'].map((position) => {
                         const config = CORPORATE_POSITIONS[position]
                         const Icon = config.icon
@@ -128,15 +128,15 @@ const Members = () => {
                                 key={position}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
+                                className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow min-w-0"
                             >
                                 <div className="flex items-center mb-4">
                                     <div className={`p-3 rounded-lg bg-${config.color}-50`}>
                                         <Icon className={`w-6 h-6 text-${config.color}-600`} />
                                     </div>
-                                    <div className="ml-3">
-                                        <h3 className="font-semibold text-gray-900">{position}</h3>
-                                        <p className="text-sm text-gray-600">{config.title}</p>
+                                    <div className="ml-3 min-w-0 flex-1">
+                                        <h3 className="font-semibold text-gray-900 truncate">{position}</h3>
+                                        <p className="text-sm text-gray-600 truncate">{config.title}</p>
                                     </div>
                                 </div>
 
@@ -144,7 +144,7 @@ const Members = () => {
                                     <div className="space-y-3">
                                         <div className="flex items-center justify-between">
                                             <span className="text-sm font-medium text-gray-700">Address:</span>
-                                            <span className="text-xs font-mono text-gray-600">
+                                            <span className="text-xs font-mono text-gray-600 truncate ml-2">
                                                 {member.address.slice(0, 6)}...{member.address.slice(-4)}
                                             </span>
                                         </div>
@@ -170,7 +170,7 @@ const Members = () => {
                                     </div>
                                 )}
 
-                                <p className="text-xs text-gray-500 mt-4">{config.description}</p>
+                                <p className="text-xs text-gray-500 mt-4 truncate">{config.description}</p>
                             </motion.div>
                         )
                     })}
@@ -183,7 +183,7 @@ const Members = () => {
                     <UserGroupIcon className="w-6 h-6 mr-2 text-blue-600" />
                     Department Heads
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
                     {['MARKETING', 'RND', 'HR'].map((department) => {
                         const config = CORPORATE_POSITIONS[department]
                         const Icon = config.icon
@@ -195,15 +195,15 @@ const Members = () => {
                                 key={department}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
+                                className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow min-w-0"
                             >
                                 <div className="flex items-center mb-4">
                                     <div className={`p-3 rounded-lg bg-${config.color}-50`}>
                                         <Icon className={`w-6 h-6 text-${config.color}-600`} />
                                     </div>
-                                    <div className="ml-3">
-                                        <h3 className="font-semibold text-gray-900">{config.title}</h3>
-                                        <p className="text-sm text-gray-600">Department Head</p>
+                                    <div className="ml-3 min-w-0 flex-1">
+                                        <h3 className="font-semibold text-gray-900 truncate">{config.title}</h3>
+                                        <p className="text-sm text-gray-600 truncate">Department Head</p>
                                     </div>
                                 </div>
 
@@ -211,7 +211,7 @@ const Members = () => {
                                     <div className="space-y-3 mb-4">
                                         <div className="flex items-center justify-between">
                                             <span className="text-sm font-medium text-gray-700">Head:</span>
-                                            <span className="text-xs font-mono text-gray-600">
+                                            <span className="text-xs font-mono text-gray-600 truncate ml-2">
                                                 {head.address.slice(0, 6)}...{head.address.slice(-4)}
                                             </span>
                                         </div>
@@ -236,7 +236,7 @@ const Members = () => {
                                     {employees.length > 0 ? (
                                         <div className="space-y-1">
                                             {employees.slice(0, 3).map((employee, index) => (
-                                                <div key={index} className="text-xs text-gray-600 font-mono">
+                                                <div key={index} className="text-xs text-gray-600 font-mono truncate">
                                                     {employee.address.slice(0, 6)}...{employee.address.slice(-4)}
                                                 </div>
                                             ))}
@@ -249,7 +249,7 @@ const Members = () => {
                                     )}
                                 </div>
 
-                                <p className="text-xs text-gray-500 mt-4">{config.description}</p>
+                                <p className="text-xs text-gray-500 mt-4 truncate">{config.description}</p>
                             </motion.div>
                         )
                     })}
@@ -368,51 +368,51 @@ const Members = () => {
             </div>
 
             {/* Stats Overview */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
                 <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
                     <div className="flex items-center">
-                        <div className="p-2 rounded-lg bg-purple-50">
-                            <StarIcon className="w-5 h-5 text-purple-600" />
+                        <div className="p-1.5 lg:p-2 rounded-lg bg-purple-50 flex-shrink-0">
+                            <StarIcon className="w-4 h-4 lg:w-5 lg:h-5 text-purple-600" />
                         </div>
-                        <div className="ml-3">
-                            <p className="text-sm font-medium text-gray-600">Executives</p>
-                            <p className="text-xl font-bold text-gray-900">{members.executives?.length || 0}</p>
+                        <div className="ml-2 lg:ml-3 min-w-0 flex-1">
+                            <p className="text-xs lg:text-sm font-medium text-gray-600 truncate">Executives</p>
+                            <p className="text-lg lg:text-xl font-bold text-gray-900">{members.executives?.length || 0}</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
                     <div className="flex items-center">
-                        <div className="p-2 rounded-lg bg-blue-50">
-                            <UserGroupIcon className="w-5 h-5 text-blue-600" />
+                        <div className="p-1.5 lg:p-2 rounded-lg bg-blue-50 flex-shrink-0">
+                            <UserGroupIcon className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600" />
                         </div>
-                        <div className="ml-3">
-                            <p className="text-sm font-medium text-gray-600">Department Heads</p>
-                            <p className="text-xl font-bold text-gray-900">{members.departmentHeads?.length || 0}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
-                    <div className="flex items-center">
-                        <div className="p-2 rounded-lg bg-green-50">
-                            <UserIcon className="w-5 h-5 text-green-600" />
-                        </div>
-                        <div className="ml-3">
-                            <p className="text-sm font-medium text-gray-600">Employees</p>
-                            <p className="text-xl font-bold text-gray-900">{members.employees?.length || 0}</p>
+                        <div className="ml-2 lg:ml-3 min-w-0 flex-1">
+                            <p className="text-xs lg:text-sm font-medium text-gray-600 truncate">Department Heads</p>
+                            <p className="text-lg lg:text-xl font-bold text-gray-900">{members.departmentHeads?.length || 0}</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
                     <div className="flex items-center">
-                        <div className="p-2 rounded-lg bg-yellow-50">
-                            <ChartBarIcon className="w-5 h-5 text-yellow-600" />
+                        <div className="p-1.5 lg:p-2 rounded-lg bg-green-50 flex-shrink-0">
+                            <UserIcon className="w-4 h-4 lg:w-5 lg:h-5 text-green-600" />
                         </div>
-                        <div className="ml-3">
-                            <p className="text-sm font-medium text-gray-600">Token Holders</p>
-                            <p className="text-xl font-bold text-gray-900">{members.tokenHolders?.length || 0}</p>
+                        <div className="ml-2 lg:ml-3 min-w-0 flex-1">
+                            <p className="text-xs lg:text-sm font-medium text-gray-600 truncate">Employees</p>
+                            <p className="text-lg lg:text-xl font-bold text-gray-900">{members.employees?.length || 0}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+                    <div className="flex items-center">
+                        <div className="p-1.5 lg:p-2 rounded-lg bg-yellow-50 flex-shrink-0">
+                            <ChartBarIcon className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-600" />
+                        </div>
+                        <div className="ml-2 lg:ml-3 min-w-0 flex-1">
+                            <p className="text-xs lg:text-sm font-medium text-gray-600 truncate">Token Holders</p>
+                            <p className="text-lg lg:text-xl font-bold text-gray-900">{members.tokenHolders?.length || 0}</p>
                         </div>
                     </div>
                 </div>
