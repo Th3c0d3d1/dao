@@ -30,14 +30,14 @@ const Header = () => {
     }
   }
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 px-6 py-4 transition-colors duration-200">
+    <header className="bg-gray-100 dark:bg-gray-600 shadow-sm border-b border-gray-200 dark:border-gray-500 px-6 py-4 transition-colors duration-200">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => dispatch(toggleSidebar())}
-            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors"
           >
             <Bars3Icon className="w-6 h-6 text-gray-600 dark:text-gray-300" />
           </motion.button>
@@ -60,7 +60,7 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleThemeToggle}
-            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors"
           >
             {theme === 'light' ? (
               <MoonIcon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
@@ -73,7 +73,7 @@ const Header = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="relative p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors"
           >
             <BellIcon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
             {unreadNotifications > 0 && (
