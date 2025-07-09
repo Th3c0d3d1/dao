@@ -44,11 +44,11 @@ const Header = () => {
           
           <div className="hidden md:flex items-center space-x-6">
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 px-4 py-2 rounded-lg">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Treasury: </span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-200">Treasury: </span>
               <span className="text-sm font-bold text-blue-600">{treasuryBalance} ETH</span>
             </div>
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 px-4 py-2 rounded-lg">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Your Balance: </span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-200">Your Balance: </span>
               <span className="text-sm font-bold text-green-600">{parseFloat(balance).toFixed(2)} {symbol}</span>
             </div>
           </div>
@@ -87,7 +87,7 @@ const Header = () => {
           <div className="flex items-center space-x-3">
             <div className="text-right">
               <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Connected</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-gray-500 dark:text-gray-300">
                 {account ? `${account.slice(0, 6)}...${account.slice(-4)}` : 'Not Connected'}
               </p>
             </div>

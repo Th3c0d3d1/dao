@@ -85,7 +85,7 @@ const Dashboard = () => {
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">{stat.name}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-300">{stat.name}</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1">{stat.value}</p>
                 <p className={`text-sm mt-1 ${
                   stat.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
@@ -206,9 +206,9 @@ const Dashboard = () => {
             <div key={index} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-b-0">
               <div>
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{activity.action}</p>
-                <p className="text-xs text-gray-500">by {activity.user}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">by {activity.user}</p>
               </div>
-              <span className="text-xs text-gray-400">{activity.time}</span>
+              <span className="text-xs text-gray-400 dark:text-gray-500">{activity.time}</span>
             </div>
           ))}
         </div>
