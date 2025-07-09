@@ -68,7 +68,7 @@ const TokenExchange = () => {
       {/* Header */}
       <div className="text-center">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Token Exchange</h1>
-        <p className="text-gray-600 dark:text-gray-400">Swap tokens instantly with low fees</p>
+        <p className="text-gray-600 dark:text-gray-200">Swap tokens instantly with low fees</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -81,7 +81,7 @@ const TokenExchange = () => {
           >
             {/* Settings Button */}
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Swap Tokens</h2>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-500">Swap Tokens</h2>
               <button
                 onClick={() => setShowSettings(!showSettings)}
                 className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
@@ -99,7 +99,7 @@ const TokenExchange = () => {
                 className="mb-6 p-4 bg-gray-50 rounded-lg"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Slippage Tolerance</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-500">Slippage Tolerance</span>
                   <div className="flex space-x-2">
                     {['0.10', '0.50', '1.00'].map((value) => (
                       <button
@@ -123,7 +123,7 @@ const TokenExchange = () => {
             <div className="space-y-4">
               <div className="bg-gray-50 rounded-xl p-4">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">From</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-500">From</span>
                   <span className="text-sm text-gray-500">Balance: 1,000.00</span>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -132,7 +132,7 @@ const TokenExchange = () => {
                     value={inputAmount}
                     onChange={(e) => dispatch(setInputAmount(e.target.value))}
                     placeholder="0.0"
-                    className="flex-1 text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder-gray-400"
+                    className="flex-1 text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400"
                   />
                   <select
                     value={fromToken}
@@ -163,7 +163,7 @@ const TokenExchange = () => {
               {/* To Token */}
               <div className="bg-gray-50 rounded-xl p-4">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">To</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-500">To</span>
                   <span className="text-sm text-gray-500">Balance: 0.00</span>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -172,7 +172,7 @@ const TokenExchange = () => {
                     value={calculating ? 'Calculating...' : outputAmount}
                     readOnly
                     placeholder="0.0"
-                    className="flex-1 text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder-gray-400"
+                    className="flex-1 text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400"
                   />
                   <select
                     value={toToken}
@@ -190,7 +190,7 @@ const TokenExchange = () => {
 
               {/* Exchange Rate */}
               {rate && (
-                <div className="flex items-center justify-between text-sm text-gray-600 px-4">
+                <div className="flex items-center justify-between text-sm text-gray-500 px-4">
                   <div className="flex items-center">
                     <InformationCircleIcon className="w-4 h-4 mr-1" />
                     <span>Rate: 1 {fromToken} = {rate} {toToken}</span>
