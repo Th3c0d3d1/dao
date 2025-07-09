@@ -74,22 +74,22 @@ const ProposalsList = () => {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4">
         {stats.map((stat, index) => (
           <motion.div
             key={stat.name}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white rounded-lg p-4 shadow-sm border border-gray-200"
+            className="bg-white rounded-lg p-3 lg:p-4 shadow-sm border border-gray-200 min-w-0"
           >
             <div className="flex items-center">
-              <div className={`p-2 rounded-lg bg-${stat.color}-50`}>
-                <stat.icon className={`w-5 h-5 text-${stat.color}-600 dark:text-${stat.color}-400`} />
+              <div className={`p-1.5 lg:p-2 rounded-lg bg-${stat.color}-50 flex-shrink-0`}>
+                <stat.icon className={`w-4 h-4 lg:w-5 lg:h-5 text-${stat.color}-600 dark:text-${stat.color}-400`} />
               </div>
-              <div className="ml-3">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-600">{stat.name}</p>
-                <p className="text-xl font-bold text-gray-900 dark:text-gray-500">{stat.value}</p>
+              <div className="ml-2 lg:ml-3 min-w-0 flex-1">
+                <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">{stat.name}</p>
+                <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-500">{stat.value}</p>
               </div>
             </div>
           </motion.div>
@@ -100,7 +100,7 @@ const ProposalsList = () => {
       {activeProposals.length > 0 && (
         <div>
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Active Proposals</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
             {activeProposals.map((proposal, index) => (
               <ProposalCard
                 key={proposal.id}
@@ -117,7 +117,7 @@ const ProposalsList = () => {
       {completedProposals.length > 0 && (
         <div>
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Completed Proposals</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
             {completedProposals.map((proposal, index) => (
               <ProposalCard
                 key={proposal.id}

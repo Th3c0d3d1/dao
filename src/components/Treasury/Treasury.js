@@ -139,20 +139,20 @@ const Treasury = () => {
       </div>
 
       {/* Treasury Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+          className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-600">Current Balance</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-500">{balance} ETH</p>
-              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">Treasury Holdings</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">Current Balance</p>
+              <p className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-500 truncate">{balance} ETH</p>
+              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">Treasury Holdings</p>
             </div>
-            <div className="p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
-              <CurrencyDollarIcon className="w-6 h-6 text-blue-600" />
+            <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg flex-shrink-0">
+              <CurrencyDollarIcon className="w-5 h-5 lg:w-6 lg:h-6 text-blue-600" />
             </div>
           </div>
         </motion.div>
@@ -161,16 +161,16 @@ const Treasury = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+          className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-600">Total Inflow</p>
-              <p className="text-2xl font-bold text-green-500">{totalInflow} ETH</p>
-              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">All time deposits</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">Total Inflow</p>
+              <p className="text-lg lg:text-2xl font-bold text-green-500 truncate">{totalInflow} ETH</p>
+              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">All time deposits</p>
             </div>
-            <div className="p-3 bg-green-50 rounded-lg">
-              <ArrowUpIcon className="w-6 h-6 text-green-600" />
+            <div className="p-2 lg:p-3 bg-green-50 rounded-lg flex-shrink-0">
+              <ArrowUpIcon className="w-5 h-5 lg:w-6 lg:h-6 text-green-600" />
             </div>
           </div>
         </motion.div>
@@ -179,16 +179,16 @@ const Treasury = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+          className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-600">Total Outflow</p>
-              <p className="text-2xl font-bold text-red-500">{totalOutflow} ETH</p>
-              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">All time payouts</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">Total Outflow</p>
+              <p className="text-lg lg:text-2xl font-bold text-red-500 truncate">{totalOutflow} ETH</p>
+              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">All time payouts</p>
             </div>
-            <div className="p-3 bg-red-50 rounded-lg">
-              <ArrowDownIcon className="w-6 h-6 text-red-600" />
+            <div className="p-2 lg:p-3 bg-red-50 rounded-lg flex-shrink-0">
+              <ArrowDownIcon className="w-5 h-5 lg:w-6 lg:h-6 text-red-600" />
             </div>
           </div>
         </motion.div>
@@ -197,36 +197,37 @@ const Treasury = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+          className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-600">Net Flow</p>
-              <p className={`text-2xl font-bold ${
+            <div className="min-w-0 flex-1">
+              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">Net Flow</p>
+              <p className={`text-lg lg:text-2xl font-bold truncate ${
                 (parseFloat(totalInflow) - parseFloat(totalOutflow)) >= 0 ? 'text-green-600' : 'text-red-600'
               }`}>
                 {(parseFloat(totalInflow) - parseFloat(totalOutflow)).toFixed(4)} ETH
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">Inflow - Outflow</p>
+              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">Inflow - Outflow</p>
             </div>
-            <div className="p-3 bg-yellow-50 rounded-lg">
-              <ChartBarIcon className="w-6 h-6 text-yellow-600" />
+            <div className="p-2 lg:p-3 bg-yellow-50 rounded-lg flex-shrink-0">
+              <ChartBarIcon className="w-5 h-5 lg:w-6 lg:h-6 text-yellow-600" />
             </div>
           </div>
         </motion.div>
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {/* Treasury Balance Over Time */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+          className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Treasury Balance Over Time</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <div className="w-full overflow-hidden">
+            <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis 
@@ -255,6 +256,7 @@ const Treasury = () => {
               />
             </LineChart>
           </ResponsiveContainer>
+          </div>
         </motion.div>
 
         {/* Transaction Types Distribution */}
@@ -262,10 +264,11 @@ const Treasury = () => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+          className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Transaction Types</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <div className="w-full overflow-hidden">
+            <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
                 data={transactionSummary}
@@ -290,6 +293,7 @@ const Treasury = () => {
               />
             </PieChart>
           </ResponsiveContainer>
+          </div>
           <div className="flex justify-center space-x-6 mt-4">
             {transactionSummary.map((item) => (
               <div key={item.name} className="flex items-center">
@@ -309,9 +313,9 @@ const Treasury = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="bg-white rounded-xl shadow-sm border border-gray-200"
+        className="bg-white rounded-xl shadow-sm border border-gray-200 min-w-0"
       >
-        <div className="p-6 border-b border-gray-200">
+        <div className="p-4 lg:p-6 border-b border-gray-200">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600">Transaction History</h3>
             <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-500">
@@ -321,7 +325,7 @@ const Treasury = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto min-w-0">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
@@ -358,18 +362,18 @@ const Treasury = () => {
                         <div className={`p-2 rounded-lg bg-${getTransactionColor(transaction.type)}-50 mr-3`}>
                           {getTransactionIcon(transaction.type)}
                         </div>
-                        <div>
-                          <p className="text-sm font-medium text-gray-900 dark:text-gray-500">
+                        <div className="min-w-0">
+                          <p className="text-sm font-medium text-gray-900 dark:text-gray-500 truncate">
                             {TRANSACTION_TYPES[transaction.type]?.label || 'Unknown'}
                           </p>
                           {transaction.proposalId && (
-                            <p className="text-xs text-gray-500">Proposal #{transaction.proposalId}</p>
+                            <p className="text-xs text-gray-500 truncate">Proposal #{transaction.proposalId}</p>
                           )}
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm font-mono text-gray-900 dark:text-gray-500">
+                      <span className="text-sm font-mono text-gray-900 dark:text-gray-500 truncate">
                         {formatAddress(transaction.address)}
                       </span>
                     </td>
@@ -391,7 +395,7 @@ const Treasury = () => {
                         href={`https://etherscan.io/tx/${transaction.hash}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-mono text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+                        className="text-sm font-mono text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors truncate"
                       >
                         {formatAddress(transaction.hash)}
                       </a>
@@ -411,26 +415,26 @@ const Treasury = () => {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="px-6 py-4 border-t border-gray-200">
-            <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-600 dark:text-gray-300">
+          <div className="px-4 lg:px-6 py-4 border-t border-gray-200">
+            <div className="flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
+              <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-300">
                 Showing {((currentPage - 1) * transactionsPerPage) + 1} to {Math.min(currentPage * transactionsPerPage, filteredTransactions.length)} of {filteredTransactions.length} transactions
               </div>
               <div className="flex space-x-2">
                 <button
                   onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
-                  className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-gray-500"
+                  className="px-2 lg:px-3 py-1 text-xs lg:text-sm border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-gray-500"
                 >
                   Previous
                 </button>
-                <span className="px-3 py-1 text-sm text-gray-600 dark:text-gray-500">
+                <span className="px-2 lg:px-3 py-1 text-xs lg:text-sm text-gray-600 dark:text-gray-500">
                   Page {currentPage} of {totalPages}
                 </span>
                 <button
                   onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
-                  className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-gray-500"
+                  className="px-2 lg:px-3 py-1 text-xs lg:text-sm border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-gray-500"
                 >
                   Next
                 </button>
