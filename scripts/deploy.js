@@ -5,6 +5,7 @@
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
 const hre = require("hardhat");
+const fs = require('fs');
 
 async function main() {
   const NAME = 'Next Gen'
@@ -24,6 +25,26 @@ async function main() {
 
   await dao.deployed()
   console.log(`Dao deployed to: ${dao.address}\n`)
+
+  // Get network chain ID
+  const network = await hre.ethers.provider.getNetwork()
+  const chainId = network.chainId.toString()
+
+  // Create config object with deployed addresses
+  const config = {
+    [chainId]: {
+      "token": {
+        "address": token.address
+      },
+      "dao": {
+        "address": dao.address
+      }
+    }
+  }
+
+  // Write config to file
+  fs.writeFileSync('src/config.json', JSON.stringify(config, null, 2))
+  console.log(`Config updated for chain ID: ${chainId}`)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
