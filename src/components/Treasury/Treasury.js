@@ -367,7 +367,7 @@ const Treasury = () => {
                           )}
                         </div>
                       </div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Proposal #{transaction.proposalId}</p>
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="text-sm font-mono text-gray-900 dark:text-gray-100">
                         {formatAddress(transaction.address)}
