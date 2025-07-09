@@ -60,7 +60,7 @@ const ProposalsList = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Proposals</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">Create and vote on governance proposals</p>
+          <p className="text-gray-600 dark:text-gray-200 mt-1">Create and vote on governance proposals</p>
         </div>
         <motion.button
           whileHover={{ scale: 1.02 }}

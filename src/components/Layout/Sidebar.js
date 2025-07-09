@@ -44,7 +44,7 @@ const Sidebar = () => {
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">NG</span>
             </div>
-            <span className="ml-3 text-xl font-bold text-gray-900 dark:text-white">Next Gen DAO</span>
+            <span className="ml-3 text-xl font-bold text-gray-900 dark:text-gray-600">Next Gen DAO</span>
           </div>
         </div>
 
