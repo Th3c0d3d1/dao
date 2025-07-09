@@ -24,7 +24,7 @@ const navigation = [
 
 const Sidebar = () => {
   const dispatch = useDispatch()
-  const { activeTab, sidebarOpen, theme } = useSelector((state) => state.ui)
+  const { activeTab, sidebarOpen } = useSelector((state) => state.ui)
 
   const handleTabClick = (tabId) => {
     dispatch(setActiveTab(tabId))

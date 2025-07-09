@@ -146,7 +146,6 @@ const membersSlice = createSlice({
       state.error = null
     },
     updateMemberRole: (state, action) => {
-      const { address, role, department } = action.payload
       // Update member role in state
       // This would be more complex in a real implementation
     },

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { motion } from 'framer-motion'
 import {
-  ChartBarIcon,
   ArrowTrendingUpIcon,
   ArrowTrendingDownIcon,
   CurrencyDollarIcon,
@@ -10,8 +9,6 @@ import {
   UserGroupIcon,
   CalendarIcon,
   ArrowUpIcon,
-  ArrowDownIcon,
-  ClockIcon,
 } from '@heroicons/react/24/outline'
 import { loadAnalyticsData } from '../../store/slices/analyticsSlice'
 import { 

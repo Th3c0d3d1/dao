@@ -111,9 +111,6 @@ export const loadTransactions = createAsyncThunk(
 
       // Get proposal-related transactions from events
       try {
-        const proposeFilter = dao.filters.Propose()
-        const proposeEvents = await dao.queryFilter(proposeFilter, fromBlock, 'latest')
-        
         const finalizeFilter = dao.filters.Finalize()
         const finalizeEvents = await dao.queryFilter(finalizeFilter, fromBlock, 'latest')
         
@@ -121,7 +118,6 @@ export const loadTransactions = createAsyncThunk(
         for (const event of finalizeEvents) {
           const proposalId = event.args.id.toString()
           const proposal = await dao.proposals(proposalId)
-          const tx = await provider.getTransaction(event.transactionHash)
           const block = await provider.getBlock(event.blockNumber)
           
           transactions.push({
