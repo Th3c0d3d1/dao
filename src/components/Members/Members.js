@@ -113,7 +113,7 @@ const Members = () => {
     <div className="space-y-8">
       {/* Executive Level */}
       <div>
-        <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center">
           <BuildingOfficeIcon className="w-6 h-6 mr-2 text-purple-600" />
           Executive Leadership
         </h2>
@@ -135,7 +135,7 @@ const Members = () => {
                     <Icon className={`w-6 h-6 text-${config.color}-600`} />
                   </div>
                   <div className="ml-3">
-                    <h3 className="font-semibold text-gray-900">{position}</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">{position}</h3>
                     <p className="text-sm text-gray-600">{config.title}</p>
                   </div>
                 </div>
@@ -150,7 +150,7 @@ const Members = () => {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium text-gray-700">Tokens:</span>
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
                         {parseFloat(member.balance).toLocaleString()}
                       </span>
                     </div>
@@ -179,7 +179,7 @@ const Members = () => {
 
       {/* Department Level */}
       <div>
-        <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center">
           <UserGroupIcon className="w-6 h-6 mr-2 text-blue-600" />
           Department Heads
         </h2>
@@ -202,7 +202,7 @@ const Members = () => {
                     <Icon className={`w-6 h-6 text-${config.color}-600`} />
                   </div>
                   <div className="ml-3">
-                    <h3 className="font-semibold text-gray-900">{config.title}</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">{config.title}</h3>
                     <p className="text-sm text-gray-600">Department Head</p>
                   </div>
                 </div>
@@ -217,7 +217,7 @@ const Members = () => {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium text-gray-700">Tokens:</span>
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
                         {parseFloat(head.balance).toLocaleString()}
                       </span>
                     </div>
@@ -231,7 +231,7 @@ const Members = () => {
                 <div className="border-t pt-3">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-gray-700">Employees:</span>
-                    <span className="text-sm font-bold text-gray-900">{employees.length}</span>
+                    <span className="text-sm font-bold text-gray-900 dark:text-gray-100">{employees.length}</span>
                   </div>
                   {employees.length > 0 ? (
                     <div className="space-y-1">
@@ -260,7 +260,7 @@ const Members = () => {
 
   const renderTokenHolders = () => (
     <div className="space-y-6">
-      <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+      <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center">
         <ChartBarIcon className="w-6 h-6 mr-2 text-green-600" />
         Token Holders by Voting Weight
       </h2>
@@ -288,12 +288,12 @@ const Members = () => {
                   <Icon className={`w-6 h-6 text-${tier.color}-600`} />
                 </div>
                 <div className="ml-3">
-                  <h3 className="font-semibold text-gray-900">{tier.name}</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-gray-100">{tier.name}</h3>
                   <p className="text-sm text-gray-600">{tier.description}</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-bold text-gray-900">{tierHolders.length}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{tierHolders.length}</p>
                 <p className="text-sm text-gray-600">holders</p>
               </div>
             </div>
@@ -316,7 +316,7 @@ const Members = () => {
                       {holder.address.slice(0, 8)}...{holder.address.slice(-6)}
                     </span>
                     <div className="text-right">
-                      <p className="text-sm font-bold text-gray-900">
+                      <p className="text-sm font-bold text-gray-900 dark:text-gray-100">
                         {parseFloat(holder.balance).toLocaleString()}
                       </p>
                       <p className="text-xs text-gray-500">
@@ -340,8 +340,8 @@ const Members = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Organization Members</h1>
-          <p className="text-gray-600 mt-1">Corporate structure and token holder distribution</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Organization Members</h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">Corporate structure and token holder distribution</p>
         </div>
         
         {/* Tab Navigation */}
@@ -378,7 +378,7 @@ const Members = () => {
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-gray-600">Executives</p>
-              <p className="text-xl font-bold text-gray-900">{members.executives?.length || 0}</p>
+              <p className="text-xl font-bold text-gray-900 dark:text-gray-100">{members.executives?.length || 0}</p>
             </div>
           </div>
         </div>
@@ -390,7 +390,7 @@ const Members = () => {
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-gray-600">Department Heads</p>
-              <p className="text-xl font-bold text-gray-900">{members.departmentHeads?.length || 0}</p>
+              <p className="text-xl font-bold text-gray-900 dark:text-gray-100">{members.departmentHeads?.length || 0}</p>
             </div>
           </div>
         </div>
@@ -402,7 +402,7 @@ const Members = () => {
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-gray-600">Employees</p>
-              <p className="text-xl font-bold text-gray-900">{members.employees?.length || 0}</p>
+              <p className="text-xl font-bold text-gray-900 dark:text-gray-100">{members.employees?.length || 0}</p>
             </div>
           </div>
         </div>
@@ -414,7 +414,7 @@ const Members = () => {
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-gray-600">Token Holders</p>
-              <p className="text-xl font-bold text-gray-900">{members.tokenHolders?.length || 0}</p>
+              <p className="text-xl font-bold text-gray-900 dark:text-gray-100">{members.tokenHolders?.length || 0}</p>
             </div>
           </div>
         </div>

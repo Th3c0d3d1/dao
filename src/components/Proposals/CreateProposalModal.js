@@ -67,7 +67,7 @@ const CreateProposalModal = () => {
           >
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-gray-900">Create New Proposal</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Create New Proposal</h3>
               <button
                 onClick={() => dispatch(closeModal('createProposal'))}
                 className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
@@ -79,7 +79,7 @@ const CreateProposalModal = () => {
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Proposal Title
                 </label>
                 <input
@@ -94,7 +94,7 @@ const CreateProposalModal = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Amount (ETH)
                 </label>
                 <input
@@ -115,7 +115,7 @@ const CreateProposalModal = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Recipient Address
                 </label>
                 <input
@@ -130,7 +130,7 @@ const CreateProposalModal = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Description (Optional)
                 </label>
                 <textarea

@@ -108,8 +108,8 @@ const Treasury = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Treasury Management</h1>
-          <p className="text-gray-600 mt-1">Monitor treasury balance and transaction flows</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Treasury Management</h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">Monitor treasury balance and transaction flows</p>
         </div>
         
         {/* Filters */}
@@ -148,7 +148,7 @@ const Treasury = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Current Balance</p>
-              <p className="text-2xl font-bold text-gray-900">{balance} ETH</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{balance} ETH</p>
               <p className="text-sm text-gray-500 mt-1">Treasury Holdings</p>
             </div>
             <div className="p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
@@ -225,7 +225,7 @@ const Treasury = () => {
           transition={{ delay: 0.4 }}
           className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Treasury Balance Over Time</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Treasury Balance Over Time</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -264,7 +264,7 @@ const Treasury = () => {
           transition={{ delay: 0.5 }}
           className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Transaction Types</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Transaction Types</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
@@ -313,7 +313,7 @@ const Treasury = () => {
       >
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900">Transaction History</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Transaction History</h3>
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <FunnelIcon className="w-4 h-4" />
               <span>{filteredTransactions.length} transactions</span>
@@ -359,7 +359,7 @@ const Treasury = () => {
                           {getTransactionIcon(transaction.type)}
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-gray-900">
+                          <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
                             {TRANSACTION_TYPES[transaction.type]?.label || 'Unknown'}
                           </p>
                           {transaction.proposalId && (
@@ -369,7 +369,7 @@ const Treasury = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm font-mono text-gray-900">
+                      <span className="text-sm font-mono text-gray-900 dark:text-gray-100">
                         {formatAddress(transaction.address)}
                       </span>
                     </td>

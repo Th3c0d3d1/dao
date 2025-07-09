@@ -46,7 +46,7 @@ const ProposalCard = ({ proposal, index, isActive }) => {
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">{proposal.name}</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{proposal.name}</h3>
           <div className="flex items-center space-x-4 text-sm text-gray-600">
             <div className="flex items-center">
               <CurrencyDollarIcon className="w-4 h-4 mr-1" />
@@ -70,7 +70,7 @@ const ProposalCard = ({ proposal, index, isActive }) => {
       {/* Recipient */}
       <div className="mb-4">
         <p className="text-sm text-gray-600">Recipient:</p>
-        <p className="text-sm font-mono text-gray-900 bg-gray-50 px-2 py-1 rounded">
+        <p className="text-sm font-mono text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded">
           {proposal.recipient}
         </p>
       </div>

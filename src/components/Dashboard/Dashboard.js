@@ -67,7 +67,7 @@ const Dashboard = () => {
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white"
       >
-        <h1 className="text-3xl font-bold mb-2">Welcome to Next Gen DAO</h1>
+        <h1 className="text-3xl font-bold mb-2 text-white">Welcome to Next Gen DAO</h1>
         <p className="text-blue-100 text-lg">
           Shape the future of decentralized governance with your community
         </p>
@@ -86,7 +86,7 @@ const Dashboard = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">{stat.value}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1">{stat.value}</p>
                 <p className={`text-sm mt-1 ${
                   stat.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
                 }`}>
@@ -110,7 +110,7 @@ const Dashboard = () => {
           transition={{ delay: 0.4 }}
           className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Treasury Growth</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Treasury Growth</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={mockTreasuryData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -148,7 +148,7 @@ const Dashboard = () => {
           transition={{ delay: 0.5 }}
           className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Proposal Status</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Proposal Status</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
@@ -195,7 +195,7 @@ const Dashboard = () => {
         transition={{ delay: 0.6 }}
         className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Recent Activity</h3>
         <div className="space-y-4">
           {[
             { action: 'New proposal created', user: '0x1234...5678', time: '2 hours ago' },
@@ -205,7 +205,7 @@ const Dashboard = () => {
           ].map((activity, index) => (
             <div key={index} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-b-0">
               <div>
-                <p className="text-sm font-medium text-gray-900">{activity.action}</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{activity.action}</p>
                 <p className="text-xs text-gray-500">by {activity.user}</p>
               </div>
               <span className="text-xs text-gray-400">{activity.time}</span>
