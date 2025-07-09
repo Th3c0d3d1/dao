@@ -111,10 +111,10 @@ function App() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
       <Sidebar />
       
-      <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-14'}`}>
+      <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
         <Header />
         
-        <main className="p-6">
+        <main className="p-6 max-w-full overflow-hidden">
           {renderActiveComponent()}
         </main>
       </div>

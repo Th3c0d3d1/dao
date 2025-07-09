@@ -33,7 +33,7 @@ const Sidebar = () => {
   return (
     <motion.div
       initial={{ x: -300 }}
-      animate={{ x: sidebarOpen ? 0 : -250 }}
+      animate={{ x: sidebarOpen ? 0 : -256 }}
       transition={{ duration: 0.3 }}
       className="fixed left-0 top-0 h-full w-64 bg-gray-50 dark:bg-gray-700 shadow-xl border-r border-gray-200 dark:border-gray-600 z-40 transition-colors duration-200"
     >
