@@ -514,7 +514,8 @@ const Analytics = () => {
         </div>
 
         {/* Metric Navigation */}
-        <div className="flex space-x-2 bg-gray-100 rounded-lg p-1">
+        <div className="overflow-x-auto">
+          <div className="flex space-x-2 bg-gray-100 rounded-lg p-1 min-w-max">
           {[
             { id: 'treasury', label: 'Treasury', icon: CurrencyDollarIcon },
             { id: 'exchange', label: 'Exchange', icon: ArrowTrendingUpIcon },
@@ -527,13 +528,14 @@ const Analytics = () => {
               onClick={() => setActiveMetric(metric.id)}
               className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${activeMetric === metric.id
                   ? 'bg-white text-gray-900 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
+                  : 'text-gray-600 hover:text-gray-900 whitespace-nowrap'
                 }`}
             >
               <metric.icon className="w-4 h-4 mr-2" />
               {metric.label}
             </button>
           ))}
+        </div>
         </div>
       </div>
 
