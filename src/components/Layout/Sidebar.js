@@ -39,7 +39,7 @@ const Sidebar = () => {
     >
       <div className="flex flex-col h-full">
         {/* Logo */}
-        <div className="flex items-center px-6 py-4 border-b border-gray-200 dark:border-gray-600">
+        <div className="flex items-center px-6 py-4 border-b border-gray-200 dark:border-gray-400">
           <div className="flex items-center">
             <div className="w-9 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">NGW</span>
