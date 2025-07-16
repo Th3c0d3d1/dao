@@ -30,7 +30,7 @@ const Header = () => {
     }
   }
   return (
-    <header className="bg-gray-100 dark:bg-gray-600 shadow-sm border-b border-gray-200 dark:border-gray-500 px-6 py-4 h-16 transition-colors duration-200">
+    <header className="bg-gray-100 dark:bg-gray-600 shadow-sm border-b border-gray-200 dark:border-gray-500 px-6 py-4 transition-colors duration-200">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <motion.button
