@@ -132,7 +132,7 @@ const TokenExchange = () => {
                     value={inputAmount}
                     onChange={(e) => dispatch(setInputAmount(e.target.value))}
                     placeholder="0.0"
-                    className="flex-1 text-lg lg:text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400 min-w-0"
+                    className="flex-1 text-lg lg:text-2xl font-semibold bg-transparent dark:bg-gray-500 border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400 min-w-0"
                   />
                   <select
                     value={fromToken}
