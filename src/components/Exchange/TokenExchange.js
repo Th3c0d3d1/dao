@@ -126,13 +126,13 @@ const TokenExchange = () => {
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">From</span>
                   <span className="text-xs lg:text-sm text-gray-300">Balance: 1,000.00</span>
                 </div>
-                <div className="flex items-center space-x-2 lg:space-x-3">
+                <div className="flex items-center space-x-2 lg:space-x-3 dark:bg-gray-500">
                   <input
                     type="number"
                     value={inputAmount}
                     onChange={(e) => dispatch(setInputAmount(e.target.value))}
                     placeholder="0.0"
-                    className="flex-1 text-lg lg:text-2xl font-semibold bg-transparent dark:bg-gray-500 border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400 min-w-0"
+                    className="flex-1 text-lg lg:text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400 min-w-0"
                   />
                   <select
                     value={fromToken}
