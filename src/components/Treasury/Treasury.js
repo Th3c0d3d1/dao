@@ -325,9 +325,9 @@ const Treasury = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto min-w-0 light:bg-white dark:bg-gray-700">
+        <div className="overflow-x-auto min-w-0">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="light:bg-white dark:bg-gray-700">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Type
@@ -346,7 +346,7 @@ const Treasury = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="light:bg-white dark:bg-gray-700 divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200">
               {loading ? (
                 <tr>
                   <td colSpan="5" className="px-6 py-12 text-center">
