@@ -93,7 +93,7 @@ const Dashboard = () => {
                   {stat.change} from last month
                 </p>
               </div>
-              <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg flex-shrink-0">
+              <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-50 to-purple-50 shadow-sm border border-gray-200 rounded-lg flex-shrink-0">
                 <stat.icon className="w-5 h-5 lg:w-6 lg:h-6 text-blue-600" />
               </div>
             </div>
