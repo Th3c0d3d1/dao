@@ -80,7 +80,7 @@ const Analytics = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+        className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Treasury Impact Analysis</h3>
         <div className="space-y-4">
