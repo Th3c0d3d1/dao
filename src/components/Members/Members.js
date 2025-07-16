@@ -143,34 +143,34 @@ const Members = () => {
                                 {member ? (
                                     <div className="space-y-3">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm font-medium text-gray-700">Address:</span>
-                                            <span className="text-xs font-mono text-gray-600 truncate ml-2">
+                                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Address:</span>
+                                            <span className="text-xs font-mono text-gray-600 dark:text-gray-300 truncate ml-2">
                                                 {member.address.slice(0, 6)}...{member.address.slice(-4)}
                                             </span>
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm font-medium text-gray-700">Tokens:</span>
+                                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Tokens:</span>
                                             <span className="text-sm font-bold text-gray-900">
                                                 {parseFloat(member.balance).toLocaleString()}
                                             </span>
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm font-medium text-gray-700">Voting Weight:</span>
-                                            <span className="text-sm font-bold text-blue-600">
+                                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Voting Weight:</span>
+                                            <span className="text-sm font-bold text-blue-600 dark:text-gray-300">
                                                 {member.votingWeight}%
                                             </span>
                                         </div>
                                     </div>
                                 ) : (
                                     <div className="text-center py-4">
-                                        <p className="text-sm text-gray-500">Position Available</p>
+                                        <p className="text-sm text-gray-500 dark:text-gray-300">Position Available</p>
                                         <button className="mt-2 px-3 py-1 text-xs bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                                             Assign Role
                                         </button>
                                     </div>
                                 )}
 
-                                <p className="text-xs text-gray-500 mt-4 truncate">{config.description}</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-300 mt-4 truncate">{config.description}</p>
                             </motion.div>
                         )
                     })}
