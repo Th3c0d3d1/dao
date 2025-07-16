@@ -180,7 +180,7 @@ const Members = () => {
             {/* Department Level */}
             <div>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-gray-200 mb-6 flex items-center">
-                    <UserGroupIcon className="w-6 h-6 mr-2 text-blue-600 shadow-sm border border-gray-200 " />
+                    <UserGroupIcon className="w-6 h-6 mr-2 text-blue-600" />
                     Department Heads
                 </h2>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
