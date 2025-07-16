@@ -226,7 +226,7 @@ const Treasury = () => {
           className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Treasury Balance Over Time</h3>
-          <div className="w-full overflow-hidden">
+          <div className="w-full overflow-hidden dark:text-gray-500">
             <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
