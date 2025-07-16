@@ -230,18 +230,18 @@ const Members = () => {
 
                                 <div className="border-t pt-3">
                                     <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm font-medium text-gray-700">Employees:</span>
-                                        <span className="text-sm font-bold text-gray-900">{employees.length}</span>
+                                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Employees:</span>
+                                        <span className="text-sm font-bold text-gray-900 dark:text-gray-300">{employees.length}</span>
                                     </div>
                                     {employees.length > 0 ? (
                                         <div className="space-y-1">
                                             {employees.slice(0, 3).map((employee, index) => (
-                                                <div key={index} className="text-xs text-gray-600 font-mono truncate">
+                                                <div key={index} className="text-xs text-gray-600 dark:text-gray-300 font-mono truncate">
                                                     {employee.address.slice(0, 6)}...{employee.address.slice(-4)}
                                                 </div>
                                             ))}
                                             {employees.length > 3 && (
-                                                <p className="text-xs text-gray-500">+{employees.length - 3} more</p>
+                                                <p className="text-xs text-gray-500 dark:text-gray-300">+{employees.length - 3} more</p>
                                             )}
                                         </div>
                                     ) : (
@@ -249,7 +249,7 @@ const Members = () => {
                                     )}
                                 </div>
 
-                                <p className="text-xs text-gray-500 mt-4 truncate">{config.description}</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-300 mt-4 truncate">{config.description}</p>
                             </motion.div>
                         )
                     })}
