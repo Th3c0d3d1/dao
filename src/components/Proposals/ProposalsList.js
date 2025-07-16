@@ -84,8 +84,8 @@ const ProposalsList = () => {
             className="light:bg-white dark:bg-gray-700 rounded-lg p-3 lg:p-4 shadow-sm border border-gray-200 min-w-0"
           >
             <div className="flex items-center">
-              <div className={`p-1.5 lg:p-2 rounded-lg bg-${stat.color}-50 flex-shrink-0`}>
-                <stat.icon className={`w-4 h-4 lg:w-5 lg:h-5 shadow-sm border border-gray-200 text-${stat.color}-600 dark:text-${stat.color}-400`} />
+              <div className={`p-1.5 lg:p-2 shadow-sm border border-gray-200 rounded-lg bg-${stat.color}-50 flex-shrink-0`}>
+                <stat.icon className={`w-4 h-4 lg:w-5 lg:h-5 text-${stat.color}-600 dark:text-${stat.color}-400`} />
               </div>
               <div className="ml-2 lg:ml-3 min-w-0 flex-1">
                 <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">{stat.name}</p>
