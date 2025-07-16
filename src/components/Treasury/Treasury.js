@@ -197,7 +197,7 @@ const Treasury = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
+          className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
