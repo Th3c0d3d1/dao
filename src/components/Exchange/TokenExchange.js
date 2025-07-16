@@ -121,12 +121,12 @@ const TokenExchange = () => {
 
             {/* From Token */}
             <div className="space-y-4">
-              <div className="bg-gray-50 rounded-xl p-3 lg:p-4">
+              <div className="bg-gray-50 dark:bg-gray-500 rounded-xl p-3 lg:p-4">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">From</span>
                   <span className="text-xs lg:text-sm text-gray-300">Balance: 1,000.00</span>
                 </div>
-                <div className="flex items-center space-x-2 lg:space-x-3 dark:bg-gray-500">
+                <div className="flex items-center space-x-2 lg:space-x-3">
                   <input
                     type="number"
                     value={inputAmount}
