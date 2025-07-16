@@ -210,14 +210,14 @@ const Members = () => {
                                 {head ? (
                                     <div className="space-y-3 mb-4">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm font-medium text-gray-700">Head:</span>
-                                            <span className="text-xs font-mono text-gray-600 truncate ml-2">
+                                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Head:</span>
+                                            <span className="text-xs font-mono text-gray-600 dark:text-gray-300 truncate ml-2">
                                                 {head.address.slice(0, 6)}...{head.address.slice(-4)}
                                             </span>
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm font-medium text-gray-700">Tokens:</span>
-                                            <span className="text-sm font-bold text-gray-900">
+                                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Tokens:</span>
+                                            <span className="text-sm font-bold text-gray-900 dark:text-gray-300">
                                                 {parseFloat(head.balance).toLocaleString()}
                                             </span>
                                         </div>
