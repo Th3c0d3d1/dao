@@ -245,7 +245,7 @@ const Members = () => {
                                             )}
                                         </div>
                                     ) : (
-                                        <p className="text-xs text-gray-500">No employees assigned</p>
+                                        <p className="text-xs text-gray-500 dark:text-gray-300">No employees assigned</p>
                                     )}
                                 </div>
 
