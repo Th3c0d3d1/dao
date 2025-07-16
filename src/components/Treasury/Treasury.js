@@ -151,7 +151,7 @@ const Treasury = () => {
               <p className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-500 truncate">{balance} ETH</p>
               <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">Treasury Holdings</p>
             </div>
-            <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg flex-shrink-0">
+            <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-50 to-purple-50 shadow-sm border border-gray-200 rounded-lg flex-shrink-0">
               <CurrencyDollarIcon className="w-5 h-5 lg:w-6 lg:h-6 text-blue-600" />
             </div>
           </div>
@@ -169,7 +169,7 @@ const Treasury = () => {
               <p className="text-lg lg:text-2xl font-bold text-green-500 truncate">{totalInflow} ETH</p>
               <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">All time deposits</p>
             </div>
-            <div className="p-2 lg:p-3 bg-green-50 rounded-lg flex-shrink-0">
+            <div className="p-2 lg:p-3 bg-green-50 shadow-sm border border-gray-200 rounded-lg flex-shrink-0">
               <ArrowUpIcon className="w-5 h-5 lg:w-6 lg:h-6 text-green-600" />
             </div>
           </div>
@@ -187,7 +187,7 @@ const Treasury = () => {
               <p className="text-lg lg:text-2xl font-bold text-red-500 truncate">{totalOutflow} ETH</p>
               <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">All time payouts</p>
             </div>
-            <div className="p-2 lg:p-3 bg-red-50 rounded-lg flex-shrink-0">
+            <div className="p-2 lg:p-3 bg-red-50 shadow-sm border border-gray-200 rounded-lg flex-shrink-0">
               <ArrowDownIcon className="w-5 h-5 lg:w-6 lg:h-6 text-red-600" />
             </div>
           </div>
@@ -209,7 +209,7 @@ const Treasury = () => {
               </p>
               <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">Inflow - Outflow</p>
             </div>
-            <div className="p-2 lg:p-3 bg-yellow-50 rounded-lg flex-shrink-0">
+            <div className="p-2 lg:p-3 bg-yellow-50 shadow-sm border border-gray-200 rounded-lg flex-shrink-0">
               <ChartBarIcon className="w-5 h-5 lg:w-6 lg:h-6 text-yellow-600" />
             </div>
           </div>
