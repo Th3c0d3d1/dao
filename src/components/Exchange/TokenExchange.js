@@ -190,7 +190,7 @@ const TokenExchange = () => {
 
               {/* Exchange Rate */}
               {rate && (
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs lg:text-sm text-gray-500 dark:text-gray-200 px-4 space-y-1 sm:space-y-0">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs lg:text-sm text-gray-500 dark:text-gray-300 px-4 space-y-1 sm:space-y-0">
                   <div className="flex items-center">
                     <InformationCircleIcon className="w-4 h-4 mr-1" />
                     <span className="truncate">Rate: 1 {fromToken} = {rate} {toToken}</span>
