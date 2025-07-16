@@ -312,14 +312,14 @@ const Members = () => {
                             <div className="space-y-2 max-h-40 overflow-y-auto">
                                 {tierHolders.map((holder, index) => (
                                     <div key={index} className="flex items-center justify-between py-2 px-3 bg-gray-50 rounded-lg">
-                                        <span className="text-sm font-mono text-gray-700">
+                                        <span className="text-sm font-mono text-gray-700 dark:text-gray-300">
                                             {holder.address.slice(0, 8)}...{holder.address.slice(-6)}
                                         </span>
                                         <div className="text-right">
-                                            <p className="text-sm font-bold text-gray-900">
+                                            <p className="text-sm font-bold text-gray-900 dark:text-gray-300">
                                                 {parseFloat(holder.balance).toLocaleString()}
                                             </p>
-                                            <p className="text-xs text-gray-500">
+                                            <p className="text-xs text-gray-500 dark:text-gray-300">
                                                 {holder.votingWeight}% weight
                                             </p>
                                         </div>
@@ -327,7 +327,7 @@ const Members = () => {
                                 ))}
                             </div>
                         ) : (
-                            <p className="text-center text-gray-500 py-4">No holders in this tier</p>
+                            <p className="text-center text-gray-500 dark:text-gray-200 py-4">No holders in this tier</p>
                         )}
                     </motion.div>
                 )
