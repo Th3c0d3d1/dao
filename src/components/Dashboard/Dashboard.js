@@ -74,7 +74,7 @@ const Dashboard = () => {
       </motion.div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 dark:bg-gray-900">
         {stats.map((stat, index) => (
           <motion.div
             key={stat.name}
@@ -83,7 +83,7 @@ const Dashboard = () => {
             transition={{ delay: index * 0.1 }}
             className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow min-w-0"
           >
-            <div className="flex items-center justify-between dark:bg-gray-900">
+            <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">{stat.name}</p>
                 <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-500 mt-1 truncate">{stat.value}</p>
