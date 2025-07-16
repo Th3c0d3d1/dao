@@ -367,7 +367,7 @@ const Treasury = () => {
                             {TRANSACTION_TYPES[transaction.type]?.label || 'Unknown'}
                           </p>
                           {transaction.proposalId && (
-                            <p className="text-xs text-gray-500 truncate">Proposal #{transaction.proposalId}</p>
+                            <p className="text-xs text-gray-500  dark:text-gray-300 truncate">Proposal #{transaction.proposalId}</p>
                           )}
                         </div>
                       </div>
