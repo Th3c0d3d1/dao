@@ -65,7 +65,7 @@ const Dashboard = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-sm border border-gray-100 p-8 text-white"
+        className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-sm border p-8 text-white"
       >
         <h1 className="text-3xl font-bold mb-2 text-white">Welcome to Next Gen DAO</h1>
         <p className="text-blue-100 text-lg">
