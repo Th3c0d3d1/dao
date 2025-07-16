@@ -147,9 +147,9 @@ const Treasury = () => {
         >
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
-              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">Current Balance</p>
-              <p className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-500 truncate">{balance} ETH</p>
-              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">Treasury Holdings</p>
+              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">Current Balance</p>
+              <p className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-gray-300 truncate">{balance} ETH</p>
+              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300 mt-1 truncate">Treasury Holdings</p>
             </div>
             <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-50 to-purple-50 shadow-sm border border-gray-200 rounded-lg flex-shrink-0">
               <CurrencyDollarIcon className="w-5 h-5 lg:w-6 lg:h-6 text-blue-600" />
@@ -165,9 +165,9 @@ const Treasury = () => {
         >
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
-              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">Total Inflow</p>
+              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">Total Inflow</p>
               <p className="text-lg lg:text-2xl font-bold text-green-500 truncate">{totalInflow} ETH</p>
-              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">All time deposits</p>
+              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300 mt-1 truncate">All time deposits</p>
             </div>
             <div className="p-2 lg:p-3 bg-green-50 shadow-sm border border-gray-200 rounded-lg flex-shrink-0">
               <ArrowUpIcon className="w-5 h-5 lg:w-6 lg:h-6 text-green-600" />
