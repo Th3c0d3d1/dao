@@ -85,8 +85,8 @@ const Dashboard = () => {
           >
             <div className="flex items-center justify-between dark:bg-gray-700">
               <div>
-                <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">{stat.name}</p>
-                <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-500 mt-1 truncate">{stat.value}</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">{stat.name}</p>
+                <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-300 mt-1 truncate">{stat.value}</p>
                 <p className={`text-xs sm:text-sm mt-1 ${
                   stat.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
                 } truncate`}>
