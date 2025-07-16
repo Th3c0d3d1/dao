@@ -363,7 +363,7 @@ const Treasury = () => {
                           {getTransactionIcon(transaction.type)}
                         </div>
                         <div className="min-w-0">
-                          <p className="text-sm font-medium text-gray-900 dark:text-gray-500 truncate">
+                          <p className="text-sm font-medium text-gray-900 dark:text-gray-300 truncate">
                             {TRANSACTION_TYPES[transaction.type]?.label || 'Unknown'}
                           </p>
                           {transaction.proposalId && (
