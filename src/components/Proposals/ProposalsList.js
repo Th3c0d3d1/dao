@@ -74,7 +74,7 @@ const ProposalsList = () => {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4">
+      <div className="light:bg-white dark:bg-gray-700 grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4">
         {stats.map((stat, index) => (
           <motion.div
             key={stat.name}
