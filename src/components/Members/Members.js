@@ -128,7 +128,7 @@ const Members = () => {
                                 key={position}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow min-w-0"
+                                className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow min-w-0"
                             >
                                 <div className="flex items-center mb-4">
                                     <div className={`p-3 rounded-lg bg-${config.color}-50`}>
