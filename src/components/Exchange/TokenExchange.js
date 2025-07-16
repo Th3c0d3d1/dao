@@ -64,7 +64,7 @@ const TokenExchange = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 light:bg-white dark:bg-gray-700">
+    <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Token Exchange</h1>
@@ -77,11 +77,11 @@ const TokenExchange = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
+            className="light:bg-white dark:bg-gray-700 rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
           >
             {/* Settings Button */}
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-500">Swap Tokens</h2>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-200">Swap Tokens</h2>
               <button
                 onClick={() => setShowSettings(!showSettings)}
                 className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
@@ -99,7 +99,7 @@ const TokenExchange = () => {
                 className="mb-6 p-4 bg-gray-50 rounded-lg"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-500">Slippage Tolerance</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Slippage Tolerance</span>
                   <div className="flex space-x-2">
                     {['0.10', '0.50', '1.00'].map((value) => (
                       <button
@@ -123,8 +123,8 @@ const TokenExchange = () => {
             <div className="space-y-4">
               <div className="bg-gray-50 rounded-xl p-3 lg:p-4">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-500">From</span>
-                  <span className="text-xs lg:text-sm text-gray-500">Balance: 1,000.00</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">From</span>
+                  <span className="text-xs lg:text-sm text-gray-300">Balance: 1,000.00</span>
                 </div>
                 <div className="flex items-center space-x-2 lg:space-x-3">
                   <input
@@ -163,8 +163,8 @@ const TokenExchange = () => {
               {/* To Token */}
               <div className="bg-gray-50 rounded-xl p-3 lg:p-4">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-500">To</span>
-                  <span className="text-xs lg:text-sm text-gray-500">Balance: 0.00</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">To</span>
+                  <span className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">Balance: 0.00</span>
                 </div>
                 <div className="flex items-center space-x-2 lg:space-x-3">
                   <input
@@ -224,9 +224,9 @@ const TokenExchange = () => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
+            className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
           >
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Trades</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Recent Trades</h3>
             <div className="space-y-3">
               {recentTrades.length > 0 ? (
                 recentTrades.slice(0, 5).map((trade) => (
@@ -245,7 +245,7 @@ const TokenExchange = () => {
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-gray-500 text-center py-4">No recent trades</p>
+                <p className="text-sm text-gray-500 dark:text-gray-300 text-center py-4">No recent trades</p>
               )}
             </div>
           </motion.div>
@@ -255,21 +255,21 @@ const TokenExchange = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
+            className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
           >
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Market Stats</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Market Stats</h3>
             <div className="space-y-3">
               <div className="flex justify-between">
-                <span className="text-sm text-gray-600 truncate">24h Volume</span>
-                <span className="text-sm font-medium text-gray-900 flex-shrink-0 ml-2">$1.2M</span>
+                <span className="text-sm text-gray-600 dark:text-gray-200 truncate">24h Volume</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-gray-300 flex-shrink-0 ml-2">$1.2M</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-sm text-gray-600 truncate">Total Liquidity</span>
-                <span className="text-sm font-medium text-gray-900 flex-shrink-0 ml-2">$5.8M</span>
+                <span className="text-sm text-gray-600 dark:text-gray-200 truncate">Total Liquidity</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-gray-300 flex-shrink-0 ml-2">$5.8M</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-sm text-gray-600 truncate">Active Pairs</span>
-                <span className="text-sm font-medium text-gray-900 flex-shrink-0 ml-2">3</span>
+                <span className="text-sm text-gray-600 dark:text-gray-200 truncate">Active Pairs</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-gray-300 flex-shrink-0 ml-2">3</span>
               </div>
             </div>
           </motion.div>
