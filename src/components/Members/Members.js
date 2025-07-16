@@ -136,7 +136,7 @@ const Members = () => {
                                     </div>
                                     <div className="ml-3 min-w-0 flex-1">
                                         <h3 className="font-semibold text-gray-900 dark:text-gray-200 truncate">{position}</h3>
-                                        <p className="text-sm text-gray-600 truncate">{config.title}</p>
+                                        <p className="text-sm text-gray-600 dark:text-gray-300 truncate">{config.title}</p>
                                     </div>
                                 </div>
 
