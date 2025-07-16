@@ -180,12 +180,12 @@ const Dashboard = () => {
           </div>
           <div className="flex justify-center space-x-6 mt-4">
             {mockVotingData.map((item) => (
-              <div key={item.name} className="flex items-center">
+              <div key={item.name} className="flex items-center dark:text-gray-300">
                 <div 
                   className="w-3 h-3 rounded-full mr-2"
                   style={{ backgroundColor: item.color }}
                 />
-                <span className="text-sm text-gray-600">{item.name}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">{item.name}</span>
               </div>
             ))}
           </div>
