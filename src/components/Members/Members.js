@@ -422,7 +422,7 @@ const Members = () => {
             {loading ? (
                 <div className="text-center py-12">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                    <p className="text-gray-600 mt-4">Loading members...</p>
+                    <p className="text-gray-600 dark:text-gray-300 mt-4">Loading members...</p>
                 </div>
             ) : (
                 <>
