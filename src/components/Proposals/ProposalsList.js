@@ -88,8 +88,8 @@ const ProposalsList = () => {
                 <stat.icon className={`w-4 h-4 lg:w-5 lg:h-5 text-${stat.color}-600 dark:text-${stat.color}-400`} />
               </div>
               <div className="ml-2 lg:ml-3 min-w-0 flex-1">
-                <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">{stat.name}</p>
-                <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-500">{stat.value}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">{stat.name}</p>
+                <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-300">{stat.value}</p>
               </div>
             </div>
           </motion.div>
