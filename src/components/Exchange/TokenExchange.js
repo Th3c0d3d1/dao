@@ -161,7 +161,7 @@ const TokenExchange = () => {
               </div>
 
               {/* To Token */}
-              <div className="bg-gray-50 rounded-xl p-3 lg:p-4">
+              <div className="bg-gray-50 dark:bg-gray-500 rounded-xl p-3 lg:p-4">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">To</span>
                   <span className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">Balance: 0.00</span>
