@@ -83,7 +83,7 @@ const Dashboard = () => {
             transition={{ delay: index * 0.1 }}
             className="bg-white rounded-xl p-1 lg:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow min-w-0"
           >
-            <div className="flex items-center justify-between dark:bg-gray-700">
+            <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">{stat.name}</p>
                 <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-300 mt-1 truncate">{stat.value}</p>
