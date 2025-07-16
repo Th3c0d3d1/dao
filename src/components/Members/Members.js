@@ -198,7 +198,7 @@ const Members = () => {
                                 className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow min-w-0"
                             >
                                 <div className="flex items-center mb-4">
-                                    <div className={`p-3 rounded-lg bg-${config.color}-50`}>
+                                    <div className={`p-3 shadow-sm border border-gray-200 rounded-lg bg-${config.color}-50`}>
                                         <Icon className={`w-6 h-6 text-${config.color}-600`} />
                                     </div>
                                     <div className="ml-3 min-w-0 flex-1">
