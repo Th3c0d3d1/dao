@@ -44,7 +44,7 @@ const Sidebar = () => {
             <div className="w-9 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm px-1">NGW</span>
             </div>
-            <span className="ml-3 text-xl font-bold text-gray-900 dark:text-gray-100">Next Gen WebCorp</span>
+            <span className="ml-3 text-xl font-bold text-gray-900 dark:text-gray-100">WebCorp</span>
           </div>
         </div>
 
