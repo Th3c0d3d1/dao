@@ -113,7 +113,7 @@ const Members = () => {
         <div className="space-y-8">
             {/* Executive Level */}
             <div>
-                <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                <h2 className="text-xl font-bold dark:bg-gray-700 text-gray-900 dark:text-gray-200 mb-6 flex items-center">
                     <BuildingOfficeIcon className="w-6 h-6 mr-2 text-purple-600" />
                     Executive Leadership
                 </h2>
