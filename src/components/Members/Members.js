@@ -375,8 +375,8 @@ const Members = () => {
                             <StarIcon className="w-4 h-4 lg:w-5 lg:h-5 text-purple-600" />
                         </div>
                         <div className="ml-2 lg:ml-3 min-w-0 flex-1">
-                            <p className="text-xs lg:text-sm font-medium text-gray-600 truncate">Executives</p>
-                            <p className="text-lg lg:text-xl font-bold text-gray-900">{members.executives?.length || 0}</p>
+                            <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">Executives</p>
+                            <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-300">{members.executives?.length || 0}</p>
                         </div>
                     </div>
                 </div>
@@ -387,8 +387,8 @@ const Members = () => {
                             <UserGroupIcon className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600" />
                         </div>
                         <div className="ml-2 lg:ml-3 min-w-0 flex-1">
-                            <p className="text-xs lg:text-sm font-medium text-gray-600 truncate">Department Heads</p>
-                            <p className="text-lg lg:text-xl font-bold text-gray-900">{members.departmentHeads?.length || 0}</p>
+                            <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">Department Heads</p>
+                            <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-300">{members.departmentHeads?.length || 0}</p>
                         </div>
                     </div>
                 </div>
@@ -399,8 +399,8 @@ const Members = () => {
                             <UserIcon className="w-4 h-4 lg:w-5 lg:h-5 text-green-600" />
                         </div>
                         <div className="ml-2 lg:ml-3 min-w-0 flex-1">
-                            <p className="text-xs lg:text-sm font-medium text-gray-600 truncate">Employees</p>
-                            <p className="text-lg lg:text-xl font-bold text-gray-900">{members.employees?.length || 0}</p>
+                            <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">Employees</p>
+                            <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-300">{members.employees?.length || 0}</p>
                         </div>
                     </div>
                 </div>
@@ -411,8 +411,8 @@ const Members = () => {
                             <ChartBarIcon className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-600" />
                         </div>
                         <div className="ml-2 lg:ml-3 min-w-0 flex-1">
-                            <p className="text-xs lg:text-sm font-medium text-gray-600 truncate">Token Holders</p>
-                            <p className="text-lg lg:text-xl font-bold text-gray-900">{members.tokenHolders?.length || 0}</p>
+                            <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">Token Holders</p>
+                            <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-300">{members.tokenHolders?.length || 0}</p>
                         </div>
                     </div>
                 </div>
