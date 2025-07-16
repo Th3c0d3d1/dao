@@ -369,7 +369,7 @@ const Members = () => {
 
             {/* Stats Overview */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+                <div className="light:bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm border border-gray-200">
                     <div className="flex items-center">
                         <div className="p-1.5 lg:p-2 shadow-sm border border-gray-200 rounded-lg bg-purple-50 flex-shrink-0">
                             <StarIcon className="w-4 h-4 lg:w-5 lg:h-5 text-purple-600" />
@@ -381,7 +381,7 @@ const Members = () => {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+                <div className="light:bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm border border-gray-200">
                     <div className="flex items-center">
                         <div className="p-1.5 lg:p-2 shadow-sm border border-gray-200 rounded-lg bg-blue-50 flex-shrink-0">
                             <UserGroupIcon className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600" />
@@ -393,7 +393,7 @@ const Members = () => {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+                <div className="light:bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm border border-gray-200">
                     <div className="flex items-center">
                         <div className="p-1.5 lg:p-2 shadow-sm border border-gray-200 rounded-lg bg-green-50 flex-shrink-0">
                             <UserIcon className="w-4 h-4 lg:w-5 lg:h-5 text-green-600" />
@@ -405,7 +405,7 @@ const Members = () => {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+                <div className="light:bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm border border-gray-200">
                     <div className="flex items-center">
                         <div className="p-1.5 lg:p-2 shadow-sm border border-gray-200 rounded-lg bg-yellow-50 flex-shrink-0">
                             <ChartBarIcon className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-600" />
