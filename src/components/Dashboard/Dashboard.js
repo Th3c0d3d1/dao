@@ -150,7 +150,7 @@ const Dashboard = () => {
           transition={{ delay: 0.5 }}
           className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Proposal Status</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Proposal Status</h3>
           <div className="w-full overflow-hidden">
             <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -199,7 +199,7 @@ const Dashboard = () => {
         transition={{ delay: 0.6 }}
         className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
       >
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Recent Activity</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Recent Activity</h3>
         <div className="space-y-4">
           {[
             { action: 'New proposal created', user: '0x1234...5678', time: '2 hours ago' },
@@ -209,10 +209,10 @@ const Dashboard = () => {
           ].map((activity, index) => (
             <div key={index} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-b-0">
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-500 truncate">{activity.action}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-500 truncate">by {activity.user}</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-300 truncate">{activity.action}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-300 truncate">by {activity.user}</p>
               </div>
-              <span className="text-xs text-gray-400 dark:text-gray-500 flex-shrink-0 ml-2">{activity.time}</span>
+              <span className="text-xs text-gray-400 dark:text-gray-300 flex-shrink-0 ml-2">{activity.time}</span>
             </div>
           ))}
         </div>
