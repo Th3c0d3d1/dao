@@ -232,7 +232,7 @@ const Treasury = () => {
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis 
                 dataKey="date" 
-                stroke="#6b7280 dark:#e5e7eb"
+                stroke="#6b7280"
                 tick={{ fontSize: 12 }}
               />
               <YAxis 
