@@ -102,7 +102,7 @@ const Dashboard = () => {
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 dark:bg-gray-700">
         {/* Treasury Growth */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
