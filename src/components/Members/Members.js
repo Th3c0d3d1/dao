@@ -110,7 +110,7 @@ const Members = () => {
     }, [dao, token, dispatch])
 
     const renderCorporateStructure = () => (
-        <div className="space-y-8 dark:bg-gray-700 dark:text-gray-200">
+        <div className="space-y-8 dark:text-gray-200">
             {/* Executive Level */}
             <div>
                 <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
