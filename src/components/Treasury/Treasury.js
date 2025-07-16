@@ -183,9 +183,9 @@ const Treasury = () => {
         >
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
-              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">Total Outflow</p>
+              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">Total Outflow</p>
               <p className="text-lg lg:text-2xl font-bold text-red-500 truncate">{totalOutflow} ETH</p>
-              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">All time payouts</p>
+              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300 mt-1 truncate">All time payouts</p>
             </div>
             <div className="p-2 lg:p-3 bg-red-50 shadow-sm border border-gray-200 rounded-lg flex-shrink-0">
               <ArrowDownIcon className="w-5 h-5 lg:w-6 lg:h-6 text-red-600" />
@@ -201,13 +201,13 @@ const Treasury = () => {
         >
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
-              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-600 truncate">Net Flow</p>
+              <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">Net Flow</p>
               <p className={`text-lg lg:text-2xl font-bold truncate ${
                 (parseFloat(totalInflow) - parseFloat(totalOutflow)) >= 0 ? 'text-green-600' : 'text-red-600'
               }`}>
                 {(parseFloat(totalInflow) - parseFloat(totalOutflow)).toFixed(4)} ETH
               </p>
-              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-500 mt-1 truncate">Inflow - Outflow</p>
+              <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300 mt-1 truncate">Inflow - Outflow</p>
             </div>
             <div className="p-2 lg:p-3 bg-yellow-50 shadow-sm border border-gray-200 rounded-lg flex-shrink-0">
               <ChartBarIcon className="w-5 h-5 lg:w-6 lg:h-6 text-yellow-600" />
@@ -225,7 +225,7 @@ const Treasury = () => {
           transition={{ delay: 0.4 }}
           className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Treasury Balance Over Time</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Treasury Balance Over Time</h3>
           <div className="w-full overflow-hidden">
             <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
@@ -266,7 +266,7 @@ const Treasury = () => {
           transition={{ delay: 0.5 }}
           className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Transaction Types</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Transaction Types</h3>
           <div className="w-full overflow-hidden">
             <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -317,8 +317,8 @@ const Treasury = () => {
       >
         <div className="p-4 lg:p-6 border-b border-gray-200">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600">Transaction History</h3>
-            <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-500">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">Transaction History</h3>
+            <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
               <FunnelIcon className="w-4 h-4" />
               <span>{filteredTransactions.length} transactions</span>
             </div>
@@ -373,7 +373,7 @@ const Treasury = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm font-mono text-gray-900 dark:text-gray-500 truncate">
+                      <span className="text-sm font-mono text-gray-900 dark:text-gray-300 truncate">
                         {formatAddress(transaction.address)}
                       </span>
                     </td>
@@ -387,7 +387,7 @@ const Treasury = () => {
                         {formatAmount(transaction.amount)} ETH
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
                       {formatDate(transaction.timestamp)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
