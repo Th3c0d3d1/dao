@@ -356,7 +356,7 @@ const Treasury = () => {
                 </tr>
               ) : paginatedTransactions.length > 0 ? (
                 paginatedTransactions.map((transaction, index) => (
-                  <tr key={index} className="hover:bg-gray-50 hover:dark:bg-gray-600 transition-colors">
+                  <tr key={index} className="hover:light:bg-gray-50 hover:dark:bg-gray-600 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className={`p-2 rounded-lg bg-${getTransactionColor(transaction.type)}-50 mr-3`}>
