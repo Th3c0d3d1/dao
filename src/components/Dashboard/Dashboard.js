@@ -108,7 +108,7 @@ const Dashboard = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
+          className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
         >
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Treasury Growth</h3>
           <div className="w-full overflow-hidden">
