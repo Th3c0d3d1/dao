@@ -327,7 +327,7 @@ const Treasury = () => {
 
         <div className="overflow-x-auto min-w-0">
           <table className="w-full">
-            <thead className="light:bg-white dark:bg-gray-700">
+            <thead className="light:bg-white dark:bg-gray-700 shadow-sm border">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Type
