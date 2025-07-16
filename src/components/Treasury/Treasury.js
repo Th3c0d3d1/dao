@@ -229,7 +229,7 @@ const Treasury = () => {
           <div className="w-full overflow-hidden dark:text-gray-500">
             <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis 
                 dataKey="date" 
                 stroke="#6b7280"
