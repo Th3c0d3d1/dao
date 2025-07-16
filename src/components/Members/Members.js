@@ -224,7 +224,7 @@ const Members = () => {
                                     </div>
                                 ) : (
                                     <div className="text-center py-2 mb-4">
-                                        <p className="text-sm text-gray-500">No Department Head</p>
+                                        <p className="text-sm text-gray-500 dark:text-gray-300">No Department Head</p>
                                     </div>
                                 )}
 
