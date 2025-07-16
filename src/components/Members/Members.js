@@ -231,7 +231,7 @@ const Members = () => {
                                 <div className="border-t pt-3">
                                     <div className="flex items-center justify-between mb-2">
                                         <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Employees:</span>
-                                        <span className="text-sm font-bold text-gray-900 dark:text-gray-300">{employees.length}</span>
+                                        <span className="text-sm font-bold text-gray-900 dark:text-gray-200">{employees.length}</span>
                                     </div>
                                     {employees.length > 0 ? (
                                         <div className="space-y-1">
