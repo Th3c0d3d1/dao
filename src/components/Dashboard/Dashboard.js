@@ -113,8 +113,8 @@ const Dashboard = () => {
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Treasury Growth</h3>
           <div className="w-full overflow-hidden dark:text-gray-500">
             <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={mockTreasuryData} className=" dark:text-gray-200">
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+            <LineChart data={mockTreasuryData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0"/>
               <XAxis dataKey="month" stroke="#6b7280" />
               <YAxis stroke="#6b7280" />
               <Tooltip 
