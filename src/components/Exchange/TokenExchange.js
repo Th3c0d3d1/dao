@@ -137,7 +137,7 @@ const TokenExchange = () => {
                   <select
                     value={fromToken}
                     onChange={(e) => dispatch(setFromToken(e.target.value))}
-                    className="flex items-center space-x-2 px-2 lg:px-3 py-2 bg-white rounded-lg border border-gray-200 text-xs lg:text-sm font-medium text-gray-900 dark:text-gray-200 hover:bg-gray-50 transition-colors flex-shrink-0"
+                    className="flex items-center space-x-2 px-2 lg:px-3 py-2 bg-white rounded-lg border border-gray-200 text-xs lg:text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors flex-shrink-0"
                   >
                     {AVAILABLE_TOKENS.map((token) => (
                       <option key={token.symbol} value={token.symbol}>
@@ -172,7 +172,7 @@ const TokenExchange = () => {
                     value={calculating ? 'Calculating...' : outputAmount}
                     readOnly
                     placeholder="0.0"
-                    className="flex-1 text-lg lg:text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-500 placeholder-gray-400 min-w-0"
+                    className="flex-1 text-lg lg:text-2xl font-semibold bg-transparent border-none outline-none text-gray-900 dark:text-gray-200 placeholder-gray-400 min-w-0"
                   />
                   <select
                     value={toToken}
