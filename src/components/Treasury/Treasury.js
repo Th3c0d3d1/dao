@@ -325,7 +325,7 @@ const Treasury = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto min-w-0">
+        <div className="overflow-x-auto min-w-0 light:bg-white dark:bg-gray-700">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
