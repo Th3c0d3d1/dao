@@ -301,7 +301,7 @@ const Treasury = () => {
                   className="w-3 h-3 rounded-full mr-2"
                   style={{ backgroundColor: item.color }}
                 />
-                <span className="text-sm text-gray-600">{item.name}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">{item.name}</span>
               </div>
             ))}
           </div>
