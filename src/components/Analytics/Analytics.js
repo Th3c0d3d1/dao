@@ -82,7 +82,7 @@ const Analytics = () => {
         animate={{ opacity: 1, y: 0 }}
         className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Treasury Impact Analysis</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 dark:bg-gray-700 mb-4">Treasury Impact Analysis</h3>
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
             <div className="flex items-center">
