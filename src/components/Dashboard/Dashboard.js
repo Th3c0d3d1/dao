@@ -31,7 +31,7 @@ const Dashboard = () => {
   const stats = [
     {
       name: 'Treasury Balance',
-      value: `${parseFloat(treasuryBalance).toFixed(2)} ETH`,
+      value: `${parseFloat(treasuryBalance).toFixed(5)} ETH`,
       icon: CurrencyDollarIcon,
       change: '+12.5%',
       changeType: 'positive',
