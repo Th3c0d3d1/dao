@@ -84,19 +84,19 @@ const Analytics = () => {
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Treasury Impact Analysis</h3>
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-blue-50 shadow-sm border border-gray-200 dark:bg-gray-700 dark:text-gray-700 rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-blue-50 shadow-sm border border-gray-200 dark:bg-gray-700 rounded-lg">
             <div className="flex items-center">
               <DocumentTextIcon className="w-5 h-5 text-blue-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-600">Proposal Allocations</p>
-                <p className="text-xs text-gray-600 dark:text-gray-500">Impact on treasury balance</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-200">Proposal Allocations</p>
+                <p className="text-xs text-gray-600 dark:text-gray-300">Impact on treasury balance</p>
               </div>
             </div>
             <div className="text-right">
               <p className={`text-lg font-bold ${getPercentageColor(treasuryAnalytics.proposalImpact)}`}>
                 {formatPercentage(treasuryAnalytics.proposalImpact)}
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-500">{treasuryAnalytics.totalProposalAmount} ETH</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{treasuryAnalytics.totalProposalAmount} ETH</p>
             </div>
           </div>
 
