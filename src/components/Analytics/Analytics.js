@@ -100,35 +100,35 @@ const Analytics = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-green-50 dark:bg-gray-700 rounded-lg">
             <div className="flex items-center">
               <ArrowUpIcon className="w-5 h-5 text-green-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-600">Approved Proposals</p>
-                <p className="text-xs text-gray-600 dark:text-gray-500">Successful funding outcomes</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-200">Approved Proposals</p>
+                <p className="text-xs text-gray-600 dark:text-gray-300">Successful funding outcomes</p>
               </div>
             </div>
             <div className="text-right">
               <p className={`text-lg font-bold ${getPercentageColor(treasuryAnalytics.approvedImpact)}`}>
                 {formatPercentage(treasuryAnalytics.approvedImpact)}
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-500">{treasuryAnalytics.approvedAmount} ETH</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{treasuryAnalytics.approvedAmount} ETH</p>
             </div>
           </div>
 
-          <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-purple-50 dark:bg-gray-700 rounded-lg">
             <div className="flex items-center">
               <UserGroupIcon className="w-5 h-5 text-purple-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-600">Token Holder Activity</p>
-                <p className="text-xs text-gray-600 dark:text-gray-500">Private transactions impact</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-200">Token Holder Activity</p>
+                <p className="text-xs text-gray-600 dark:text-gray-300">Private transactions impact</p>
               </div>
             </div>
             <div className="text-right">
               <p className={`text-lg font-bold ${getPercentageColor(treasuryAnalytics.holderImpact)}`}>
                 {formatPercentage(treasuryAnalytics.holderImpact)}
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-500">{treasuryAnalytics.holderVolume} ETH</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{treasuryAnalytics.holderVolume} ETH</p>
             </div>
           </div>
         </div>
