@@ -31,7 +31,7 @@ const Dashboard = () => {
   const stats = [
     {
       name: 'Treasury Balance',
-      value: `${treasuryBalance} ETH`,
+      value: `${parseFloat(treasuryBalance).toFixed(2)} ETH`,
       icon: CurrencyDollarIcon,
       change: '+12.5%',
       changeType: 'positive',
@@ -86,7 +86,7 @@ const Dashboard = () => {
             <div className="flex items-center justify-between dark:bg-gray-700">
               <div>
                 <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-200 truncate">{stat.name}</p>
-                <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-300 mt-1 truncate">{stat.value}</p>
+                <p className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-300 mt-1 truncate" title={stat.value}>{stat.value}</p>
                 <p className={`text-xs sm:text-sm mt-1 ${
                   stat.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
                 } truncate`}>
