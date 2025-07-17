@@ -86,7 +86,7 @@ const Analytics = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
             <div className="flex items-center">
-              <DocumentTextIcon className="w-5 h-5 text-blue-600 mr-3" />
+              <DocumentTextIcon className="w-5 h-5 text-blue-600 mr-3 shadow-sm border border-gray-200" />
               <div>
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-600">Proposal Allocations</p>
                 <p className="text-xs text-gray-600 dark:text-gray-500">Impact on treasury balance</p>
