@@ -139,7 +139,7 @@ const Analytics = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+        className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Treasury Balance Trend</h3>
         <ResponsiveContainer width="100%" height={250}>
