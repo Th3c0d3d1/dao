@@ -250,7 +250,7 @@ const Analytics = () => {
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Price History</h3>
         <ResponsiveContainer width="100%" height={200}>
-          <LineChart data={tokenMetrics.priceHistory}>
+          <LineChart className="dark:text-gray-700" data={tokenMetrics.priceHistory}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis dataKey="date" stroke="#6b7280" tick={{ fontSize: 10 }} />
             <YAxis stroke="#6b7280" tick={{ fontSize: 10 }} />
