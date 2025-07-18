@@ -100,7 +100,7 @@ const Analytics = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between p-4 bg-green-50 dark:bg-gray-700 rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
             <div className="flex items-center">
               <ArrowUpIcon className="w-5 h-5 text-green-600 mr-3" />
               <div>
