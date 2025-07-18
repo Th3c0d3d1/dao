@@ -222,21 +222,21 @@ const Analytics = () => {
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Token Purchase Analytics</h3>
         <div className="space-y-4">
           <div className="text-center p-4 bg-green-50 rounded-lg">
-            <p className="text-sm text-gray-600 dark:text-gray-500">Average Purchase Price</p>
+            <p className="text-sm text-gray-600 dark:text-gray-700">Average Purchase Price</p>
             <p className="text-2xl font-bold text-green-600">{formatCurrency(tokenMetrics.avgPurchasePrice)}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-500">Per token</p>
+            <p className="text-xs text-gray-500 dark:text-gray-700">Per token</p>
           </div>
 
           <div className="text-center p-4 bg-blue-50 rounded-lg">
-            <p className="text-sm text-gray-600 dark:text-gray-500">Average Purchase Quantity</p>
+            <p className="text-sm text-gray-600 dark:text-gray-700">Average Purchase Quantity</p>
             <p className="text-2xl font-bold text-blue-600">{formatTokens(tokenMetrics.avgPurchaseQuantity)}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-500">Tokens per transaction</p>
+            <p className="text-xs text-gray-500 dark:text-gray-700">Tokens per transaction</p>
           </div>
 
           <div className="text-center p-4 bg-purple-50 rounded-lg">
-            <p className="text-sm text-gray-600 dark:text-gray-500">Total Volume</p>
+            <p className="text-sm text-gray-600 dark:text-gray-700">Total Volume</p>
             <p className="text-2xl font-bold text-purple-600">{formatCurrency(tokenMetrics.totalVolume)}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-500">All time</p>
+            <p className="text-xs text-gray-500 dark:text-gray-700">All time</p>
           </div>
         </div>
       </motion.div>
