@@ -194,7 +194,7 @@ const Analytics = () => {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-900 dark:text-gray-200">{rate.pair}</p>
-                    <p className="text-xs text-gray-600 dark:text-gray-600">24h Volume: {formatCurrency(rate.volume24h)}</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-300">24h Volume: {formatCurrency(rate.volume24h)}</p>
                   </div>
                 </div>
                 <div className="text-right">
