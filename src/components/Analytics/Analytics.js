@@ -349,7 +349,7 @@ const Analytics = () => {
         className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Token Holder Distribution</h3>
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={300} className="dark:text-gray-700">
           <PieChart>
             <Pie
               data={holderDistribution}
@@ -359,7 +359,6 @@ const Analytics = () => {
               outerRadius={120}
               paddingAngle={5}
               dataKey="percentage"
-              className="dark:text-gray-700"
             >
               {holderDistribution.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
