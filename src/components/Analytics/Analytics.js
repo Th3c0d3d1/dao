@@ -404,13 +404,13 @@ const Analytics = () => {
                   style={{ backgroundColor: tier.color }}
                 />
                 <div>
-                  <p className="text-sm font-medium light:text-gray-900 dark:text-gray-500">{tier.name}</p>
-                  <p className="text-xs text-gray-600 dark:text-gray-500">{tier.holders} holders</p>
+                  <p className="text-sm font-medium light:text-gray-900 dark:text-gray-200">{tier.name}</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-300">{tier.holders} holders</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-sm font-bold text-gray-900 dark:text-gray-500">{tier.percentage}%</p>
-                <p className="text-xs text-gray-600 dark:text-gray-500">{formatTokens(tier.tokens)} tokens</p>
+                <p className="text-sm font-bold text-gray-900 dark:text-gray-300">{tier.percentage}%</p>
+                <p className="text-xs text-gray-600 dark:text-gray-300">{formatTokens(tier.tokens)} tokens</p>
               </div>
             </div>
           ))}
