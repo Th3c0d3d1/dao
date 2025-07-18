@@ -423,7 +423,7 @@ const Analytics = () => {
     <div className="space-y-6">
       {/* Quarter Selection */}
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Quarterly Analysis</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">Quarterly Analysis</h3>
         <select
           value={selectedQuarter}
           onChange={(e) => setSelectedQuarter(e.target.value)}
