@@ -320,7 +320,7 @@ const Analytics = () => {
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Proposal Performance</h3>
         <ResponsiveContainer width="100%" height={250}>
-          <BarChart data={proposalMetrics.performanceData}>
+          <BarChart data={proposalMetrics.performanceData} className="dark:text-gray-700">
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis dataKey="month" stroke="#6b7280" tick={{ fontSize: 12 }} />
             <YAxis stroke="#6b7280" tick={{ fontSize: 12 }} />
