@@ -143,7 +143,7 @@ const Analytics = () => {
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Treasury Balance Trend</h3>
         <ResponsiveContainer width="100%" height={250}>
-          <AreaChart data={treasuryAnalytics.balanceHistory}>
+          <AreaChart data={treasuryAnalytics.balanceHistory} className="dark:text-gray-800">
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis dataKey="date" stroke="#6b7280" tick={{ fontSize: 12 }} />
             <YAxis stroke="#6b7280" tick={{ fontSize: 12 }} />
