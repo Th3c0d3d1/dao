@@ -348,7 +348,7 @@ const Analytics = () => {
         animate={{ opacity: 1, y: 0 }}
         className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">Token Holder Distribution</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Token Holder Distribution</h3>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
