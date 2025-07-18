@@ -198,7 +198,7 @@ const Analytics = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-gray-900 dark:text-gray-500">{rate.price}</p>
+                  <p className="text-lg font-bold text-gray-900 dark:text-gray-200">{rate.price}</p>
                   <div className="flex items-center">
                     <Icon className={`w-4 h-4 mr-1 ${getPercentageColor(rate.change24h)}`} />
                     <span className={`text-sm font-medium ${getPercentageColor(rate.change24h)}`}>
