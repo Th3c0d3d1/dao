@@ -515,7 +515,7 @@ const Analytics = () => {
 
         {/* Metric Navigation */}
         <div className="overflow-x-auto">
-          <div className="flex space-x-2 light:bg-gray-100 dark:bg-gray-500 rounded-lg p-1 min-w-max">
+          <div className="flex space-x-2 light:bg-gray-100 dark:bg-gray-400 rounded-lg p-1 min-w-max">
           {[
             { id: 'treasury', label: 'Treasury', icon: CurrencyDollarIcon },
             { id: 'exchange', label: 'Exchange', icon: ArrowTrendingUpIcon },
