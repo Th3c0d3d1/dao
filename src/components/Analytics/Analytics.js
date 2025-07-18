@@ -96,7 +96,7 @@ const Analytics = () => {
               <p className={`text-lg font-bold ${getPercentageColor(treasuryAnalytics.proposalImpact)}`}>
                 {formatPercentage(treasuryAnalytics.proposalImpact)}
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{treasuryAnalytics.totalProposalAmount} ETH</p>
+              <p className="text-sm text-gray-600 dark:text-gray-600">{treasuryAnalytics.totalProposalAmount} ETH</p>
             </div>
           </div>
 
