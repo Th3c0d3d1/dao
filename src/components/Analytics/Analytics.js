@@ -183,7 +183,7 @@ const Analytics = () => {
         className="light:bg-white dark:bg-gray-700 dark:text-gray-200 rounded-xl p-6 shadow-sm border border-gray-200"
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 dark:bg-gray-700 mb-4">Live Exchange Rates</h3>
-        <div className="space-y-4">
+        <div className="space-y-4 dark:bg-gray-700">
           {exchangeRates.map((rate, index) => {
             const Icon = getPercentageIcon(rate.change24h)
             return (
