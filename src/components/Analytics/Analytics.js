@@ -447,7 +447,7 @@ const Analytics = () => {
           >
             <div className="flex items-center justify-between">
               <div className="min-w-0 flex-1">
-                <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-500 capitalize truncate">
+                <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 capitalize truncate">
                   {key.replace(/([A-Z])/g, ' $1').trim()}
                 </p>
                 <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-500 truncate">
