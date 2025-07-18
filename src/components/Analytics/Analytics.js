@@ -359,6 +359,7 @@ const Analytics = () => {
               outerRadius={120}
               paddingAngle={5}
               dataKey="percentage"
+              className="dark:text-gray-700"
             >
               {holderDistribution.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
@@ -404,7 +405,7 @@ const Analytics = () => {
                   style={{ backgroundColor: tier.color }}
                 />
                 <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-gray-500">{tier.name}</p>
+                  <p className="text-sm font-medium light:text-gray-900 dark:text-gray-500">{tier.name}</p>
                   <p className="text-xs text-gray-600 dark:text-gray-500">{tier.holders} holders</p>
                 </div>
               </div>
