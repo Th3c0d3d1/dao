@@ -182,8 +182,8 @@ const Analytics = () => {
         animate={{ opacity: 1, y: 0 }}
         className="light:bg-white dark:bg-gray-700 dark:text-gray-200 rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold light:text-gray-900 light:bg-white dark:text-gray-200 dark:bg-gray-700 mb-4">Live Exchange Rates</h3>
-        <div className="space-y-4 dark:bg-gray-700">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 dark:bg-gray-700 mb-4">Live Exchange Rates</h3>
+        <div className="space-y-4">
           {exchangeRates.map((rate, index) => {
             const Icon = getPercentageIcon(rate.change24h)
             return (
@@ -193,7 +193,7 @@ const Analytics = () => {
                     <span className="text-white text-xs font-bold">{rate.symbol}</span>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-gray-300">{rate.pair}</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-500">{rate.pair}</p>
                     <p className="text-xs text-gray-600 dark:text-gray-300">24h Volume: {formatCurrency(rate.volume24h)}</p>
                   </div>
                 </div>
@@ -248,7 +248,7 @@ const Analytics = () => {
         transition={{ delay: 0.2 }}
         className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Price History</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Price History</h3>
         <ResponsiveContainer width="100%" height={200}>
           <LineChart data={tokenMetrics.priceHistory}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
