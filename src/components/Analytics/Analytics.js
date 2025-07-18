@@ -227,7 +227,7 @@ const Analytics = () => {
             <p className="text-xs text-gray-500 dark:text-gray-700">Per token</p>
           </div>
 
-          <div className="text-center p-4 bg-blue-50 rounded-lg">
+          <div className="text-center p-4 bg-blue-100 rounded-lg">
             <p className="text-sm text-gray-600 dark:text-gray-700">Average Purchase Quantity</p>
             <p className="text-2xl font-bold text-blue-600">{formatTokens(tokenMetrics.avgPurchaseQuantity)}</p>
             <p className="text-xs text-gray-500 dark:text-gray-700">Tokens per transaction</p>
