@@ -299,7 +299,7 @@ const Members = () => {
                         </div>
 
                         <div className="mb-4">
-                            <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+                            <div className="flex items-center justify-between text-sm light:text-gray-600 dark:text-gray-300 mb-2">
                                 <span>Token Range:</span>
                                 <span className="font-medium">
                                     {tier.minTokens.toLocaleString()}
