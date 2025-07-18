@@ -187,7 +187,7 @@ const Analytics = () => {
           {exchangeRates.map((rate, index) => {
             const Icon = getPercentageIcon(rate.change24h)
             return (
-              <div key={index} className="flex items-center justify-between p-3 light:bg-gray-50 dark:bg-gray-500 rounded-lg">
+              <div key={index} className="flex items-center justify-between p-3 light:bg-gray-100 dark:bg-gray-500 rounded-lg">
                 <div className="flex items-center">
                   <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-3">
                     <span className="text-white text-xs font-bold">{rate.symbol}</span>
@@ -285,25 +285,25 @@ const Analytics = () => {
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Proposal Analytics</h3>
         <div className="grid grid-cols-2 gap-4">
-          <div className="text-center p-4 bg-red-50 rounded-lg">
+          <div className="text-center p-4 bg-red-100 rounded-lg">
             <p className="text-sm text-gray-600 dark:text-gray-700">Average Cost</p>
             <p className="text-xl font-bold text-red-600">{proposalMetrics.avgCost} ETH</p>
             <p className="text-xs text-gray-500 dark:text-gray-700">Per proposal</p>
           </div>
 
-          <div className="text-center p-4 bg-green-50 rounded-lg">
+          <div className="text-center p-4 bg-green-100 rounded-lg">
             <p className="text-sm text-gray-600 dark:text-gray-700">Average Returns</p>
             <p className="text-xl font-bold text-green-600">{formatPercentage(proposalMetrics.avgReturns)}</p>
             <p className="text-xs text-gray-500 dark:text-gray-700">ROI estimate</p>
           </div>
 
-          <div className="text-center p-4 bg-blue-50 rounded-lg">
+          <div className="text-center p-4 bg-blue-100 rounded-lg">
             <p className="text-sm text-gray-600 dark:text-gray-700">Success Rate</p>
             <p className="text-xl font-bold text-blue-600">{formatPercentage(proposalMetrics.successRate)}</p>
             <p className="text-xs text-gray-500 dark:text-gray-700">Approval rate</p>
           </div>
 
-          <div className="text-center p-4 bg-yellow-50 rounded-lg">
+          <div className="text-center p-4 bg-yellow-100 rounded-lg">
             <p className="text-sm text-gray-600 dark:text-gray-700">Total Funded</p>
             <p className="text-xl font-bold text-yellow-600">{proposalMetrics.totalFunded} ETH</p>
             <p className="text-xs text-gray-500 dark:text-gray-700">All time</p>
