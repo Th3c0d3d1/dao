@@ -280,7 +280,7 @@ const Members = () => {
                         key={tier.name}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+                        className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
                     >
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center">
@@ -288,13 +288,13 @@ const Members = () => {
                                     <Icon className={`w-6 h-6 text-${tier.color}-600`} />
                                 </div>
                                 <div className="ml-3">
-                                    <h3 className="font-semibold text-gray-900">{tier.name}</h3>
-                                    <p className="text-sm text-gray-600">{tier.description}</p>
+                                    <h3 className="font-semibold light:text-gray-700 dark:text-gray-200">{tier.name}</h3>
+                                    <p className="text-sm light:text-gray-600 dark:text-gray-300">{tier.description}</p>
                                 </div>
                             </div>
                             <div className="text-right">
-                                <p className="text-2xl font-bold text-gray-900">{tierHolders.length}</p>
-                                <p className="text-sm text-gray-600">holders</p>
+                                <p className="text-2xl font-bold light:text-gray-700 dark:text-gray-300">{tierHolders.length}</p>
+                                <p className="text-sm light:text-gray-600 dark:text-gray-300">holders</p>
                             </div>
                         </div>
 
