@@ -472,9 +472,9 @@ const Analytics = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
+        className="light:bg-white dark:bg-gray-700 rounded-xl p-4 lg:p-6 shadow-sm border border-gray-200 min-w-0"
       >
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Quarterly Comparison</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Quarterly Comparison</h3>
         <div className="w-full overflow-hidden">
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={Object.entries(quarterlyData).map(([quarter, data]) => ({
@@ -509,8 +509,8 @@ const Analytics = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Analytics Dashboard</h1>
-          <p className="text-gray-600 dark:text-gray-200 mt-1">Comprehensive insights and performance metrics</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-200">Analytics Dashboard</h1>
+          <p className="text-gray-600 dark:text-gray-300 mt-1">Comprehensive insights and performance metrics</p>
         </div>
 
         {/* Metric Navigation */}
