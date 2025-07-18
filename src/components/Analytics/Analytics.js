@@ -104,15 +104,15 @@ const Analytics = () => {
             <div className="flex items-center">
               <ArrowUpIcon className="w-5 h-5 text-green-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-200">Approved Proposals</p>
-                <p className="text-xs text-gray-600 dark:text-gray-300">Successful funding outcomes</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-700">Approved Proposals</p>
+                <p className="text-xs text-gray-600 dark:text-gray-600">Successful funding outcomes</p>
               </div>
             </div>
             <div className="text-right">
               <p className={`text-lg font-bold ${getPercentageColor(treasuryAnalytics.approvedImpact)}`}>
                 {formatPercentage(treasuryAnalytics.approvedImpact)}
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{treasuryAnalytics.approvedAmount} ETH</p>
+              <p className="text-sm text-gray-600 dark:text-gray-600">{treasuryAnalytics.approvedAmount} ETH</p>
             </div>
           </div>
 
@@ -120,15 +120,15 @@ const Analytics = () => {
             <div className="flex items-center">
               <UserGroupIcon className="w-5 h-5 text-purple-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-200">Token Holder Activity</p>
-                <p className="text-xs text-gray-600 dark:text-gray-300">Private transactions impact</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-700">Token Holder Activity</p>
+                <p className="text-xs text-gray-600 dark:text-gray-600">Private transactions impact</p>
               </div>
             </div>
             <div className="text-right">
               <p className={`text-lg font-bold ${getPercentageColor(treasuryAnalytics.holderImpact)}`}>
                 {formatPercentage(treasuryAnalytics.holderImpact)}
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{treasuryAnalytics.holderVolume} ETH</p>
+              <p className="text-sm text-gray-600 dark:text-gray-600">{treasuryAnalytics.holderVolume} ETH</p>
             </div>
           </div>
         </div>
