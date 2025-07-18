@@ -392,9 +392,9 @@ const Analytics = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+        className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Distribution Breakdown</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Distribution Breakdown</h3>
         <div className="space-y-4">
           {holderDistribution.map((tier, index) => (
             <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
