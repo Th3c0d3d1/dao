@@ -527,7 +527,7 @@ const Analytics = () => {
               key={metric.id}
               onClick={() => setActiveMetric(metric.id)}
               className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${activeMetric === metric.id
-                  ? 'bg-gray-300 text-gray-900 shadow-sm'
+                  ? 'dark:bg-gray-300 text-gray-900 shadow-sm'
                   : 'light:text-gray-400 hover:text-gray-900 whitespace-nowrap'
                 }`}
             >
