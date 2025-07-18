@@ -260,7 +260,7 @@ const Members = () => {
 
     const renderTokenHolders = () => (
         <div className="space-y-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <h2 className="text-xl font-bold light:text-gray-900 dark:text-gray-200 mb-6 flex items-center">
                 <ChartBarIcon className="w-6 h-6 mr-2 text-green-600" />
                 Token Holders by Voting Weight
             </h2>
