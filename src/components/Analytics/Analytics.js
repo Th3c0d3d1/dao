@@ -526,8 +526,8 @@ const Analytics = () => {
             <button
               key={metric.id}
               onClick={() => setActiveMetric(metric.id)}
-              className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${activeMetric === metric.id
-                  ? 'light:bg-white dark:bg-gray-700 text-gray-900 shadow-sm'
+              className={`flex items-center px-3 py-2 light:bg-white dark:bg-gray-700 rounded-lg text-sm font-medium transition-colors ${activeMetric === metric.id
+                  ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-gray-500 hover:text-gray-900 whitespace-nowrap'
                 }`}
             >
