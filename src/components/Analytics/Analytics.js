@@ -476,7 +476,7 @@ const Analytics = () => {
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Quarterly Comparison</h3>
         <div className="w-full overflow-hidden">
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={300} className="dark:text-gray-700">
             <BarChart data={Object.entries(quarterlyData).map(([quarter, data]) => ({
               quarter,
               treasuryGrowth: data.treasuryGrowth || 0,
