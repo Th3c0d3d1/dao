@@ -187,7 +187,7 @@ const Analytics = () => {
           {exchangeRates.map((rate, index) => {
             const Icon = getPercentageIcon(rate.change24h)
             return (
-              <div key={index} className="flex items-center justify-between p-3 light:bg-gray-50 dark:bg-gray-500 rounded-lg">
+              <div key={index} className="flex items-center justify-between p-3 light:bg-gray-50 dark:bg-gray-500 dark:text-gray-200 rounded-lg">
                 <div className="flex items-center">
                   <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-3">
                     <span className="text-white text-xs font-bold">{rate.symbol}</span>
