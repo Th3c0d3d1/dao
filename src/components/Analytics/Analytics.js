@@ -397,7 +397,7 @@ const Analytics = () => {
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Distribution Breakdown</h3>
         <div className="space-y-4">
           {holderDistribution.map((tier, index) => (
-            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-600 rounded-lg">
+            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-500 rounded-lg">
               <div className="flex items-center">
                 <div
                   className="w-4 h-4 rounded-full mr-3"
