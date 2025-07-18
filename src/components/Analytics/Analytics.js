@@ -450,7 +450,7 @@ const Analytics = () => {
                 <p className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-200 capitalize truncate">
                   {key.replace(/([A-Z])/g, ' $1').trim()}
                 </p>
-                <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-500 truncate">
+                <p className="text-lg lg:text-xl font-bold text-gray-900 dark:text-gray-300 truncate">
                   {typeof value === 'number' ?
                     (key.includes('percentage') || key.includes('rate') ? formatPercentage(value) :
                       key.includes('cost') || key.includes('volume') ? `${value} ETH` :
