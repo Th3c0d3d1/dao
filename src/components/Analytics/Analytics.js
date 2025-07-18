@@ -281,32 +281,32 @@ const Analytics = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+        className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Proposal Analytics</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Proposal Analytics</h3>
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center p-4 bg-red-50 rounded-lg">
-            <p className="text-sm text-gray-600 dark:text-gray-500">Average Cost</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">Average Cost</p>
             <p className="text-xl font-bold text-red-600">{proposalMetrics.avgCost} ETH</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Per proposal</p>
+            <p className="text-xs text-gray-500 dark:text-gray-300">Per proposal</p>
           </div>
 
           <div className="text-center p-4 bg-green-50 rounded-lg">
-            <p className="text-sm text-gray-600 dark:text-gray-500">Average Returns</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">Average Returns</p>
             <p className="text-xl font-bold text-green-600">{formatPercentage(proposalMetrics.avgReturns)}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-500">ROI estimate</p>
+            <p className="text-xs text-gray-500 dark:text-gray-300">ROI estimate</p>
           </div>
 
           <div className="text-center p-4 bg-blue-50 rounded-lg">
-            <p className="text-sm text-gray-600 dark:text-gray-500">Success Rate</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">Success Rate</p>
             <p className="text-xl font-bold text-blue-600">{formatPercentage(proposalMetrics.successRate)}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-500">Approval rate</p>
+            <p className="text-xs text-gray-500 dark:text-gray-300">Approval rate</p>
           </div>
 
           <div className="text-center p-4 bg-yellow-50 rounded-lg">
-            <p className="text-sm text-gray-600 dark:text-gray-500">Total Funded</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">Total Funded</p>
             <p className="text-xl font-bold text-yellow-600">{proposalMetrics.totalFunded} ETH</p>
-            <p className="text-xs text-gray-500 dark:text-gray-500">All time</p>
+            <p className="text-xs text-gray-500 dark:text-gray-300">All time</p>
           </div>
         </div>
       </motion.div>
