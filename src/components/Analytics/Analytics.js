@@ -193,8 +193,8 @@ const Analytics = () => {
                     <span className="text-white text-xs font-bold">{rate.symbol}</span>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-gray-500">{rate.pair}</p>
-                    <p className="text-xs text-gray-600 dark:text-gray-500">24h Volume: {formatCurrency(rate.volume24h)}</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-300">{rate.pair}</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-300">24h Volume: {formatCurrency(rate.volume24h)}</p>
                   </div>
                 </div>
                 <div className="text-right">
@@ -217,9 +217,9 @@ const Analytics = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
+        className="light:bg-white dark:bg-gray-700 dark:text-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Token Purchase Analytics</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Token Purchase Analytics</h3>
         <div className="space-y-4">
           <div className="text-center p-4 bg-green-50 rounded-lg">
             <p className="text-sm text-gray-600 dark:text-gray-500">Average Purchase Price</p>
