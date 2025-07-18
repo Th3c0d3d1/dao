@@ -443,7 +443,7 @@ const Analytics = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white rounded-lg p-3 lg:p-4 shadow-sm border border-gray-200 min-w-0"
+            className="light:bg-white dark:bg-gray-700 rounded-lg p-3 lg:p-4 shadow-sm border border-gray-200 min-w-0"
           >
             <div className="flex items-center justify-between">
               <div className="min-w-0 flex-1">
