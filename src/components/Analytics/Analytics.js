@@ -88,8 +88,8 @@ const Analytics = () => {
             <div className="flex items-center">
               <DocumentTextIcon className="w-5 h-5 text-blue-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-800">Proposal Allocations</p>
-                <p className="text-xs text-gray-600 dark:text-gray-300">Impact on treasury balance</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-700">Proposal Allocations</p>
+                <p className="text-xs text-gray-600 dark:text-gray-600">Impact on treasury balance</p>
               </div>
             </div>
             <div className="text-right">
