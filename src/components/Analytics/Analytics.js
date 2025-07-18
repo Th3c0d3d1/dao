@@ -346,9 +346,9 @@ const Analytics = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+        className="light:bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm border border-gray-200"
       >
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-600 mb-4">Token Holder Distribution</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Token Holder Distribution</h3>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
@@ -381,7 +381,7 @@ const Analytics = () => {
                 className="w-3 h-3 rounded-full mr-2"
                 style={{ backgroundColor: item.color }}
               />
-              <span className="text-sm text-gray-600">{item.name}: {item.percentage}%</span>
+              <span className="text-sm text-gray-300">{item.name}: {item.percentage}%</span>
             </div>
           ))}
         </div>
