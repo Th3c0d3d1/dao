@@ -35,12 +35,14 @@ const Analytics = () => {
   const { contract: dao, provider } = useSelector((state) => state.dao)
   const { contract: token } = useSelector((state) => state.token)
   const {
-    treasuryAnalytics,
-    exchangeRates,
-    tokenMetrics,
-    proposalMetrics,
-    holderDistribution,
-    quarterlyData,
+
+    // Add default objects to prevent undefined errors
+    treasuryAnalytics = {},
+    exchangeRates = [],
+    tokenMetrics = {},
+    proposalMetrics = {},
+    holderDistribution = [],
+    quarterlyData = {},
     loading
   } = useSelector((state) => state.analytics)
 
@@ -54,8 +56,18 @@ const Analytics = () => {
   }, [dao, token, provider, dispatch])
 
   const formatPercentage = (value) => {
-    const sign = value >= 0 ? '+' : ''
-    return `${sign}${value.toFixed(2)}%`
+
+    // Convert to number and handle invalid values
+    // Fallback, e.g. if value is null or undefined
+    const numValue = Number(value)
+    if (isNaN(numValue)) {
+
+      // or return 'N/A' for unavailable data
+      return '0.00%'
+    }
+
+    const sign = numValue >= 0 ? '+' : ''
+    return `${sign}${numValue.toFixed(2)}%`
   }
 
   const formatCurrency = (value) => {
