@@ -121,7 +121,7 @@ export const assignRole = createAsyncThunk(
       const tx = await dao.assignRole(name, address, role, department)
       await tx.wait()
       
-      // For now, simulate the assignment (you'll need to implement the contract method)
+      // Simulate the assignment
       // console.log(`Assigning ${role} to ${address}${department ? ` in ${department}` : ''}`)
 
       return { name, address, role, department }
