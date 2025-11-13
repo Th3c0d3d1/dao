@@ -5,6 +5,7 @@ import { ethers } from 'ethers'
 const MOCK_CORPORATE_STRUCTURE = {
   executives: [
     {
+      name: 'John Smith',
       position: 'CEO',
       address: '0x1234567890123456789012345678901234567890',
       balance: '400000',
@@ -13,12 +14,14 @@ const MOCK_CORPORATE_STRUCTURE = {
   ],
   departmentHeads: [
     {
+      name: 'Jane Doe',
       department: 'MARKETING',
       address: '0x2345678901234567890123456789012345678901',
       balance: '150000',
       votingWeight: '15.0'
     },
     {
+      name: 'John Cena',
       department: 'RND',
       address: '0x3456789012345678901234567890123456789012',
       balance: '120000',
@@ -27,24 +30,28 @@ const MOCK_CORPORATE_STRUCTURE = {
   ],
   employees: [
     {
+      name:'Ben Franklin',
       department: 'MARKETING',
       address: '0x4567890123456789012345678901234567890123',
       balance: '50000',
       votingWeight: '5.0'
     },
     {
+      name: 'Roger Goodell',
       department: 'MARKETING',
       address: '0x5678901234567890123456789012345678901234',
       balance: '45000',
       votingWeight: '4.5'
     },
     {
+      name: 'Elon Musk',
       department: 'RND',
       address: '0x6789012345678901234567890123456789012345',
       balance: '60000',
       votingWeight: '6.0'
     },
     {
+      name: 'Alice Johnson',
       department: 'HR',
       address: '0x7890123456789012345678901234567890123456',
       balance: '40000',
@@ -108,11 +115,16 @@ export const loadMembers = createAsyncThunk(
 
 export const assignRole = createAsyncThunk(
   'members/assignRole',
-  async ({ dao, address, role, department }, { rejectWithValue }) => {
+  async ({ dao, name, address, role, department }, { rejectWithValue }) => {
     try {
-      // In a real implementation, this would call a contract method
-      // For now, we'll simulate the assignment
-      return { address, role, department }
+      // If DAO contract has role assignment functionality
+      const tx = await dao.assignRole(name, address, role, department)
+      await tx.wait()
+      
+      // For now, simulate the assignment (you'll need to implement the contract method)
+      // console.log(`Assigning ${role} to ${address}${department ? ` in ${department}` : ''}`)
+
+      return { name, address, role, department }
     } catch (error) {
       return rejectWithValue(error.message)
     }
@@ -173,7 +185,19 @@ const membersSlice = createSlice({
         state.loading = true
         state.error = null
       })
-      .addCase(assignRole.fulfilled, (state) => {
+      .addCase(assignRole.fulfilled, (state, action) => {
+        const { address, name, role, department } = action.payload
+
+        // Add member to appropriate section based on role
+        if (['CEO', 'CFO', 'COO'].includes(role)) {
+          if (!state.members.executives) state.members.executives = []
+          state.members.executives.push({ address, name, position: role })
+        } else if (role === 'Department Head') {
+          if (!state.members.departmentHeads) state.members.departmentHeads = []
+          state.members.departmentHeads.push({ address, name, department })
+        }
+
+        localStorage.setItem('daoMembers', JSON.stringify(state.members))
         state.loading = false
       })
       .addCase(assignRole.rejected, (state, action) => {

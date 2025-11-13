@@ -13,6 +13,8 @@ import {
     MegaphoneIcon,
 } from '@heroicons/react/24/outline'
 import { loadMembers } from '../../store/slices/membersSlice'
+import { openModal } from '../../store/slices/uiSlice'
+import AssignRoleModal from './AssignRoleModal'
 
 const CORPORATE_POSITIONS = {
     CEO: {
@@ -100,14 +102,21 @@ const Members = () => {
     const { contract: dao } = useSelector((state) => state.dao)
     const { contract: token } = useSelector((state) => state.token)
     const { members = {}, loading } = useSelector((state) => state.members)
+    const { modals } = useSelector((state) => state.ui)
 
     const [activeTab, setActiveTab] = useState('corporate')
+    const [assignmentData, setAssignmentData] = useState({ position: '', department: null })
 
     useEffect(() => {
         if (dao && token) {
             dispatch(loadMembers({ dao, token }))
         }
     }, [dao, token, dispatch])
+
+    const handleAssignRole = (position, department = null) => {
+        setAssignmentData({ position, department })
+        dispatch(openModal('assignRole'))
+    }
 
     const renderCorporateStructure = () => (
         <div className="space-y-8 dark:text-gray-200">
@@ -143,6 +152,12 @@ const Members = () => {
                                 {member ? (
                                     <div className="space-y-3">
                                         <div className="flex items-center justify-between">
+                                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Name:</span>
+                                            <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
+                                                {member.name || 'Unknown'}
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center justify-between">
                                             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Address:</span>
                                             <span className="text-xs font-mono text-gray-600 dark:text-gray-300 truncate ml-2">
                                                 {member.address.slice(0, 6)}...{member.address.slice(-4)}
@@ -164,7 +179,10 @@ const Members = () => {
                                 ) : (
                                     <div className="text-center py-4">
                                         <p className="text-sm text-gray-500 dark:text-gray-300">Position Available</p>
-                                        <button className="mt-2 px-3 py-1 text-xs bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                        <button 
+                                            onClick={() => handleAssignRole(position)}
+                                            className="mt-2 px-3 py-1 text-xs bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                        >
                                             Assign Role
                                         </button>
                                     </div>
@@ -225,6 +243,12 @@ const Members = () => {
                                 ) : (
                                     <div className="text-center py-2 mb-4">
                                         <p className="text-sm text-gray-500 dark:text-gray-300">No Department Head</p>
+                                        <button 
+                                            onClick={() => handleAssignRole('Department Head', department)}
+                                            className="mt-2 px-3 py-1 text-xs bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                        >
+                                            Assign Head
+                                        </button>
                                     </div>
                                 )}
 
@@ -428,6 +452,14 @@ const Members = () => {
                 <>
                     {activeTab === 'corporate' && renderCorporateStructure()}
                     {activeTab === 'holders' && renderTokenHolders()}
+
+                    {/* Assign Role Modal */}
+                    {modals.assignRole && (
+                        <AssignRoleModal 
+                            position={assignmentData.position}
+                            department={assignmentData.department}
+                        />
+                    )}
                 </>
             )}
         </div>
